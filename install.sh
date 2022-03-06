@@ -1,3 +1,7 @@
+sudo pacman -Syu
+
+
+
 # Oh my tmux
 # https://github.com/gpakosz/.tmux
 
