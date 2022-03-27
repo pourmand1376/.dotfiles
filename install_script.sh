@@ -82,5 +82,6 @@ git config --global user.email "pourmand1376@gmail.com"
 sudo dnf install vlc
 sudo dnf install smplayer
 
+sudo dnf copr enable joseexposito/touchegg
 sudo dnf install touchegg
 sudo flatpak install touche
