@@ -86,3 +86,5 @@ sudo dnf install smplayer-themes
 sudo dnf copr enable joseexposito/touchegg
 sudo dnf install touchegg
 sudo flatpak install touche
+
+sudo dnf install vokoscreen
