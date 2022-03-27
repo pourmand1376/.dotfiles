@@ -87,4 +87,12 @@ sudo dnf copr enable joseexposito/touchegg
 sudo dnf install touchegg
 sudo flatpak install touche
 
-sudo dnf install vokoscreen
+sudo dnf install vokoscreenNG
+
+
+#docker
+sudo dnf config-manager \
+    --add-repo \
+    https://download.docker.com/linux/fedora/docker-ce.repo
+
+sudo dnf install docker-ce docker-ce-cli containerd.io
