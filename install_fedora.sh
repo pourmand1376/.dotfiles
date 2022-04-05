@@ -96,3 +96,9 @@ sudo dnf config-manager \
     https://download.docker.com/linux/fedora/docker-ce.repo
 
 sudo dnf install docker-ce docker-ce-cli containerd.io
+
+# https://github.com/agalwood/Motrix/releases/
+# download motrix rpm 
+cd /tmp && wget https://github.com/agalwood/Motrix/releases/download/v1.6.11/Motrix-1.6.11.x86_64.rpm
+sudo rpm -i Motrix-1.6.11.x86_64.rpm
+    
