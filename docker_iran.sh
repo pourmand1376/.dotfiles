@@ -1,8 +1,12 @@
 # I tested this on fedora 35 and manjaro.
 
 sudo mkdir -p /etc/docker
+
+## for not coflicting with sharif dhcp 
 echo '{                                                                                           ✔  17:27:50 
-    "registry-mirrors": ["https://registry.docker.ir"]
+	"registry-mirrors": ["https://registry.docker.ir"],
+	"bip": "10.10.2.1/24",
+	"ipv6": false,
 }' | sudo tee /etc/docker/daemon.json
 sudo systemctl daemon-reload
 sudo systemctl restart docker
