@@ -79,6 +79,13 @@ git config --global merge.tool "kdiff3"
 git config --global user.name "Amir Pourmand"
 git config --global user.email "pourmand1376@gmail.com"
 
+curl -LO https://raw.githubusercontent.com/GitCredentialManager/git-credential-manager/main/src/linux/Packaging.Linux/install-from-source.sh &&
+sh ./install-from-source.sh &&
+git-credential-manager-core configure
+
+git config --global credential.credentialStore secretservice
+
+
 sudo dnf install vlc
 sudo dnf install smplayer
 sudo dnf install smplayer-themes
