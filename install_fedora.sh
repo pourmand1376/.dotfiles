@@ -7,6 +7,7 @@ sudo dnf -y install https://github.com/UnitedRPMs/unitedrpms/releases/download/1
 
 
 sudo dnf install terminator unrar zsh git
+sudo dnf install htop
 
 chsh -s $(which zsh)
 # https://github.com/zsh-users/antigen
@@ -61,6 +62,8 @@ sudo dnf install skypeforlinux
 
 sudo dnf install timeshift
 sudo dnf install backintime-gnome
+
+# install museeks.io for playing music
 
 
 # https://github.com/fzerorubigd/persian-fonts-linux
