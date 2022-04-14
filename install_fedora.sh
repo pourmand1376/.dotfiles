@@ -50,10 +50,14 @@ sudo dnf install gparted flameshot
 
 
 sudo dnf config-manager --add-repo https://brave-browser-rpm-release.s3.brave.com/x86_64/
-
 sudo rpm --import https://brave-browser-rpm-release.s3.brave.com/brave-core.asc
-
 sudo dnf install brave-browser
+
+# install chrome
+sudo dnf install fedora-workstation-repositories
+sudo dnf config-manager --set-enabled google-chrome
+sudo dnf install google-chrome-stable
+
 sudo dnf install telegram
 
 # skype
@@ -63,8 +67,10 @@ sudo dnf install skypeforlinux
 sudo dnf install timeshift
 sudo dnf install backintime-gnome
 
-# install museeks.io for playing music
-
+# install cpu-autofreq to manage battery life
+# https://github.com/AdnanHodzic/auto-cpufreq
+sudo dnf install thermald
+# for cpu usuage
 
 # https://github.com/fzerorubigd/persian-fonts-linux
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/fzerorubigd/persian-fonts-linux/master/farsifonts.sh)"
@@ -112,3 +118,6 @@ sudo dnf install docker-ce docker-ce-cli containerd.io
 cd /tmp && wget https://github.com/agalwood/Motrix/releases/download/v1.6.11/Motrix-1.6.11.x86_64.rpm
 sudo rpm -i Motrix-1.6.11.x86_64.rpm
     
+
+# install kite for python syntax help
+bash -c "$(wget -q -O - https://linux.kite.com/dls/linux/current)"
