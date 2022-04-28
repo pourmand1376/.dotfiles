@@ -121,3 +121,9 @@ sudo rpm -i Motrix-1.6.11.x86_64.rpm
 
 # install kite for python syntax help
 bash -c "$(wget -q -O - https://linux.kite.com/dls/linux/current)"
+
+
+# Video Recording software
+sudo dnf install obs-studio
+# for editing Kdenlive
+# for audio -> audacity
