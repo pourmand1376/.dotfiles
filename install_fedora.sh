@@ -128,3 +128,4 @@ bash -c "$(wget -q -O - https://linux.kite.com/dls/linux/current)"
 sudo dnf install obs-studio
 # for editing Kdenlive
 # for audio -> audacity
+# for benchmark > geekbench
