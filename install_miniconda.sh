@@ -12,3 +12,7 @@ gpgkey=https://repo.anaconda.com/pkgs/misc/gpgkeys/anaconda.asc
 EOF
 
 dnf install conda
+source /opt/conda/etc/profile.d/conda.sh
+
+conda config --add channels conda-forge
+conda config --set channel_priority strict
