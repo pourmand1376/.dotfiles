@@ -47,8 +47,11 @@ git config --global user.email "pourmand1376@gmail.com"
 git config --global credential.credentialStore secretservice
 
 # make gnome like macos
- # https://www.youtube.com/watch?v=VQ6MVky9EUk
 
 sudo apt install gnome-shell-extensions
 sudo apt install gnome-shell-extension-manager
+# install dconf editor for more options
 
+
+sudo apt install timeshift
+sudo apt install backintime-common
