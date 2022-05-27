@@ -55,3 +55,7 @@ sudo apt install gnome-shell-extension-manager
 
 sudo apt install timeshift
 sudo apt install backintime-common
+
+# install GSConnect in place of KDE Connect
+
+## https://github.com/vinceliuice/WhiteSur-gtk-theme
