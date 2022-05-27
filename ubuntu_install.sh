@@ -59,3 +59,12 @@ sudo apt install backintime-common
 # install GSConnect in place of KDE Connect
 
 ## https://github.com/vinceliuice/WhiteSur-gtk-theme
+# install kite
+bash -c "$(wget -q -O - https://linux.kite.com/dls/linux/current)"
+
+# install miniconda
+wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh
+chmod +x Miniconda3-latest-Linux-x86_64.sh
+./Miniconda3-latest-Linux-x86_64.sh
+
+
