@@ -70,3 +70,8 @@ chmod +x Miniconda3-latest-Linux-x86_64.sh
 # install
 conda init zsh
 conda init bash
+
+# adding conda-forge
+conda config --add channels conda-forge
+conda config --set channel_priority strict
+
