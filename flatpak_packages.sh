@@ -21,4 +21,4 @@ flatpak install flathub org.gnome.Calculator -y
 flatpak install flathub org.kde.kclock -y
 
 flatpak install flathub net.codeindustry.MasterPDFEditor -y
-# flatpak install flathub org.texstudio.TeXstudio -y
+flatpak install flathub org.texstudio.TeXstudio -y --no-related

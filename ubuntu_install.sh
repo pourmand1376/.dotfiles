@@ -75,3 +75,9 @@ conda init bash
 conda config --add channels conda-forge
 conda config --set channel_priority strict
 
+# installing docker! 
+
+# install tldr
+# install cheat.sh
+sudo apt install input-remapper
+# config remapper
