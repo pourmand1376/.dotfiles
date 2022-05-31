@@ -22,3 +22,4 @@ flatpak install flathub org.kde.kclock -y
 
 flatpak install flathub net.codeindustry.MasterPDFEditor -y
 flatpak install flathub org.texstudio.TeXstudio -y --no-related
+flatpak install flathub org.kde.okular

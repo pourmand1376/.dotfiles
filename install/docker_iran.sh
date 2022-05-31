@@ -3,10 +3,10 @@
 sudo mkdir -p /etc/docker
 
 ## for not coflicting with sharif dhcp 
-echo '{                                                                                           ✔  17:27:50 
+echo '{
 	"registry-mirrors": ["https://registry.docker.ir"],
 	"bip": "10.10.2.1/24",
-	"ipv6": false,
+	"ipv6": false
 }' | sudo tee /etc/docker/daemon.json
 sudo systemctl daemon-reload
 sudo systemctl restart docker
@@ -15,5 +15,5 @@ sudo systemctl restart docker
 sudo groupadd docker
 sudo usermod -aG docker $USER
 
- sudo systemctl enable docker.service
- sudo systemctl enable containerd.service
+sudo systemctl enable docker.service
+sudo systemctl enable containerd.service
