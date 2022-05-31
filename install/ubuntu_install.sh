@@ -108,4 +108,5 @@ sudo apt install input-remapper
 # config remapper
 
 
-
+# I can do these things using nix
+# https://www.youtube.com/watch?v=70YMTHAZyy4
