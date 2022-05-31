@@ -1,4 +1,4 @@
-# I tested this on fedora 35 and manjaro.
+# I tested this on fedora 35 and manjaro and ubuntu
 
 sudo mkdir -p /etc/docker
 
