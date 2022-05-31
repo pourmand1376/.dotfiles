@@ -1,31 +1,66 @@
-" --- General 
+" enables syntax highlighting
+syntax on
 
-let mapleader = " "
-
+" Better colors
 set termguicolors
-set tabstop=4 
+
+" number of spaces in a <Tab>
+set tabstop=4
 set softtabstop=4
-set shiftwidth=4
 set expandtab
+
+" enable autoindents
 set smartindent
+
+" number of spaces used for autoindents
+set shiftwidth=4
+
+" adds line numbers
 set number
-set numberwidth=1
 set relativenumber
-set signcolumn=yes
-set noswapfile
-set nobackup
-set undodir=~/.config/nvim/undodir
-set undofile
+
+" columns used for the line number
+set numberwidth=4
+
+" highlights the matched text pattern when searching
 set incsearch
 set nohlsearch
-set ignorecase
-set smartcase
-set nowrap
+
+" open splits intuitively
 set splitbelow
 set splitright
+
+" navigate buffers without losing unsaved work
 set hidden
-set scrolloff=999
-set noshowmode
-set updatetime=250 
-set encoding=UTF-8
+
+" start scrolling when 8 lines from top or bottom
+set scrolloff=8
+
+" Save undo history
+set undofile
+
+" Enable mouse support
 set mouse=a
+
+" case insensitive search unless capital letters are used
+set ignorecase
+set smartcase
+
+
+" ...general settings
+
+call plug#begin('~/.config/nvim/plugged')
+
+" plugins will go here
+Plug 'rakr/vim-one'
+
+" Lightline
+Plug 'itchyny/lightline.vim'
+
+" vim-fugitive
+Plug 'tpope/vim-fugitive'
+
+
+call plug#end()
+
+colorscheme one
