@@ -1,1 +1,2 @@
-require('amir/lightline')
+require('amir.gitsigns')
+require('amir.lualine')
