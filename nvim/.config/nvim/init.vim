@@ -50,7 +50,8 @@ set smartcase
 " ...general settings
 
 call plug#begin('~/.config/nvim/plugged')
-
+" general plugins 
+" ==================
 " plugins will go here
 Plug 'rakr/vim-one'
 
@@ -58,9 +59,20 @@ Plug 'rakr/vim-one'
 Plug 'itchyny/lightline.vim'
 
 " vim-fugitive
-Plug 'tpope/vim-fugitive'
 
+Plug 'kyazdani42/nvim-web-devicons'                " Devicons
+Plug 'nvim-lualine/lualine.nvim'                   " Status line
+Plug 'akinsho/bufferline.nvim'                     " Buffers
+Plug 'machakann/vim-highlightedyank'               " Highlight yanked text
+Plug 'kyazdani42/nvim-tree.lua'                    " File explorer
+Plug 'folke/tokyonight.nvim', { 'branch': 'main' } " Color scheme
+
+" git --------------
+" ============
+Plug 'tpope/vim-fugitive'
+Plug 'lewis6991/gitsigns.nvim'
 
 call plug#end()
 
+set background=dark
 colorscheme one
