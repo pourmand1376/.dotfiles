@@ -93,3 +93,5 @@ call plug#end()
 
 set background=dark
 colorscheme one
+
+lua require('amir')
