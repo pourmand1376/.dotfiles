@@ -13,6 +13,7 @@ lvim.log.level = "warn"
 lvim.format_on_save = true
 lvim.colorscheme = "tokyonight"
 lvim.lsp.diagnostics.virtual_text = false
+
 -- to disable icons and use a minimalist setup, uncomment the following
 -- lvim.use_icons = false
 
@@ -62,7 +63,7 @@ lvim.builtin.alpha.mode = "dashboard"
 lvim.builtin.notify.active = true
 lvim.builtin.terminal.active = true
 lvim.builtin.nvimtree.setup.view.side = "left"
-lvim.builtin.nvimtree.show_icons.git = 0
+lvim.builtin.nvimtree.setup.renderer.icons.show.git = false
 
 -- if you don't want all the parsers change this to a table of the ones you want
 lvim.builtin.treesitter.ensure_installed = {
@@ -83,9 +84,7 @@ lvim.builtin.treesitter.ensure_installed = {
 lvim.builtin.treesitter.ignore_install = { "haskell" }
 lvim.builtin.treesitter.highlight.enabled = true
 
-
 -- generic LSP settings
-
 
 -- ---@usage disable automatic installation of servers
 -- lvim.lsp.automatic_servers_installation = false
@@ -116,7 +115,7 @@ lvim.builtin.treesitter.highlight.enabled = true
 local formatters = require "lvim.lsp.null-ls.formatters"
 formatters.setup {
   { command = "black", filetypes = { "python" } },
-  -- { command = "isort", filetypes = { "python" } },
+  { command = "isort", filetypes = { "python" } },
   {
     -- each formatter accepts a list of options identical to https://github.com/jose-elias-alvarez/null-ls.nvim/blob/main/doc/BUILTINS.md#Configuration
     command = "prettier",
