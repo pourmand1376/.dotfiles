@@ -1,1 +1,1 @@
-sudo snap install vlc --classic
+sudo snap install vlc
