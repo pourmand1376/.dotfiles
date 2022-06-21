@@ -4,7 +4,7 @@ I managed my dotfiles using `stow`. [This](https://www.youtube.com/watch?v=FHuwz
 
 ## Stow
 
-For copying config files, use:
+For using config files, use:
 
 ```bash
 stow folder_name
