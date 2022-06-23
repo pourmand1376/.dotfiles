@@ -109,3 +109,4 @@ sudo apt install input-remapper
 # https://www.youtube.com/watch?v=70YMTHAZyy4
 
 sudo apt install pavucontrol
+# https://github.com/manjaro/packages-extra/issues/64
