@@ -27,3 +27,7 @@ flatpak install flathub com.google.Chrome -y
 # https://www.reddit.com/r/Fedora/comments/o3cjw7/cant_use_screenshare_in_meet_in_brave/
 
 flatpak install flathub com.github.tchx84.Flatseal
+
+flatpak install flathub nz.mega.MEGAsync
+flatpak install flathub com.todoist.Todoist
+
