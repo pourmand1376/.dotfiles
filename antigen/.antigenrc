@@ -1,3 +1,4 @@
+source ~/.antigen.zsh
 antigen use oh-my-zsh
 # Load bundles from the default repo (oh-my-zsh)
 antigen bundle git

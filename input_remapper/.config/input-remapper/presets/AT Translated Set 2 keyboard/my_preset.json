@@ -1,0 +1,28 @@
+{
+    "mapping": {
+        "1,58,1": [
+            "Escape",
+            "keyboard"
+        ],
+        "1,110,1+1,88,1": [
+            "KEY_F12",
+            "keyboard"
+        ],
+        "1,88,1": [
+            "KEY_END",
+            "keyboard"
+        ],
+        "1,87,1": [
+            "KEY_HOME",
+            "keyboard"
+        ],
+        "1,110,1+1,87,1": [
+            "KEY_F11",
+            "keyboard"
+        ],
+        "1,100,1": [
+            "Alt_R",
+            "keyboard"
+        ]
+    }
+}
