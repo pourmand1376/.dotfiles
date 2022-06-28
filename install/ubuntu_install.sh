@@ -9,7 +9,7 @@ sudo apt update
 # https://sw.kovidgoyal.net/kitty/binary/
 
 # sudo prime-select nvidia or sudo prime-select intel
-sudo apt instal curl git zsh
+sudo apt install curl git zsh
 mkdir -p ~/.plugins/
 
 
