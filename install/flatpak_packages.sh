@@ -23,5 +23,5 @@ flatpak install flathub org.kde.kclock -y
 flatpak install flathub net.codeindustry.MasterPDFEditor -y
 flatpak install flathub org.texstudio.TeXstudio -y --no-related
 flatpak install flathub org.kde.okular
-
+flatpak install flathub com.google.Chrome -y
 # https://www.reddit.com/r/Fedora/comments/o3cjw7/cant_use_screenshare_in_meet_in_brave/
