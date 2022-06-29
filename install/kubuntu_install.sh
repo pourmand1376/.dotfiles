@@ -53,6 +53,34 @@ conda init bash
 conda config --add channels conda-forge
 conda config --set channel_priority strict
 
+sudo apt install fd-find
+ln -s $(which fdfind) ~/.local/bin/fd
+sudo apt-get install fzf
+
+# should install nodejs with nvm
+# node version manager
+
+# for lvim
+# npm with sudo
+sudo apt install npm
+# https://docs.npmjs.com/resolving-eacces-permissions-errors-when-installing-packages-globally
+mkdir ~/.npm-global
+npm config set prefix '~/.npm-global'
+echo 'export PATH=~/.npm-global/bin:$PATH' >> ~/.profile
+source ~/.profile
+
+npm install -g prettier
+
+sudo apt install cargo
+
+# LVIM finish
+# to install python packages for all envs (not using minconda)
+sudo apt install python3-pip
+/usr/bin/pip3 install thefuck
+/usr/bin/pip3 install codespell flake8 black
+/usr/bin/pip3 install prettier isort shellcheck-py
+
+# then run `PackerInstall`
 
 
 # Docker
