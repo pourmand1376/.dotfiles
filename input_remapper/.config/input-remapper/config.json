@@ -1,7 +1,8 @@
 {
     "version": "1.4.0",
     "autoload": {
-        "AT Translated Set 2 keyboard": "my_preset"
+        "AT Translated Set 2 keyboard": "my_preset",
+        "2.4G Mouse": "new preset"
     },
     "macros": {
         "keystroke_sleep_ms": 10
