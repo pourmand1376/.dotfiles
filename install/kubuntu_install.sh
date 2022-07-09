@@ -120,3 +120,6 @@ sudo usermod -aG docker $USER
 sudo systemctl enable docker.service
 sudo systemctl enable containerd.service
 
+# Snapd copy application .desktop files
+sudo cp /var/lib/snapd/desktop/applications/* /usr/share/applications/
+
