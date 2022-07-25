@@ -17,6 +17,7 @@ sudo apt install mc
 sudo apt install tldr
 sudo apt install most
 export PAGER='most' >> .profile
+git config --global core.editor "code --wait"
 
 sudo apt install flatpak
 flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
