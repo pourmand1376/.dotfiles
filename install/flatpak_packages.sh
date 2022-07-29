@@ -31,3 +31,5 @@ flatpak install flathub com.github.tchx84.Flatseal
 flatpak install flathub nz.mega.MEGAsync
 flatpak install flathub com.todoist.Todoist
 
+# to ignore texlive update (it is 5GB or so"
+flatpak mask "*texlive*"
