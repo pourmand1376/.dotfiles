@@ -16,6 +16,10 @@ sudo update-alternatives --config x-terminal-emulator
 sudo apt install mc
 sudo apt install tldr
 sudo apt install most
+
+sudo apt install yank
+alias yank="yank-cli"
+
 export PAGER='most' >> .profile
 git config --global core.editor "code --wait"
 
