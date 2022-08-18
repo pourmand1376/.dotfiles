@@ -2,7 +2,7 @@
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 
 brew install zsh
-brew install fzf
+brew install fzf # fuzzy finder
 brew install ncdu
 
 brew install stow
@@ -11,3 +11,6 @@ brew install neovim
 brew install z # for tracking history and smart cd
 
 # also you should use `realpath` command to see full path for a given item
+
+brew install ripgrep # a great alternative to grep
+
