@@ -7,3 +7,6 @@ export VISUAL="vi"
 export LANG=en_US.UTF-8
 
 HISTSIZE= HISTFILESIZE= #infinite history
+
+alias icat="kitty +kitten icat"
+
