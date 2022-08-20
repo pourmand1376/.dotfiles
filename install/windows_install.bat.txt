@@ -1,0 +1,3 @@
+winget install Telegram.TelegramDesktop
+winget install Git.Git
+winget install BraveSoftware.BraveBrowser
