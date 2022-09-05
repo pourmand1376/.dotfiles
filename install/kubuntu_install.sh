@@ -32,6 +32,8 @@ sudo apt install kdiff3
 sudo apt install vim
 # install neovim from its website!
 
+sudo apt install gnome-clocks
+
 sudo apt install timeshift
 sudo apt install backintime-common
 
@@ -127,4 +129,4 @@ sudo systemctl enable containerd.service
 
 # Snapd copy application .desktop files
 sudo cp /var/lib/snapd/desktop/applications/* /usr/share/applications/
-
+# https://github.com/albertlauncher/albert
