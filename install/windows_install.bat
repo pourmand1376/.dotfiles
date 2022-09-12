@@ -6,3 +6,5 @@ winget install Microsoft.PowerToys -s winget
 winget install ShareX.ShareX
 
 choco install winbtrfs
+
+winget install -e peazip
