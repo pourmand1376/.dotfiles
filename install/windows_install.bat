@@ -28,4 +28,6 @@ winget install -e --id JackieLiu.NotepadsApp
 
 winget install -e --id WhatsApp.WhatsApp
 
+winget install -e --id Doist.Todoist
+
 wsl --install
