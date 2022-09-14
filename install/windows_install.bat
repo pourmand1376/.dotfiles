@@ -24,4 +24,8 @@ winget install -e --id Google.Chrome
 
 winget install -e --id Microsoft.VisualStudioCode
 
+winget install -e --id JackieLiu.NotepadsApp
+
+winget install -e --id WhatsApp.WhatsApp
+
 wsl --install
