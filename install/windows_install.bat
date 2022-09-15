@@ -30,4 +30,6 @@ winget install -e --id WhatsApp.WhatsApp
 
 winget install -e --id Doist.Todoist
 
+winget install -e --id agalwood.Motrix
+
 wsl --install
