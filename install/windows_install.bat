@@ -32,4 +32,13 @@ winget install -e --id Doist.Todoist
 
 winget install -e --id agalwood.Motrix
 
+winget install -e --id Google.Drive
+
+winget install JanDeDobbeleer.OhMyPosh -s winget
+
+# notepad $PROFILE
+
+# oh-my-posh init pwsh | Invoke-Expression
+
 wsl --install
+
