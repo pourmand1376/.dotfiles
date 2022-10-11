@@ -4,6 +4,11 @@ I managed my dotfiles using `stow`. [This](https://www.youtube.com/watch?v=FHuwz
 
 ## Stow
 
+Installing stow is as simple as
+```bash
+sudo apt install stow
+```
+
 For using config files, use:
 
 ```bash
