@@ -36,6 +36,8 @@ winget install -e --id Google.Drive
 
 winget install JanDeDobbeleer.OhMyPosh -s winget
 
+winget install -e --id chrisant996.Clink # better cmd
+
 # notepad $PROFILE
 
 # oh-my-posh init pwsh | Invoke-Expression
