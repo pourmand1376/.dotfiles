@@ -24,3 +24,14 @@ stow folder_name
 - [oh-my-zsh](https://github.com/ohmyzsh/ohmyzsh)
 - [oh-my-tmux](https://github.com/gpakosz/.tmux)
 - [oh-my-posh](https://ohmyposh.dev/)
+
+### Useful Scripts
+
+- [Windows WSL](install/windows_wsl.sh)
+- [Windows Winget](install/windows_install.bat)
+- [Ubuntu Server (Without root)](install/server_install.sh)
+- [Ubuntu](install/ubuntu_install.sh)
+- [Kubuntu](install/kubuntu_install.sh)
+- [Fedora](install_fedora.sh)
+- [Arch](install/install_arch.sh)
+- [Flatpak packages](install/flatpak_packages.sh)
