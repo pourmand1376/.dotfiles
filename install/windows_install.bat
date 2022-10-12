@@ -42,5 +42,8 @@ winget install -e --id chrisant996.Clink # better cmd
 
 # oh-my-posh init pwsh | Invoke-Expression
 
+# best cleaner for temp files
+winget install -e --id BleachBit.BleachBit
+
 wsl --install
 
