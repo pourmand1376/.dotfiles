@@ -3,12 +3,17 @@
 
 brew install zsh
 brew install fzf # fuzzy finder
+# https://github.com/junegunn/fzf
 brew install ncdu
 
 brew install stow
 
 brew install neovim
 brew install z # for tracking history and smart cd
+# https://github.com/rupa/z
+# https://github.com/ajeetdsouza/zoxide
+
+
 
 # also you should use `realpath` command to see full path for a given item
 
