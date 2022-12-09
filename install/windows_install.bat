@@ -34,6 +34,8 @@ winget install -e --id agalwood.Motrix
 
 winget install -e --id Google.Drive
 
+winget install -e --id JabRef.JabRef
+
 winget install JanDeDobbeleer.OhMyPosh -s winget
 
 winget install -e --id chrisant996.Clink # better cmd
