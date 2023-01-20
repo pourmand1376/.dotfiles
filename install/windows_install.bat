@@ -54,3 +54,4 @@ winget install -e --id BleachBit.BleachBit
 
 wsl --install
 
+# sync android and windows -> intel unison
