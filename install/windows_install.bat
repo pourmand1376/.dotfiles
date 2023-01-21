@@ -55,3 +55,6 @@ winget install -e --id BleachBit.BleachBit
 wsl --install
 
 # sync android and windows -> intel unison
+
+# install miniconda- add Env variables
+# conda init 
