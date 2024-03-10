@@ -35,3 +35,8 @@ stow folder_name
 - [Fedora](install_fedora.sh)
 - [Arch](install/install_arch.sh)
 - [Flatpak packages](install/flatpak_packages.sh)
+
+## To install 
+- https://www.warp.dev/
+- https://zed.dev/
+- https://arc.net/
