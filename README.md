@@ -40,3 +40,4 @@ stow folder_name
 - https://www.warp.dev/
 - https://zed.dev/
 - https://arc.net/
+- https://git-fork.com/
