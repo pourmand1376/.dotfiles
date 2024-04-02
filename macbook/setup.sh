@@ -10,6 +10,6 @@ brew install --cask obsidian
 brew install --cask firefox
 brew install --cask maczip
 brew install --cask arc
-# brew install --cask maccys (raycast replaced it)
+# brew install --cask maccy (raycast replaced it)
 brew install --cask raycast
 # brew install --cask cheatsheat problem 
