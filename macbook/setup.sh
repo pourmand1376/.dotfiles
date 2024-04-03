@@ -15,6 +15,7 @@ brew install --cask raycast
 brew install --cask cheatsheat # needs vpn
 
 # to test
-brew install --cask kap # screen recording
+#brew install --cask kap # screen recording
+brew install --cask obs #(obs studio)
 brew install --cask keka # file zip and archive utility
 brew install --cask vlc # video player
