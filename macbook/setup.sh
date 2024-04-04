@@ -20,3 +20,5 @@ brew install --cask obs #(obs studio)
 brew install --cask keka # file zip and archive utility
 brew install --cask vlc # video player
 brew install --cask bartender # customize dock icons
+
+# install oh-my-zsh
