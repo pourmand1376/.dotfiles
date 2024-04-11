@@ -3,6 +3,7 @@
 
 ## brew installs 
 brew install ffmpeg
+brew install iina # video player
 # brew install --cask alfred (replaced with raycast)
 # brew install --cask rectangle (replaced with raycast)
 brew install --cask visual-studio-code
@@ -22,3 +23,4 @@ brew install --cask vlc # video player
 brew install --cask bartender # customize dock icons
 
 # install oh-my-zsh
+
