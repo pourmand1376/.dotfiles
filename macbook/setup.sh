@@ -9,7 +9,6 @@ brew install iina # video player
 brew install --cask visual-studio-code
 brew install --cask obsidian
 brew install --cask firefox
-brew install --cask maczip
 brew install --cask arc
 # brew install --cask maccy (raycast replaced it)
 brew install --cask raycast
@@ -36,3 +35,5 @@ brew install --cask bartender # customize dock icons
 # docker
 # bitwarden
 # DBeaver
+brew install --cask sublime-merge
+brew install --cask the-unarchiver
