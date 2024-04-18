@@ -23,4 +23,5 @@ brew install --cask vlc # video player
 brew install --cask bartender # customize dock icons
 
 # install oh-my-zsh
-
+# تقویم روزگار
+# https://apps.apple.com/us/app/roozegar-%D8%B1%D9%88%D8%B2%DA%AF%D8%A7%D8%B1/id1171425651
