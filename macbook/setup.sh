@@ -35,5 +35,5 @@ brew install --cask bartender # customize dock icons
 # docker
 # bitwarden
 # DBeaver
-# fork
+# fork https://git-fork.com/
 brew install --cask the-unarchiver
