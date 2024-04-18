@@ -35,5 +35,5 @@ brew install --cask bartender # customize dock icons
 # docker
 # bitwarden
 # DBeaver
-brew install --cask sublime-merge
+# fork
 brew install --cask the-unarchiver
