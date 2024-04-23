@@ -37,3 +37,4 @@ brew install --cask bartender # customize dock icons
 # DBeaver
 # fork https://git-fork.com/
 brew install --cask the-unarchiver
+# pages numbers keynote # from apple store
