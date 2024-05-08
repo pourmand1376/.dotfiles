@@ -41,3 +41,5 @@ brew install --cask the-unarchiver
 
 # reverse mouse and touchpad direction
 brew install --cask unnaturalscrollwheels
+
+# https://superuser.com/questions/18212/remapping-keys-for-the-mac
