@@ -43,3 +43,4 @@ brew install --cask the-unarchiver
 brew install --cask unnaturalscrollwheels
 
 # https://superuser.com/questions/18212/remapping-keys-for-the-mac
+brew install --cask karabiner-elements
