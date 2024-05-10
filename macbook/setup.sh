@@ -44,3 +44,6 @@ brew install --cask unnaturalscrollwheels
 
 # https://superuser.com/questions/18212/remapping-keys-for-the-mac
 brew install --cask karabiner-elements
+
+brew install webp
+# cwebp test.jpg -o test.webp
