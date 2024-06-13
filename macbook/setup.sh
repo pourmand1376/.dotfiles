@@ -19,7 +19,9 @@ brew install --cask cheatsheat # needs vpn
 brew install --cask obs #(obs studio)
 brew install --cask keka # file zip and archive utility
 brew install --cask vlc # video player
-brew install --cask bartender # customize dock icons
+#brew install --cask bartender # customize dock icons
+brew install jordanbaird-ice # customize dock icons (FOSS)
+
 
 # install oh-my-zsh
 # تقویم روزگار
@@ -47,3 +49,5 @@ brew install --cask karabiner-elements
 
 brew install webp
 # cwebp test.jpg -o test.webp
+
+# best pdf editor (free) - PDF Gear 
