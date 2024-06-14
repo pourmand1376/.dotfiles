@@ -27,18 +27,17 @@ brew install jordanbaird-ice # customize dock icons (FOSS)
 # تقویم روزگار
 # https://apps.apple.com/us/app/roozegar-%D8%B1%D9%88%D8%B2%DA%AF%D8%A7%D8%B1/id1171425651
 
-# V2Box
-# https://apps.apple.com/us/app/v2box-v2ray-client/id6446814690
+# Nekoray
+# https://github.com/abbasnaqdi/nekoray-macos/releases
 
-# V2rayU
 # warp
-# postman
+# httppie
 # pycharm ce
 # docker
 # bitwarden
 # DBeaver
 # fork https://git-fork.com/
-brew install --cask the-unarchiver
+brew install --cask keka # zip, rar files opener
 # pages numbers keynote # from apple store
 
 # reverse mouse and touchpad direction
@@ -51,3 +50,6 @@ brew install webp
 # cwebp test.jpg -o test.webp
 
 # best pdf editor (free) - PDF Gear 
+
+# dropover - Drop files in place
+# https://apps.apple.com/us/app/dropover-easier-drag-drop/id1355679052?mt=12
