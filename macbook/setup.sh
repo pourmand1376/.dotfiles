@@ -1,5 +1,6 @@
 # https://www.youtube.com/watch?v=GK7zLYAXdDs
 
+brew install --cask iterm2
 
 ## brew installs 
 brew install ffmpeg
