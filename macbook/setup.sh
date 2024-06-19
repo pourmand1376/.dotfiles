@@ -54,3 +54,6 @@ brew install webp
 
 # dropover - Drop files in place
 # https://apps.apple.com/us/app/dropover-easier-drag-drop/id1355679052?mt=12
+
+# relaxing sounds
+#https://apps.apple.com/us/app/qi-fm-focus-relax-sounds/id1479696191?mt=12
