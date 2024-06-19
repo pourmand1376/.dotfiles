@@ -22,7 +22,7 @@ brew install --cask keka # file zip and archive utility
 brew install --cask vlc # video player
 #brew install --cask bartender # customize dock icons
 brew install jordanbaird-ice # customize dock icons (FOSS)
-
+brew install --cask hiddenbar # same as ice
 
 # install oh-my-zsh
 # تقویم روزگار
