@@ -59,3 +59,5 @@ brew install webp
 #https://apps.apple.com/us/app/qi-fm-focus-relax-sounds/id1479696191?mt=12
 
 # for timer just use pomodone or roundpie
+
+# amphetamine (not allow to sleep)
