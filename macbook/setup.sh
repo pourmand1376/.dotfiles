@@ -61,3 +61,5 @@ brew install webp
 # for timer just use pomodone or roundpie
 
 # amphetamine (not allow to sleep)
+
+# https://github.com/ehsania/Persian-Glossaries-for-Apple-Dictionary
