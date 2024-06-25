@@ -63,3 +63,4 @@ brew install webp
 # amphetamine (not allow to sleep)
 
 # https://github.com/ehsania/Persian-Glossaries-for-Apple-Dictionary
+# https://github.com/wayneclub/Apple-Dictionary
