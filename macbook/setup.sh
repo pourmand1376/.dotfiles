@@ -64,3 +64,7 @@ brew install webp
 
 # https://github.com/ehsania/Persian-Glossaries-for-Apple-Dictionary
 # https://github.com/wayneclub/Apple-Dictionary
+
+brew install --cask transmission #download torrent files
+
+# folx for regular downloads 
