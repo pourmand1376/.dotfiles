@@ -6,7 +6,7 @@ brew install --cask iterm2
 brew install ffmpeg
 brew install iina # video player
 # brew install --cask alfred (replaced with raycast)
-brew install --cask rectangle (replaced with raycast)
+# brew install --cask rectangle (replaced with raycast) # removed in favor of Aerospace
 brew install --cask visual-studio-code
 brew install --cask obsidian
 brew install --cask firefox
@@ -68,3 +68,6 @@ brew install webp
 brew install --cask transmission #download torrent files
 
 # folx for regular downloads 
+
+brew install --cask nikitabobko/tap/aerospace 
+# https://nikitabobko.github.io/AeroSpace/guide
