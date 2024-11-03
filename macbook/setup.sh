@@ -71,3 +71,5 @@ brew install --cask transmission #download torrent files
 
 brew install --cask nikitabobko/tap/aerospace 
 # https://nikitabobko.github.io/AeroSpace/guide
+
+brew install lazygit # better than fork
