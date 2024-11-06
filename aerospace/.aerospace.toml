@@ -126,10 +126,10 @@ alt-8 = 'workspace 8'
 alt-9 = 'workspace 9'
 alt-b = 'workspace B' # Browser without VPN
 alt-c = 'workspace C' # Code
+alt-e = 'workspace E' # Engage (Social Networks)
 alt-m = 'workspace M' # Movies, Music
 alt-n = 'workspace N' # Notes, Task, Calendar
 alt-r = 'workspace R' # Read (PDF, Book, Instapaper)
-alt-s = 'workspace S' # Social
 alt-t = 'workspace T' # Terminal
 alt-v = 'workspace V' # Browser with VPN
 
@@ -145,10 +145,10 @@ alt-shift-8 = 'move-node-to-workspace 8'
 alt-shift-9 = 'move-node-to-workspace 9'
 alt-shift-b = 'move-node-to-workspace B'
 alt-shift-c = 'move-node-to-workspace C'
+alt-shift-e = 'move-node-to-workspace E'
 alt-shift-m = 'move-node-to-workspace M'
 alt-shift-n = 'move-node-to-workspace N'
 alt-shift-r = 'move-node-to-workspace R'
-alt-shift-s = 'move-node-to-workspace S'
 alt-shift-t = 'move-node-to-workspace T'
 alt-shift-v = 'move-node-to-workspace V'
 
@@ -183,20 +183,24 @@ if.app-id = 'com.brave.Browser'
 run = ['move-node-to-workspace B']
 
 [[on-window-detected]]
-if.app-id = 'com.apple.Safari'
-run = ['move-node-to-workspace V']
-
-[[on-window-detected]]
-if.app-id = 'com.google.Chrome'
-run = ['move-node-to-workspace V']
-
-[[on-window-detected]]
 if.app-id = 'com.microsoft.VSCode'
 run = ['move-node-to-workspace C']
 
 [[on-window-detected]]
 if.app-id = 'com.DanPristupov.Fork'
 run = ['move-node-to-workspace C']
+
+[[on-window-detected]]
+if.app-id = 'ru.keepcoder.Telegram'
+run = ['move-node-to-workspace E']
+
+[[on-window-detected]]
+if.app-id = 'com.tinyspeck.slackmacgap'
+run = ['move-node-to-workspace E']
+
+[[on-window-detected]]
+if.app-id = 'com.apple.mail'
+run = ['move-node-to-workspace E']
 
 [[on-window-detected]]
 if.app-id = 'com.colliderli.iina'
@@ -223,20 +227,16 @@ if.app-id = 'com.example.fidiboFlutterMac'
 run = ['move-node-to-workspace R']
 
 [[on-window-detected]]
-if.app-id = 'ru.keepcoder.Telegram'
-run = ['move-node-to-workspace S']
-
-[[on-window-detected]]
-if.app-id = 'com.tinyspeck.slackmacgap'
-run = ['move-node-to-workspace S']
-
-[[on-window-detected]]
-if.app-id = 'com.apple.mail'
-run = ['move-node-to-workspace S']
-
-[[on-window-detected]]
 if.app-id = 'com.googlecode.iterm2'
 run = ['move-node-to-workspace T']
+
+[[on-window-detected]]
+if.app-id = 'com.apple.Safari'
+run = ['move-node-to-workspace V']
+
+[[on-window-detected]]
+if.app-id = 'com.google.Chrome'
+run = ['move-node-to-workspace V']
 
 
 [workspace-to-monitor-force-assignment]
@@ -247,9 +247,9 @@ run = ['move-node-to-workspace T']
 5 = 'secondary'
 B = 'main'
 C = 'main'
+E = 'main'
 M = 'main'
 N = 'main'
 R = 'main'
-S = 'main'
 T = 'main'
 V = 'main'
