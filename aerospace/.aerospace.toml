@@ -124,13 +124,14 @@ alt-6 = 'workspace 6'
 alt-7 = 'workspace 7'
 alt-8 = 'workspace 8'
 alt-9 = 'workspace 9'
-alt-b = 'workspace B' # Browser
+alt-b = 'workspace B' # Browser without VPN
 alt-c = 'workspace C' # Code
 alt-m = 'workspace M' # Movies, Music
 alt-n = 'workspace N' # Notes, Task, Calendar
 alt-r = 'workspace R' # Read (PDF, Book, Instapaper)
 alt-s = 'workspace S' # Social
 alt-t = 'workspace T' # Terminal
+alt-v = 'workspace V' # Browser with VPN
 
 # See: https://nikitabobko.github.io/AeroSpace/commands#move-node-to-workspace
 alt-shift-1 = 'move-node-to-workspace 1'
@@ -149,6 +150,7 @@ alt-shift-n = 'move-node-to-workspace N'
 alt-shift-r = 'move-node-to-workspace R'
 alt-shift-s = 'move-node-to-workspace S'
 alt-shift-t = 'move-node-to-workspace T'
+alt-shift-v = 'move-node-to-workspace V'
 
 alt-shift-f = 'fullscreen'
 
@@ -182,11 +184,11 @@ run = ['move-node-to-workspace B']
 
 [[on-window-detected]]
 if.app-id = 'com.apple.Safari'
-run = ['move-node-to-workspace B']
+run = ['move-node-to-workspace V']
 
 [[on-window-detected]]
 if.app-id = 'com.google.Chrome'
-run = ['move-node-to-workspace B']
+run = ['move-node-to-workspace V']
 
 [[on-window-detected]]
 if.app-id = 'com.microsoft.VSCode'
@@ -250,3 +252,4 @@ N = 'main'
 R = 'main'
 S = 'main'
 T = 'main'
+V = 'main'
