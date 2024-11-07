@@ -94,6 +94,10 @@ outer.right =      2
 # end tell'
 # '''
 
+# override default macod hide shortcut
+cmd-h = 'exec-and-forget'
+cmd-m = 'exec-and-forget'
+
 # See: https://nikitabobko.github.io/AeroSpace/commands#layout
 alt-slash = 'layout tiles horizontal vertical'
 alt-comma = 'layout accordion horizontal'
@@ -180,10 +184,12 @@ alt-shift-j = ['join-with down', 'mode main']
 alt-shift-k = ['join-with up', 'mode main']
 alt-shift-l = ['join-with right', 'mode main']
 
+# Browser without VPN
 [[on-window-detected]]
 if.app-id = 'com.brave.Browser'
 run = ['move-node-to-workspace B']
 
+# Code
 [[on-window-detected]]
 if.app-id = 'com.microsoft.VSCode'
 run = ['move-node-to-workspace C']
@@ -192,6 +198,11 @@ run = ['move-node-to-workspace C']
 if.app-id = 'com.DanPristupov.Fork'
 run = ['move-node-to-workspace C']
 
+[[on-window-detected]]
+if.app-id = 'com.jetbrains.pycharm.ce'
+run = ['move-node-to-workspace C']
+
+# Engage (Social Networks)
 [[on-window-detected]]
 if.app-id = 'ru.keepcoder.Telegram'
 run = ['move-node-to-workspace E']
@@ -204,10 +215,24 @@ run = ['move-node-to-workspace E']
 if.app-id = 'com.apple.mail'
 run = ['move-node-to-workspace E']
 
+## move to (m)ultimedia workspace
+[[on-window-detected]]
+if.app-id = 'com.apple.Music'
+run = ['move-node-to-workspace M']
+[[on-window-detected]]
+if.app-id = 'com.apple.podcasts'
+run = ['move-node-to-workspace M']
+[[on-window-detected]]
+if.app-name-regex-substring = "^mpv$|^Updating Orion RC$"
+run = 'layout floating'
+[[on-window-detected]]
+if.app-id = 'com.apple.QuickTimePlayerX'
+run = ['move-node-to-workspace M']
 [[on-window-detected]]
 if.app-id = 'com.colliderli.iina'
 run = ['move-node-to-workspace M']
 
+# Notes, Task, Calendar
 [[on-window-detected]]
 if.app-id = 'md.obsidian'
 run = ['move-node-to-workspace N']
@@ -220,6 +245,7 @@ run = ['move-node-to-workspace N']
 if.app-id = 'com.apple.iCal'
 run = ['move-node-to-workspace N']
 
+# Read (PDF, Book, Instapaper)
 [[on-window-detected]]
 if.app-id = 'com.marcoarment.instapaperpro'
 run = ['move-node-to-workspace R']
@@ -228,10 +254,12 @@ run = ['move-node-to-workspace R']
 if.app-id = 'com.example.fidiboFlutterMac'
 run = ['move-node-to-workspace R']
 
+# Terminal
 [[on-window-detected]]
 if.app-id = 'com.googlecode.iterm2'
 run = ['move-node-to-workspace T']
 
+# Browser with VPN
 [[on-window-detected]]
 if.app-id = 'com.apple.Safari'
 run = ['move-node-to-workspace V']
@@ -239,6 +267,24 @@ run = ['move-node-to-workspace V']
 [[on-window-detected]]
 if.app-id = 'com.google.Chrome'
 run = ['move-node-to-workspace V']
+
+## windows that should float
+[[on-window-detected]]
+if.app-id = 'com.apple.systempreferences'
+run = 'layout floating'
+
+[[on-window-detected]]
+if.app-id = 'com.bitwarden.desktop'
+run = 'layout floating'
+
+[[on-window-detected]]
+if.app-id = 'com.raycast.macos'
+run = 'layout floating'
+
+[[on-window-detected]]
+if.app-id = 'com.macpaw.CleanMyMac4'
+run = 'layout floating'
+
 
 
 [workspace-to-monitor-force-assignment]
