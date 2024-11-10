@@ -93,12 +93,9 @@ outer.right =      0
 #     activate
 # end tell'
 # '''
-cmd-q = '''exec-and-forget osascript -e '
+alt-q = '''exec-and-forget osascript -e '
 tell application "Obsidian"
     activate
-    tell application "System Events"
-        keystroke "n" using command down
-    end tell
 end tell'
 '''
 
