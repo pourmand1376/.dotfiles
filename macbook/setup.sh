@@ -73,3 +73,5 @@ brew install --cask nikitabobko/tap/aerospace
 # https://nikitabobko.github.io/AeroSpace/guide
 
 brew install lazygit # better than fork
+
+brew install bruno # alternative to postman, insomnia
