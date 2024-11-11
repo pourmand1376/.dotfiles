@@ -93,11 +93,6 @@ outer.right =      0
 #     activate
 # end tell'
 # '''
-alt-q = '''exec-and-forget osascript -e '
-tell application "Obsidian"
-    activate
-end tell'
-'''
 
 
 # See: https://nikitabobko.github.io/AeroSpace/commands#layout
