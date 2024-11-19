@@ -34,7 +34,6 @@ brew install --cask hiddenbar # same as ice
 # warp
 # httppie
 # pycharm ce
-# docker
 # bitwarden
 # DBeaver
 # fork https://git-fork.com/
@@ -75,3 +74,5 @@ brew install --cask nikitabobko/tap/aerospace
 brew install lazygit # better than fork
 
 brew install bruno # alternative to postman, insomnia, https://httpie.io/app
+
+brew install orbstack ## alternative to docker desktop
