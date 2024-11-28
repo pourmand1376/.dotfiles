@@ -331,7 +331,6 @@ if.app-id = 'pl.maketheweb.cleanshotx'
 run = 'layout floating'
 
 
-
 [workspace-to-monitor-force-assignment]
 1 = 'main'
 2 = 'main'
@@ -346,7 +345,7 @@ run = 'layout floating'
 B = 'main'
 C = 'main'
 E = 'main'
-M = 'main'
+M = 'secondary'
 N = 'main'
 R = 'main'
 T = 'main'
