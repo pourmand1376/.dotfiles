@@ -10,7 +10,7 @@ brew install iina # video player
 brew install --cask visual-studio-code
 brew install --cask obsidian
 brew install --cask firefox
-brew install --cask arc
+# brew install --cask arc
 # brew install --cask maccy (raycast replaced it)
 brew install --cask raycast
 brew install --cask cheatsheat # needs vpn
@@ -21,7 +21,7 @@ brew install --cask obs #(obs studio)
 brew install --cask keka # file zip and archive utility
 brew install --cask vlc # video player
 #brew install --cask bartender # customize dock icons
-brew install jordanbaird-ice # customize dock icons (FOSS)
+# brew install jordanbaird-ice # customize dock icons (FOSS)
 brew install --cask hiddenbar # same as ice
 
 # install oh-my-zsh
@@ -57,7 +57,7 @@ brew install webp
 # relaxing sounds
 #https://apps.apple.com/us/app/qi-fm-focus-relax-sounds/id1479696191?mt=12
 
-# for timer just use pomodone or roundpie
+# for timer just use pomodone or roundpie (update TickTick)
 
 # amphetamine (not allow to sleep)
 
