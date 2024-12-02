@@ -291,6 +291,11 @@ run = ['move-node-to-workspace R']
 if.app-id = 'com.pdfeditor.pdfeditormac'
 run = ['move-node-to-workspace R']
 
+[[on-window-detected]]
+if.app-id = 'com.apple.Dictionary'
+run = ['move-node-to-workspace R']
+
+
 # Terminal
 [[on-window-detected]]
 if.app-id = 'com.googlecode.iterm2'
