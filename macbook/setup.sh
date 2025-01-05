@@ -13,7 +13,8 @@ brew install --cask firefox
 # brew install --cask arc
 # brew install --cask maccy (raycast replaced it)
 brew install --cask raycast
-brew install --cask cheatsheat # needs vpn
+#brew install --cask cheatsheat # needs vpn
+brew install --cask keyclu
 
 # to test
 #brew install --cask kap # screen recording
