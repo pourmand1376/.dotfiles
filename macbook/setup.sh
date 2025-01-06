@@ -16,6 +16,8 @@ brew install --cask raycast
 #brew install --cask cheatsheat # needs vpn
 brew install --cask keyclu
 
+# ScreenZen Limit Screen Time on certain apps and websites
+
 # to test
 #brew install --cask kap # screen recording
 brew install --cask obs #(obs studio)
