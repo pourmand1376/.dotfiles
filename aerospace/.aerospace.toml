@@ -310,6 +310,10 @@ run = ['move-node-to-workspace R']
 if.app-id = 'com.apple.iBooksX'
 run = ['move-node-to-workspace R']
 
+[[on-window-detected]]
+if.app-id = 'com.bookfusion.bookfusion'
+run = ['move-node-to-workspace R']
+
 
 # Terminal
 [[on-window-detected]]
