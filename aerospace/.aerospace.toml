@@ -1,3 +1,5 @@
+
+
 # Place a copy of this config to ~/.aerospace.toml
 # After that, you can edit ~/.aerospace.toml to your liking
 
@@ -197,12 +199,12 @@ alt-shift-s = ['join-with down', 'mode main']
 alt-shift-w = ['join-with up', 'mode main']
 alt-shift-d = ['join-with right', 'mode main']
 
+# aerospace list-apps 
 
 # Browser without VPN
 [[on-window-detected]]
 if.app-id = 'com.brave.Browser'
 run = ['move-node-to-workspace B']
-
 
 # Code
 [[on-window-detected]]
@@ -228,6 +230,10 @@ run = ['move-node-to-workspace E']
 
 [[on-window-detected]]
 if.app-id = 'com.apple.mail'
+run = ['move-node-to-workspace E']
+
+[[on-window-detected]]
+if.app-id = 'com.hnc.Discord'
 run = ['move-node-to-workspace E']
 
 ## move to (m)ultimedia workspace, meeting apps
@@ -287,6 +293,10 @@ run = ['move-node-to-workspace N']
 
 [[on-window-detected]]
 if.app-id = 'com.apple.iCal'
+run = ['move-node-to-workspace N']
+
+[[on-window-detected]]
+if.app-id = 'notion.id'
 run = ['move-node-to-workspace N']
 
 # Read (PDF, Book, Instapaper)
