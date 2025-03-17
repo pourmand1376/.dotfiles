@@ -79,3 +79,5 @@ brew install lazygit # better than fork
 brew install bruno # alternative to postman, insomnia, https://httpie.io/app
 
 brew install orbstack ## alternative to docker desktop
+
+brew install --cask espanso ## text replacer
