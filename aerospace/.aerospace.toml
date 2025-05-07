@@ -293,6 +293,10 @@ run = ['move-node-to-workspace M']
 if.app-id = 'com.nebula.karing'
 run = ['move-node-to-workspace 0']
 
+[[on-window-detected]]
+if.app-id = 'dev.kdrag0n.MacVirt'
+run = ['move-node-to-workspace 1']
+
 # Notes, Task, Calendar
 [[on-window-detected]]
 if.app-id = 'md.obsidian'
@@ -339,6 +343,10 @@ run = ['move-node-to-workspace R']
 # Terminal
 [[on-window-detected]]
 if.app-id = 'com.googlecode.iterm2'
+run = ['move-node-to-workspace T']
+
+[[on-window-detected]]
+if.app-id = 'dev.warp.Warp-Stable'
 run = ['move-node-to-workspace T']
 
 # Browser with VPN
