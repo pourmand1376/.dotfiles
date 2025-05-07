@@ -80,4 +80,5 @@ brew install bruno # alternative to postman, insomnia, https://httpie.io/app
 
 brew install orbstack ## alternative to docker desktop
 
-brew install --cask espanso ## text replacer
+#brew install --cask espanso ## text replacer
+# use raycast as text replacer! 
