@@ -8,6 +8,10 @@ First install chrome and set it as default browser. Then install Edge as second 
     - Animate opening applications (disable)
     - Dock Position (Left)
     - Displays have separate spaces (Disable for aerospace)
+- Control Center
+    - Clock Options
+        - Display time with seconds
+        - Show the day of the week (Roozegar will show it)
 - Lock Screen
     - Start Screen Saver when inactive (For 10 minutes)
     - Turn display off on battery (For 20 minutes)
@@ -27,3 +31,6 @@ My Raycast Shortcuts:
 - Option + : -> Search Emojis
 - Option + Q -> New Note
 
+
+Calendar
+- Alerts -> Five minutes before 
