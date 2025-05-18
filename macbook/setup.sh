@@ -88,3 +88,5 @@ brew install orbstack ## alternative to docker desktop
 # drop over. cleanshot X
 
 brew install pearcleaner # app cleaner 
+
+# ticktick, obsidian, chatgpt
