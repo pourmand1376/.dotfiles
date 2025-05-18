@@ -207,6 +207,10 @@ alt-shift-d = ['join-with right', 'mode main']
 if.app-id = 'com.brave.Browser'
 run = ['move-node-to-workspace B']
 
+[[on-window-detected]]
+if.app-id = 'com.microsoft.edgemac'
+run = ['move-node-to-workspace B']
+
 # Code
 [[on-window-detected]]
 if.app-id = 'com.microsoft.VSCode'
