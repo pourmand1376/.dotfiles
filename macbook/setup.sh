@@ -4,7 +4,7 @@ brew install --cask iterm2
 
 ## brew installs 
 brew install ffmpeg
-brew install iina # video player
+brew install iina # video player # utitlies -> Set as default
 # brew install --cask alfred (replaced with raycast)
 # brew install --cask rectangle (replaced with raycast) # removed in favor of Aerospace
 brew install --cask visual-studio-code
@@ -22,12 +22,13 @@ brew install --cask keyclu
 #brew install --cask kap # screen recording
 # brew install --cask obs #(obs studio)
 brew install --cask keka # file zip and archive utility
+# set it as default 
 brew install --cask vlc # video player
 #brew install --cask bartender # customize dock icons
 # brew install jordanbaird-ice # customize dock icons (FOSS)
 brew install --cask hiddenbar # same as ice
 
-# install oh-my-zsh
+# install oh-my-zsh and oh-my-bash
 # تقویم روزگار
 # https://apps.apple.com/us/app/roozegar-%D8%B1%D9%88%D8%B2%DA%AF%D8%A7%D8%B1/id1171425651
 
