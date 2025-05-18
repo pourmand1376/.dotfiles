@@ -91,4 +91,6 @@ brew install pearcleaner # app cleaner
 
 # ticktick, obsidian, chatgpt
 
+# install lookaway
+
 https://apps.apple.com/us/app/ticktick-to-do-list-calendar/id966085870?mt=12
