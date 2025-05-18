@@ -201,6 +201,9 @@ alt-shift-w = ['join-with up', 'mode main']
 alt-shift-d = ['join-with right', 'mode main']
 
 # aerospace list-apps 
+[[on-window-detected]]
+if.app-id = 'com.openai.chat'
+run = ['move-node-to-workspace 1']
 
 # Browser without VPN
 [[on-window-detected]]
