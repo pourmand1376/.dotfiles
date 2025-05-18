@@ -9,7 +9,7 @@ brew install iina # video player
 # brew install --cask rectangle (replaced with raycast) # removed in favor of Aerospace
 brew install --cask visual-studio-code
 brew install --cask obsidian
-brew install --cask firefox
+# brew install --cask firefox
 # brew install --cask arc
 # brew install --cask maccy (raycast replaced it)
 brew install --cask raycast
@@ -20,7 +20,7 @@ brew install --cask keyclu
 
 # to test
 #brew install --cask kap # screen recording
-brew install --cask obs #(obs studio)
+# brew install --cask obs #(obs studio)
 brew install --cask keka # file zip and archive utility
 brew install --cask vlc # video player
 #brew install --cask bartender # customize dock icons
@@ -44,7 +44,8 @@ brew install --cask keka # zip, rar files opener
 # pages numbers keynote # from apple store
 
 # reverse mouse and touchpad direction
-brew install --cask unnaturalscrollwheels
+#brew install --cask unnaturalscrollwheels
+brew install scroll-reverser
 
 # https://superuser.com/questions/18212/remapping-keys-for-the-mac
 brew install --cask karabiner-elements
@@ -81,4 +82,8 @@ brew install bruno # alternative to postman, insomnia, https://httpie.io/app
 brew install orbstack ## alternative to docker desktop
 
 #brew install --cask espanso ## text replacer
-# use raycast as text replacer! 
+# use raycast as text replacer! use snippets.
+
+# drop over. cleanshot X
+
+brew install pearcleaner # app cleaner 
