@@ -297,7 +297,7 @@ if.app-id = 'com.microsoft.teams2'
 run = ['move-node-to-workspace M']
 
 [[on-window-detected]]
-if.app-id = 'com.spotify.client0'
+if.app-id = 'com.spotify.client'
 run = ['move-node-to-workspace M']
 
 
