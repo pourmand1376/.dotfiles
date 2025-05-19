@@ -297,6 +297,11 @@ if.app-id = 'com.microsoft.teams2'
 run = ['move-node-to-workspace M']
 
 [[on-window-detected]]
+if.app-id = 'com.spotify.client0'
+run = ['move-node-to-workspace M']
+
+
+[[on-window-detected]]
 if.app-id = 'com.nebula.karing'
 run = ['move-node-to-workspace 0']
 
