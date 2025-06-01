@@ -205,6 +205,11 @@ alt-shift-d = ['join-with right', 'mode main']
 if.app-id = 'com.openai.chat'
 run = ['move-node-to-workspace 1']
 
+[[on-window-detected]]
+if.app-id = '2dust.v2rayN'
+run = ['move-node-to-workspace 2']
+
+
 # Browser without VPN
 [[on-window-detected]]
 if.app-id = 'com.brave.Browser'
