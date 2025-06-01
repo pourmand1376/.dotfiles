@@ -53,6 +53,7 @@ brew install --cask karabiner-elements
 
 brew install webp
 # cwebp test.jpg -o test.webp
+brew install unzip
 
 # best pdf editor (free) - PDF Gear 
 
@@ -86,7 +87,7 @@ brew install orbstack ## alternative to docker desktop
 # use raycast as text replacer! use snippets.
 
 # drop over. cleanshot X
-
+# Homerow
 brew install pearcleaner # app cleaner 
 
 # ticktick, obsidian, chatgpt
@@ -94,3 +95,4 @@ brew install pearcleaner # app cleaner
 # install lookaway
 
 https://apps.apple.com/us/app/ticktick-to-do-list-calendar/id966085870?mt=12
+
