@@ -209,7 +209,6 @@ run = ['move-node-to-workspace 1']
 if.app-id = '2dust.v2rayN'
 run = ['move-node-to-workspace 2']
 
-
 # Browser without VPN
 [[on-window-detected]]
 if.app-id = 'com.brave.Browser'
@@ -380,31 +379,6 @@ run = ['move-node-to-workspace V']
 [[on-window-detected]]
 if.app-id = 'com.google.Chrome'
 run = ['move-node-to-workspace V']
-
-## windows that should float
-[[on-window-detected]]
-if.app-id = 'com.apple.systempreferences'
-run = 'layout floating'
-
-[[on-window-detected]]
-if.app-id = 'com.bitwarden.desktop'
-run = 'layout floating'
-
-[[on-window-detected]]
-if.app-id = 'com.raycast.macos'
-run = 'layout floating'
-
-[[on-window-detected]]
-if.app-id = 'com.macpaw.CleanMyMac4'
-run = 'layout floating'
-
-[[on-window-detected]]
-if.app-id = 'com.apple.Preview'
-run = 'layout floating'
-
-[[on-window-detected]]
-if.app-name-regex-substring = "(?i)cleanshot"
-run = 'layout floating'
 
 [[on-window-detected]]
     check-further-callbacks = true
