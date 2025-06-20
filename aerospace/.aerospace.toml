@@ -244,6 +244,10 @@ if.app-id = 'ru.keepcoder.Telegram'
 run = ['move-node-to-workspace E']
 
 [[on-window-detected]]
+if.app-id = 'com.tdesktop.Telegram'
+run = ['move-node-to-workspace E']
+
+[[on-window-detected]]
 if.app-id = 'com.tinyspeck.slackmacgap'
 run = ['move-node-to-workspace E']
 
@@ -254,6 +258,8 @@ run = ['move-node-to-workspace E']
 [[on-window-detected]]
 if.app-id = 'com.hnc.Discord'
 run = ['move-node-to-workspace E']
+
+
 
 ## move to (m)ultimedia workspace, meeting apps
 
