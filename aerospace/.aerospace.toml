@@ -209,6 +209,11 @@ run = ['move-node-to-workspace 1']
 if.app-id = '2dust.v2rayN'
 run = ['move-node-to-workspace 2']
 
+[[on-window-detected]]
+if.app-id = 'com.wireguard.macos'
+run = ['move-node-to-workspace 2']
+
+
 # Browser without VPN
 [[on-window-detected]]
 if.app-id = 'com.brave.Browser'
