@@ -45,8 +45,8 @@ brew install --cask keka # zip, rar files opener
 # pages numbers keynote # from apple store
 
 # reverse mouse and touchpad direction
-#brew install --cask unnaturalscrollwheels
-brew install scroll-reverser
+brew install --cask unnaturalscrollwheels # this is better than scroll-reverser
+#brew install scroll-reverser
 
 # https://superuser.com/questions/18212/remapping-keys-for-the-mac
 brew install --cask karabiner-elements
