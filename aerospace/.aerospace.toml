@@ -39,6 +39,10 @@ default-root-container-orientation = 'auto'
 on-focused-monitor-changed = ['move-mouse monitor-lazy-center']
 on-focus-changed = 'move-mouse window-lazy-center'
 
+exec-on-workspace-change = [
+    '/bin/bash', '-c',
+    '/Users/amirpourmand/gitfolder/.dotfiles/aerospace/pip-move.sh',
+]
 # You can effectively turn off macOS "Hide application" (cmd-h) feature by toggling this flag
 # Useful if you don't use this macOS feature, but accidentally hit cmd-h or cmd-alt-h key
 # Also see: https://nikitabobko.github.io/AeroSpace/goodness#disable-hide-app
@@ -138,12 +142,12 @@ alt-8 = 'workspace 8'
 alt-9 = 'workspace 9'
 alt-0 = 'workspace 0'
 alt-b = 'workspace B' # Browser without VPN
-alt-c = 'workspace C' # Code
+alt-c = 'workspace Code' # Code
 alt-e = 'workspace E' # Engage (Social Networks)
 alt-m = 'workspace M' # Movies, Music
 alt-n = 'workspace N' # Notes, Task, Calendar
-alt-r = 'workspace R' # Read (PDF, Book, Instapaper)
-alt-t = 'workspace T' # Terminal
+alt-r = 'workspace R' # Run (Terminal)
+alt-t = 'workspace T' # Tasks
 alt-v = 'workspace V' # Browser with VPN
 alt-g = 'workspace G' # Global Note Takin Obsidian
 
@@ -159,7 +163,7 @@ alt-shift-8 = 'move-node-to-workspace 8 --focus-follows-window'
 alt-shift-9 = 'move-node-to-workspace 9 --focus-follows-window'
 alt-shift-0 = 'move-node-to-workspace 0 --focus-follows-window'
 alt-shift-b = 'move-node-to-workspace B --focus-follows-window'
-alt-shift-c = 'move-node-to-workspace C --focus-follows-window'
+alt-shift-c = 'move-node-to-workspace Code --focus-follows-window'
 alt-shift-e = 'move-node-to-workspace E --focus-follows-window'
 alt-shift-m = 'move-node-to-workspace M --focus-follows-window'
 alt-shift-n = 'move-node-to-workspace N --focus-follows-window'
@@ -226,19 +230,19 @@ run = ['move-node-to-workspace B']
 # Code
 [[on-window-detected]]
 if.app-id = 'com.microsoft.VSCode'
-run = ['move-node-to-workspace C']
+run = ['move-node-to-workspace Code']
 
 [[on-window-detected]]
 if.app-id = 'com.DanPristupov.Fork'
-run = ['move-node-to-workspace C']
+run = ['move-node-to-workspace Code']
 
 [[on-window-detected]]
 if.app-id = 'com.jetbrains.pycharm.ce'
-run = ['move-node-to-workspace C']
+run = ['move-node-to-workspace Code']
 
 [[on-window-detected]]
 if.app-id = 'com.todesktop.230313mzl4w4u92'
-run = ['move-node-to-workspace C']
+run = ['move-node-to-workspace Code']
 
 
 
@@ -335,50 +339,25 @@ run = ['move-node-to-workspace G']
 
 [[on-window-detected]]
 if.app-id = 'com.TickTick.task.mac'
-run = ['move-node-to-workspace N']
+run = ['move-node-to-workspace T']
 
 [[on-window-detected]]
 if.app-id = 'com.apple.iCal'
-run = ['move-node-to-workspace N']
+run = ['move-node-to-workspace T']
 
 [[on-window-detected]]
 if.app-id = 'notion.id'
 run = ['move-node-to-workspace N']
 
-# Read (PDF, Book, Instapaper)
-[[on-window-detected]]
-if.app-id = 'com.marcoarment.instapaperpro'
-run = ['move-node-to-workspace R']
 
-[[on-window-detected]]
-if.app-id = 'com.example.fidiboFlutterMac'
-run = ['move-node-to-workspace R']
-
-[[on-window-detected]]
-if.app-id = 'com.pdfeditor.pdfeditormac'
-run = ['move-node-to-workspace R']
-
-[[on-window-detected]]
-if.app-id = 'com.apple.Dictionary'
-run = ['move-node-to-workspace R']
-
-[[on-window-detected]]
-if.app-id = 'com.apple.iBooksX'
-run = ['move-node-to-workspace R']
-
-[[on-window-detected]]
-if.app-id = 'com.bookfusion.bookfusion'
-run = ['move-node-to-workspace R']
-
-
-# Terminal
+# Terminal Run
 [[on-window-detected]]
 if.app-id = 'com.googlecode.iterm2'
-run = ['move-node-to-workspace T']
+run = ['move-node-to-workspace R']
 
 [[on-window-detected]]
 if.app-id = 'dev.warp.Warp-Stable'
-run = ['move-node-to-workspace T']
+run = ['move-node-to-workspace R']
 
 # Browser with VPN
 [[on-window-detected]]
@@ -408,7 +387,7 @@ run = ['move-node-to-workspace V']
 9 = 'main'
 0 = 'main'
 B = 'main'
-C = 'main'
+Code = 'main'
 E = 'main'
 M = 'secondary'
 N = 'main'
