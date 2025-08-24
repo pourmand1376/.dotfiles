@@ -99,12 +99,12 @@
 
 # prevent skhd from monitoring events for specific applications.
 #
-# .blacklist [
+# .blacklist [ 
 #    "kitty"
 #    "terminal"
 #    "qutebrowser"
 # ]
-
+ 
 # open terminal, blazingly fast compared to iTerm/Hyper
 
 alt - t: flashspace workspace --name 'Task (T)'

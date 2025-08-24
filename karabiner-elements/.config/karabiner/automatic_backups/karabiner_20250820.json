@@ -107,7 +107,7 @@
                                     "key_code": "a",
                                     "modifiers": { "mandatory": ["option"] }
                                 },
-                                "to": [{ "shell_command": "/usr/local/bin/flashspace focus --next-window" }],
+                                "to": [{ "shell_command": "/usr/local/bin/flashspace focus --prev-app" }],
                                 "type": "basic"
                             },
                             {
