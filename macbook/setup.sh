@@ -26,7 +26,8 @@ brew install --cask keka # file zip and archive utility
 brew install --cask vlc # video player
 #brew install --cask bartender # customize dock icons
 # brew install jordanbaird-ice # customize dock icons (FOSS)
-brew install --cask hiddenbar # same as ice
+#brew install --cask hiddenbar # same as ice 
+# i use bartender
 
 # install oh-my-zsh and oh-my-bash
 # تقویم روزگار
@@ -92,7 +93,10 @@ brew install pearcleaner # app cleaner
 
 # ticktick, obsidian, chatgpt
 
-# install lookaway
+# install lookaway (actually not, its annoying)
 
 https://apps.apple.com/us/app/ticktick-to-do-list-calendar/id966085870?mt=12
 
+# sound source https://rogueamoeba.com/soundsource/
+
+# https://github.com/romkatv/powerlevel10k

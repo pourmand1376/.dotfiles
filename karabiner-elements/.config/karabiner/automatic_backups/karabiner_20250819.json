@@ -9,7 +9,10 @@
                             {
                                 "from": {
                                     "key_code": "t",
-                                    "modifiers": { "mandatory": ["option"] }
+                                    "modifiers": {
+                                        "mandatory": ["option"],
+                                        "optional": ["any"]
+                                    }
                                 },
                                 "to": [{ "shell_command": "/usr/local/bin/flashspace workspace --name 'Task (T)'" }],
                                 "type": "basic"
@@ -17,7 +20,10 @@
                             {
                                 "from": {
                                     "key_code": "r",
-                                    "modifiers": { "mandatory": ["option"] }
+                                    "modifiers": {
+                                        "mandatory": ["option"],
+                                        "optional": ["any"]
+                                    }
                                 },
                                 "to": [{ "shell_command": "/usr/local/bin/flashspace workspace --name 'Run (R)'" }],
                                 "type": "basic"
@@ -25,7 +31,10 @@
                             {
                                 "from": {
                                     "key_code": "v",
-                                    "modifiers": { "mandatory": ["option"] }
+                                    "modifiers": {
+                                        "mandatory": ["option"],
+                                        "optional": ["any"]
+                                    }
                                 },
                                 "to": [{ "shell_command": "/usr/local/bin/flashspace workspace --name 'Browser1 (V)'" }],
                                 "type": "basic"
@@ -33,7 +42,10 @@
                             {
                                 "from": {
                                     "key_code": "b",
-                                    "modifiers": { "mandatory": ["option"] }
+                                    "modifiers": {
+                                        "mandatory": ["option"],
+                                        "optional": ["any"]
+                                    }
                                 },
                                 "to": [{ "shell_command": "/usr/local/bin/flashspace workspace --name 'Browser2 (B)'" }],
                                 "type": "basic"
@@ -41,7 +53,10 @@
                             {
                                 "from": {
                                     "key_code": "c",
-                                    "modifiers": { "mandatory": ["option"] }
+                                    "modifiers": {
+                                        "mandatory": ["option"],
+                                        "optional": ["any"]
+                                    }
                                 },
                                 "to": [{ "shell_command": "/usr/local/bin/flashspace workspace --name 'Code (C)'" }],
                                 "type": "basic"
@@ -49,7 +64,10 @@
                             {
                                 "from": {
                                     "key_code": "m",
-                                    "modifiers": { "mandatory": ["option"] }
+                                    "modifiers": {
+                                        "mandatory": ["option"],
+                                        "optional": ["any"]
+                                    }
                                 },
                                 "to": [{ "shell_command": "/usr/local/bin/flashspace workspace --name 'Media (M)'" }],
                                 "type": "basic"
@@ -57,7 +75,10 @@
                             {
                                 "from": {
                                     "key_code": "g",
-                                    "modifiers": { "mandatory": ["option"] }
+                                    "modifiers": {
+                                        "mandatory": ["option"],
+                                        "optional": ["any"]
+                                    }
                                 },
                                 "to": [{ "shell_command": "/usr/local/bin/flashspace workspace --name 'Global Note (G)'" }],
                                 "type": "basic"
@@ -65,7 +86,10 @@
                             {
                                 "from": {
                                     "key_code": "e",
-                                    "modifiers": { "mandatory": ["option"] }
+                                    "modifiers": {
+                                        "mandatory": ["option"],
+                                        "optional": ["any"]
+                                    }
                                 },
                                 "to": [{ "shell_command": "/usr/local/bin/flashspace workspace --name 'Engage (E)'" }],
                                 "type": "basic"
@@ -73,7 +97,10 @@
                             {
                                 "from": {
                                     "key_code": "1",
-                                    "modifiers": { "mandatory": ["option"] }
+                                    "modifiers": {
+                                        "mandatory": ["option"],
+                                        "optional": ["any"]
+                                    }
                                 },
                                 "to": [{ "shell_command": "/usr/local/bin/flashspace workspace --name 'AI (1)'" }],
                                 "type": "basic"
@@ -81,7 +108,10 @@
                             {
                                 "from": {
                                     "key_code": "2",
-                                    "modifiers": { "mandatory": ["option"] }
+                                    "modifiers": {
+                                        "mandatory": ["option"],
+                                        "optional": ["any"]
+                                    }
                                 },
                                 "to": [{ "shell_command": "/usr/local/bin/flashspace workspace --name 'Tools (2)'" }],
                                 "type": "basic"
@@ -89,7 +119,10 @@
                             {
                                 "from": {
                                     "key_code": "3",
-                                    "modifiers": { "mandatory": ["option"] }
+                                    "modifiers": {
+                                        "mandatory": ["option"],
+                                        "optional": ["any"]
+                                    }
                                 },
                                 "to": [{ "shell_command": "/usr/local/bin/flashspace workspace --name 'VPN (3)'" }],
                                 "type": "basic"
@@ -97,7 +130,10 @@
                             {
                                 "from": {
                                     "key_code": "tab",
-                                    "modifiers": { "mandatory": ["option"] }
+                                    "modifiers": {
+                                        "mandatory": ["option"],
+                                        "optional": ["any"]
+                                    }
                                 },
                                 "to": [{ "shell_command": "/usr/local/bin/flashspace open-space-control" }],
                                 "type": "basic"
@@ -105,15 +141,21 @@
                             {
                                 "from": {
                                     "key_code": "a",
-                                    "modifiers": { "mandatory": ["option"] }
+                                    "modifiers": {
+                                        "mandatory": ["option"],
+                                        "optional": ["any"]
+                                    }
                                 },
-                                "to": [{ "shell_command": "/usr/local/bin/flashspace focus --next-window" }],
+                                "to": [{ "shell_command": "/usr/local/bin/flashspace focus --prev-app" }],
                                 "type": "basic"
                             },
                             {
                                 "from": {
                                     "key_code": "d",
-                                    "modifiers": { "mandatory": ["option"] }
+                                    "modifiers": {
+                                        "mandatory": ["option"],
+                                        "optional": ["any"]
+                                    }
                                 },
                                 "to": [{ "shell_command": "/usr/local/bin/flashspace focus --next-app" }],
                                 "type": "basic"

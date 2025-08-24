@@ -27,9 +27,13 @@ First install chrome and set it as default browser. Then install Edge as second 
 
 
 My Raycast Shortcuts:
-- Option + Tick -> Search Snippets
-- Option + : -> Search Emojis
+- Hyper + G -> Search Snippets
+- Hyper + : -> Search Emojis
 - Option + Q -> New Note
+- Hyper + B -> Search Bookmarks (Raindrop)
+- Hyper + V -> Clipboard History
+- Hyper + D, S -> Homerow
+
 
 
 Calendar
