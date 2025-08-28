@@ -4,6 +4,7 @@ brew install stow
 
 cd ~/gitfolder/.dotfiles
 
+stow common -t $HOME
 stow aerospace -t $HOME
 stow git -t $HOME
 stow karabiner-elements -t $HOME
