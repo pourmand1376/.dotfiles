@@ -11,6 +11,7 @@ quartz_folder: "~/gitfolder/digital_garden/content"
 attachment_folder: "60-69-Archive/60-Attachments"
 ignore_folders: 
  - "Journaling"
+ - "Templates"
  
 ## Watermark
 # watermark:

@@ -10,7 +10,7 @@ import os
 import sys
 from glob import glob
 import yaml
-import frontmatter
+import frontmatter # pip install python-frontmatter
 import logging
 import shutil
 import subprocess
@@ -24,18 +24,25 @@ def find_publish_mds(md, ignore):
         if folder in md:
             return None, None
     # load md file
-    with open(md, "r") as f:
-        try:
-            post = frontmatter.load(f)
-        except:
-            logging.error(f"Error loading {md}")
-            return None, None
-    
-    # check if publish
-    if "publish" in post and post["publish"] and "path" in post:
-        return post["path"], post["assets"] if "assets" in post else []
-    else:   
+    try:
+        post = frontmatter.load(md)
+    except Exception as e:
+        logging.error(f"Error loading {os.path.basename(md)}: {e}")
         return None, None
+    
+    # check if publish and title length
+    if "publish" not in post:
+        return None, None
+    
+    if not post["publish"]:
+        return None, None
+        
+    title = post.get("title", "") or ""
+    if len(title) < 4:
+        logging.debug(f"Skipping {os.path.basename(md)} (title too short: '{title}')")
+        return None, None
+        
+    return True, post["assets"] if "assets" in post else []
 
 
 def find_asset(src, fn):
@@ -55,7 +62,7 @@ def find_asset(src, fn):
 def copy_public_text(src, dest):
     '''copy public text to destination'''
     print(src)
-    with open(src, 'r') as f:
+    with open(src, 'r', encoding='utf-8') as f:
         lines = f.readlines()
     
     # find start and stop of private text
@@ -77,7 +84,7 @@ def copy_public_text(src, dest):
         for r in reversed(range(len(start))):
             lines[start[r]:stop[r]+1] = []    
         # write to destination
-        with open(dest, "w") as f:
+        with open(dest, "w", encoding='utf-8') as f:
             f.writelines(lines)
 
     return None
@@ -137,17 +144,31 @@ def watermark_image(src, dest, config):
 ## Main
 def main(config_file):
     # Load config
-    with open(config_file, "r") as f:
+    with open(config_file, "r", encoding="utf-8") as f:
         read_data = f.read()
     config = yaml.safe_load(read_data)
 
-    # Set up logging
+    # Set up logging to both file and console
     log_file = os.path.expanduser(config["log_file"])
-    logging.basicConfig(
-        filename=os.path.expanduser(log_file),
-        level=logging.INFO,
-        format="%(asctime)s - %(message)s",
-    )
+    logger = logging.getLogger()
+    logger.setLevel(logging.DEBUG)
+    
+    # File handler with timestamps
+    file_handler = logging.FileHandler(log_file)
+    file_handler.setLevel(logging.DEBUG)
+    file_formatter = logging.Formatter("%(asctime)s - %(message)s")
+    file_handler.setFormatter(file_formatter)
+    
+    # Console handler without timestamps  
+    console_handler = logging.StreamHandler()
+    console_handler.setLevel(logging.DEBUG)
+    console_formatter = logging.Formatter("%(message)s")
+    console_handler.setFormatter(console_formatter)
+    
+    logger.addHandler(file_handler)
+    logger.addHandler(console_handler)
+    
+    logging.info("Starting Obsidian-Quartz sync...")
 
     # Get source and destination folders
     src = os.path.expanduser(config["obsidian_folder"])
@@ -157,19 +178,41 @@ def main(config_file):
     assets = []
 
     # Find md files with publish and its assets
-    for md in glob(os.path.join(src, "**/*.md"), recursive=True):
-        path, asset = find_publish_mds(md, config["ignore_folders"])
-        if path:
-            if ".md" in path:
-                sync_files.append((md, os.path.join(dest, path)))
-            else:
-                #print('md: %s -> copied to: %s'%(md, os.path.join(dest, path, os.path.basename(md))))
-                sync_files.append((md, os.path.join(dest, path, os.path.basename(md))))
-        if asset:
-            for fn in asset:
-                assets.append((find_asset(src, fn), os.path.join(dest, asset_dir, fn[2:-2])) )
+    logging.info(f"Scanning for markdown files in: {src}")
+    md_files = glob(os.path.join(src, "**/*.md"), recursive=True)
+    logging.info(f"Found {len(md_files)} markdown files")
+    
+    processed = 0
+    published = 0
+    
+    for md in md_files:
+        processed += 1
+        should_publish, asset = find_publish_mds(md, config["ignore_folders"])
+        if should_publish:
+            published += 1
+            logging.info(f"✓ Publishing: {os.path.basename(md)}")
+            # Calculate relative path from source directory to preserve folder structure
+            rel_path = os.path.relpath(md, src)
+            dest_file = os.path.join(dest, rel_path)
+            sync_files.append((md, dest_file))
+            
+            if asset:
+                logging.info(f"  - Found {len(asset)} assets for {os.path.basename(md)}")
+                for fn in asset:
+                    asset_src = find_asset(src, fn)
+                    if asset_src:
+                        # Calculate relative path for asset to preserve folder structure
+                        asset_rel_path = os.path.relpath(asset_src, src)
+                        asset_dest = os.path.join(dest, asset_rel_path)
+                        assets.append((asset_src, asset_dest))
+    
+    logging.info(f"Processing complete: {published} files marked for publishing out of {processed} total")
 
     # sync files based on date modified
+    logging.info(f"Syncing {len(sync_files)} markdown files...")
+    updated_files = 0
+    new_files = 0
+    
     for src, dest in sync_files:
         if not src:
             continue
@@ -177,13 +220,19 @@ def main(config_file):
             os.makedirs(os.path.dirname(dest))
         if os.path.exists(dest):
             if os.path.getmtime(src) > os.path.getmtime(dest):
-                logging.info(f"Updating {dest}")
+                logging.info(f"Updating {os.path.basename(dest)}")
                 copy_public_text(src, dest)
+                updated_files += 1
         else:
-            logging.info(f"Copying {dest}")
+            logging.info(f"Copying {os.path.basename(dest)}")
             copy_public_text(src, dest)
+            new_files += 1
 
     # asset files based on date modified
+    logging.info(f"Syncing {len(assets)} assets...")
+    updated_assets = 0
+    new_assets = 0
+    
     for src, dest in assets:
         if not src:
             continue
@@ -191,13 +240,18 @@ def main(config_file):
             os.makedirs(os.path.dirname(dest))
         if os.path.exists(dest):
             if os.path.getmtime(src) > os.path.getmtime(dest):
-                logging.info(f"Updating {dest}")
+                logging.info(f"Updating asset {os.path.basename(dest)}")
                 copy_assets(src, dest, config["watermark"])
+                updated_assets += 1
         else:
-            logging.info(f"Copying {dest}")
+            logging.info(f"Copying asset {os.path.basename(dest)}")
             copy_assets(src, dest, config["watermark"])
+            new_assets += 1
 
     # sync complete
+    logging.info("Sync complete!")
+    logging.info(f"Files: {new_files} new, {updated_files} updated")
+    logging.info(f"Assets: {new_assets} new, {updated_assets} updated")
 
 # get path
 if __name__ == "__main__":
@@ -205,7 +259,7 @@ if __name__ == "__main__":
     if len(sys.argv) == 1:
         config_file = os.path.expanduser(config_default)
     elif len(sys.argv) == 2:
-        config_file = os.path.expanduser(sys.argv[2])         
+        config_file = os.path.expanduser(sys.argv[1])         
     else:
         print("Usage: obsidian-quartz-sync <config-path>")
         sys.exit(1)
