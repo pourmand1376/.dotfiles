@@ -1,0 +1,22 @@
+# taken from https://github.com/AbstractGeek/my-dotfiles-macos/blob/main/config/cronpy/obsidian-quartz-sync.yml
+
+# Configuration file for obsidian-quartz-sync
+
+## Constants
+log_file: "~/.local/logs/obsidian-quartz-sync.log"
+obsidian_folder: "~/gitfolder/obsidian-notes/"
+quartz_folder: "~/gitfolder/digital_garden/content"
+
+## Folders
+attachment_folder: "60-69-Archive/60-Attachments"
+ignore_folders: 
+ - "Journaling"
+ 
+## Watermark
+# watermark:
+#   pdf:
+#     postscript: "location of postscript file"   
+#   img:
+#     copyright: "© Your Name"
+#     fontsize: "0.01" # 1% of height
+#     offset: "+0+10"
