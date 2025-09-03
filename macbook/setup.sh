@@ -100,3 +100,11 @@ https://apps.apple.com/us/app/ticktick-to-do-list-calendar/id966085870?mt=12
 # sound source https://rogueamoeba.com/soundsource/
 
 # https://github.com/romkatv/powerlevel10k
+
+# https://stackoverflow.com/questions/18393498/gitignore-all-the-ds-store-files-in-every-folder-and-subfolder
+#Felt tip: Since you probably never want to include .DS_Store files, make a global rule. First, make a global .gitignore file somewhere, e.g.
+
+echo .DS_Store >> ~/.gitignore_global
+#Now tell git to use it for all repositories:
+
+git config --global core.excludesfile ~/.gitignore_global

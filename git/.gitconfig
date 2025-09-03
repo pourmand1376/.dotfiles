@@ -4,7 +4,7 @@
 [url "git@github.com:"]
 	insteadOf = https://github.com/
 [core]
-	excludesfile = /Users/amir/.gitignore_global
+	excludesfile = /Users/amirpourmand/.gitignore_global
 [push]
 	autoSetupRemote = true
 [diff]
