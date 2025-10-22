@@ -48,10 +48,10 @@
                             },
                             {
                                 "from": {
-                                    "key_code": "4",
+                                    "key_code": "m",
                                     "modifiers": { "mandatory": ["option"] }
                                 },
-                                "to": [{ "shell_command": "/usr/local/bin/flashspace workspace --name 'Media (4)'" }],
+                                "to": [{ "shell_command": "/usr/local/bin/flashspace workspace --name 'Media (M)'" }],
                                 "type": "basic"
                             },
                             {
@@ -342,16 +342,6 @@
                             "to": [{ "mouse_key": { "vertical_wheel": 32 } }]
                         }
                     ]
-                }
-            ],
-            "fn_function_keys": [
-                {
-                    "from": { "key_code": "f4" },
-                    "to": [{ "key_code": "f4" }]
-                },
-                {
-                    "from": { "key_code": "f5" },
-                    "to": [{ "key_code": "f5" }]
                 }
             ],
             "name": "Default profile",
