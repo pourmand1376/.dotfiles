@@ -110,3 +110,12 @@ echo .DS_Store >> ~/.gitignore_global
 #Now tell git to use it for all repositories:
 
 git config --global core.excludesfile ~/.gitignore_global
+
+# Add .env loading to ~/.zshrc
+if ! grep -q "export \$(cat .env | xargs)" ~/.zshrc; then
+    echo "" >> ~/.zshrc
+    echo "# Load .env file if it exists" >> ~/.zshrc
+    echo "if [ -f .env ]; then" >> ~/.zshrc
+    echo "    export \$(cat .env | xargs)" >> ~/.zshrc
+    echo "fi" >> ~/.zshrc
+fi
