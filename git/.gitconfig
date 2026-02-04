@@ -33,3 +33,5 @@
 
 [pull]
 	rebase = false
+[alias]
+	lg = log --graph --oneline --all --decorate
