@@ -4,7 +4,7 @@
             "complex_modifications": {
                 "rules": [
                     {
-                        "description": "FlashSpace Rules: Switch (Hyper) & Move (Shift+Hyper)",
+                        "description": "FlashSpace Rules: Switch (Hyper) & Move (Shift+Hyper) - Mnemonic Names",
                         "manipulators": [
                             {
                                 "from": {
@@ -40,6 +40,22 @@
                             },
                             {
                                 "from": {
+                                    "key_code": "d",
+                                    "modifiers": { "mandatory": ["command", "control", "option"] }
+                                },
+                                "to": [{ "shell_command": "/usr/local/bin/flashspace workspace --name 'Desk (D)'" }],
+                                "type": "basic"
+                            },
+                            {
+                                "from": {
+                                    "key_code": "d",
+                                    "modifiers": { "mandatory": ["command", "control", "option", "shift"] }
+                                },
+                                "to": [{ "shell_command": "/usr/local/bin/flashspace assign-app --name $(/usr/local/bin/flashspace get-app) --workspace 'Desk (D)' --activate true" }],
+                                "type": "basic"
+                            },
+                            {
+                                "from": {
                                     "key_code": "w",
                                     "modifiers": { "mandatory": ["command", "control", "option"] }
                                 },
@@ -52,38 +68,6 @@
                                     "modifiers": { "mandatory": ["command", "control", "option", "shift"] }
                                 },
                                 "to": [{ "shell_command": "/usr/local/bin/flashspace assign-app --name $(/usr/local/bin/flashspace get-app) --workspace 'Web (W)' --activate true" }],
-                                "type": "basic"
-                            },
-                            {
-                                "from": {
-                                    "key_code": "d",
-                                    "modifiers": { "mandatory": ["command", "control", "option"] }
-                                },
-                                "to": [{ "shell_command": "/usr/local/bin/flashspace workspace --name 'Deep Web (D)'" }],
-                                "type": "basic"
-                            },
-                            {
-                                "from": {
-                                    "key_code": "d",
-                                    "modifiers": { "mandatory": ["command", "control", "option", "shift"] }
-                                },
-                                "to": [{ "shell_command": "/usr/local/bin/flashspace assign-app --name $(/usr/local/bin/flashspace get-app) --workspace 'Deep Web (D)' --activate true" }],
-                                "type": "basic"
-                            },
-                            {
-                                "from": {
-                                    "key_code": "f",
-                                    "modifiers": { "mandatory": ["command", "control", "option"] }
-                                },
-                                "to": [{ "shell_command": "/usr/local/bin/flashspace workspace --name 'Flow (F)'" }],
-                                "type": "basic"
-                            },
-                            {
-                                "from": {
-                                    "key_code": "f",
-                                    "modifiers": { "mandatory": ["command", "control", "option", "shift"] }
-                                },
-                                "to": [{ "shell_command": "/usr/local/bin/flashspace assign-app --name $(/usr/local/bin/flashspace get-app) --workspace 'Flow (F)' --activate true" }],
                                 "type": "basic"
                             },
                             {
@@ -136,6 +120,22 @@
                             },
                             {
                                 "from": {
+                                    "key_code": "q",
+                                    "modifiers": { "mandatory": ["command", "control", "option"] }
+                                },
+                                "to": [{ "shell_command": "/usr/local/bin/flashspace workspace --name 'Question (Q)'" }],
+                                "type": "basic"
+                            },
+                            {
+                                "from": {
+                                    "key_code": "q",
+                                    "modifiers": { "mandatory": ["command", "control", "option", "shift"] }
+                                },
+                                "to": [{ "shell_command": "/usr/local/bin/flashspace assign-app --name $(/usr/local/bin/flashspace get-app) --workspace 'Question (Q)' --activate true" }],
+                                "type": "basic"
+                            },
+                            {
+                                "from": {
                                     "key_code": "x",
                                     "modifiers": { "mandatory": ["command", "control", "option"] }
                                 },
@@ -168,15 +168,23 @@
                             },
                             {
                                 "from": {
-                                    "key_code": "tab",
-                                    "modifiers": { "mandatory": ["command", "control", "option"] }
+                                    "key_code": "a",
+                                    "modifiers": { "mandatory": ["option"] }
                                 },
                                 "to": [{ "shell_command": "/usr/local/bin/flashspace focus --prev-window" }],
                                 "type": "basic"
                             },
                             {
                                 "from": {
-                                    "key_code": "q",
+                                    "key_code": "d",
+                                    "modifiers": { "mandatory": ["option"] }
+                                },
+                                "to": [{ "shell_command": "/usr/local/bin/flashspace focus --next-window" }],
+                                "type": "basic"
+                            },
+                            {
+                                "from": {
+                                    "key_code": "tab",
                                     "modifiers": { "mandatory": ["command", "control", "option"] }
                                 },
                                 "to": [{ "shell_command": "/usr/local/bin/flashspace focus --next-window" }],

@@ -1,0 +1,20 @@
+[hotkeys]
+# Hyper + K or I to enable scroll mode
+"Cmd+Ctrl+Alt+Shift+K" = "scroll"
+"Cmd+Ctrl+Alt+Shift+I" = "scroll"
+
+# Hyper + S to show labels (Hint Mode)
+"Cmd+Ctrl+Alt+Shift+S" = "hints"
+
+[general]
+# Optional: Returns cursor to original spot after you click/exit
+restore_cursor_position = true 
+
+[hints]
+enabled = true
+# These are the keys you type to select a label
+hint_characters = "asdfghjkl" 
+
+[scroll]
+# Standard Vim-like scroll speeds
+scroll_step = 50
