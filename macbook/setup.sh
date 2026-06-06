@@ -119,3 +119,16 @@ if ! grep -q "export \$(cat .env | xargs)" ~/.zshrc; then
     echo "    export \$(cat .env | xargs)" >> ~/.zshrc
     echo "fi" >> ~/.zshrc
 fi
+
+
+# Add NeoVim as default vim for mac
+brew install neovim
+echo 'alias vim=nvim' >> ~/.zshrc
+echo 'alias vi=nvim' >> ~/.zshrc
+source ~/.zshrc
+
+# add jump as default cd for mac
+brew install jump
+eval "$(jump shell)"
+eval "$(jump shell --bind=cd)"
+
