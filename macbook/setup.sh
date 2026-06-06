@@ -2,7 +2,7 @@
 
 brew install --cask iterm2
 
-## brew installs 
+## brew installs
 brew install ffmpeg
 brew install iina # video player # utitlies -> Set as default
 # brew install --cask alfred (replaced with raycast)
@@ -22,11 +22,11 @@ brew install --cask keyclu
 #brew install --cask kap # screen recording
 # brew install --cask obs #(obs studio)
 brew install --cask keka # file zip and archive utility
-# set it as default 
+# set it as default
 brew install --cask vlc # video player
 #brew install --cask bartender # customize dock icons
 # brew install jordanbaird-ice # customize dock icons (FOSS)
-#brew install --cask hiddenbar # same as ice 
+#brew install --cask hiddenbar # same as ice
 # i use bartender
 
 # install oh-my-zsh and oh-my-bash
@@ -56,7 +56,7 @@ brew install webp
 # cwebp test.jpg -o test.webp
 brew install unzip
 
-# best pdf editor (free) - PDF Gear 
+# best pdf editor (free) - PDF Gear
 
 # dropover - Drop files in place
 # https://apps.apple.com/us/app/dropover-easier-drag-drop/id1355679052?mt=12
@@ -73,9 +73,9 @@ brew install unzip
 
 brew install --cask transmission #download torrent files
 
-# folx for regular downloads 
+# folx for regular downloads
 
-brew install --cask nikitabobko/tap/aerospace 
+brew install --cask nikitabobko/tap/aerospace
 # https://nikitabobko.github.io/AeroSpace/guide
 
 brew install lazygit # better than fork
@@ -91,7 +91,7 @@ brew install uv ## install uv dependency manager
 
 # drop over. cleanshot X
 # Homerow
-brew install pearcleaner # app cleaner 
+brew install pearcleaner # app cleaner
 
 # ticktick, obsidian, chatgpt
 
@@ -106,29 +106,36 @@ https://apps.apple.com/us/app/ticktick-to-do-list-calendar/id966085870?mt=12
 # https://stackoverflow.com/questions/18393498/gitignore-all-the-ds-store-files-in-every-folder-and-subfolder
 #Felt tip: Since you probably never want to include .DS_Store files, make a global rule. First, make a global .gitignore file somewhere, e.g.
 
-echo .DS_Store >> ~/.gitignore_global
+echo .DS_Store >>~/.gitignore_global
 #Now tell git to use it for all repositories:
 
 git config --global core.excludesfile ~/.gitignore_global
 
 # Add .env loading to ~/.zshrc
 if ! grep -q "export \$(cat .env | xargs)" ~/.zshrc; then
-    echo "" >> ~/.zshrc
-    echo "# Load .env file if it exists" >> ~/.zshrc
-    echo "if [ -f .env ]; then" >> ~/.zshrc
-    echo "    export \$(cat .env | xargs)" >> ~/.zshrc
-    echo "fi" >> ~/.zshrc
+  echo "" >>~/.zshrc
+  echo "# Load .env file if it exists" >>~/.zshrc
+  echo "if [ -f .env ]; then" >>~/.zshrc
+  echo "    export \$(cat .env | xargs)" >>~/.zshrc
+  echo "fi" >>~/.zshrc
 fi
-
 
 # Add NeoVim as default vim for mac
 brew install neovim
-echo 'alias vim=nvim' >> ~/.zshrc
-echo 'alias vi=nvim' >> ~/.zshrc
+echo 'alias vim=nvim' >>~/.zshrc
+echo 'alias vi=nvim' >>~/.zshrc
 source ~/.zshrc
+
+## add lazyvim
+
+brew install neovim git ripgrep fd fzf lazygit
+xcode-select --install
+brew install --cask font-meslo-lg-nerd-font
+
+git clone https://github.com/LazyVim/starter ~/.config/nvim
+rm -rf ~/.config/nvim/.git
 
 # add jump as default cd for mac
 brew install jump
 eval "$(jump shell)"
 eval "$(jump shell --bind=cd)"
-
