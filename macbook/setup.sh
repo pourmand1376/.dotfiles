@@ -137,5 +137,15 @@ rm -rf ~/.config/nvim/.git
 
 # add jump as default cd for mac
 brew install jump
-eval "$(jump shell)"
-eval "$(jump shell --bind=cd)"
+LINE='eval "$(jump shell)"'
+
+if ! grep -qF "$LINE" ~/.zshrc; then
+  echo "$LINE" >>~/.zshrc
+fi
+
+LINE='eval "$(jump shell --bind=cd)"'
+
+if ! grep -qF "$LINE" ~/.zshrc; then
+  echo "$LINE" >>~/.zshrc
+fi
+### end of story
