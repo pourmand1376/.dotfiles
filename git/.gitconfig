@@ -5,6 +5,7 @@
 	insteadOf = https://github.com/
 [core]
 	excludesfile = /Users/amirpourmand/.gitignore_global
+	pager = delta
 [push]
 	autoSetupRemote = true
 [diff]
@@ -16,16 +17,18 @@
 	rebase = false
 
 [interactive]
-    diffFilter = delta --color-only
+	diffFilter = delta --color-only
 [add.interactive]
     useBuiltin = false # required for git 2.37.0
 
 [delta]
-    navigate = true    # use n and N to move between diff sections
+	navigate = true
     light = false      # set to true if you're in a terminal w/ a light background color (e.g. the default macOS terminal)
+	side-by-side = true
+	line-numbers = true
 
 [merge]
-    conflictstyle = diff3
+	conflictstyle = zdiff3
     tool = kdiff3
 
 [diff]

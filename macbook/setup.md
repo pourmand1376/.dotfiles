@@ -24,7 +24,8 @@ First install chrome and set it as default browser. Then install Edge as second 
         - Quick Note (Disable) - Later setup to new note in obsidian
 - TrackPad
     - Tap to click
-
+- Dictionary
+  - Don't Forget to Check some important Dictionaries in dictionary app
 
 My Raycast Shortcuts:
 - Hyper + G -> Search Snippets

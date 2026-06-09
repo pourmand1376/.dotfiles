@@ -520,15 +520,6 @@
                             "to": [{ "mouse_key": { "vertical_wheel": 32 } }]
                         }
                     ]
-                },
-                {
-                    "identifiers": { "is_keyboard": true },
-                    "simple_modifications": [
-                        {
-                            "from": { "key_code": "right_command" },
-                            "to": [{ "key_code": "right_control" }]
-                        }
-                    ]
                 }
             ],
             "fn_function_keys": [

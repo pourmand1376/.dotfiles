@@ -14,6 +14,16 @@ For using config files, use:
 ```bash
 stow folder_name
 ```
+
+or in mac system
+```
+
+```
+```
+stow folder_name -t $HOME
+```
+
+Also take a look at `setup_stow_config.sh` in macbook folder. 
 ## Terminal Fonts 
 
 [Nerd-Fonts](https://www.nerdfonts.com/)
