@@ -4,75 +4,6 @@
             "complex_modifications": {
                 "rules": [
                     {
-                        "description": "Return → Hyper (hold) / Return (tap)",
-                        "manipulators": [
-                            {
-                                "from": {
-                                    "key_code": "return_or_enter",
-                                    "modifiers": { "optional": ["any"] }
-                                },
-                                "parameters": { "basic.to_if_alone_timeout_milliseconds": 500 },
-                                "to": [
-                                    {
-                                        "key_code": "left_command",
-                                        "modifiers": ["left_control", "left_option"]
-                                    }
-                                ],
-                                "to_if_alone": [{ "key_code": "return_or_enter" }],
-                                "type": "basic"
-                            }
-                        ]
-                    },
-                    {
-                        "description": "Hyper Key: Right Option + left option + left command (⌃⌥⌘)",
-                        "enabled": false,
-                        "manipulators": [
-                            {
-                                "from": {
-                                    "key_code": "right_option",
-                                    "modifiers": { "optional": ["any"] }
-                                },
-                                "to": [
-                                    {
-                                        "set_variable": {
-                                            "name": "hyper_right_option",
-                                            "value": 1
-                                        }
-                                    },
-                                    {
-                                        "key_code": "left_control",
-                                        "modifiers": ["left_option", "left_command"]
-                                    }
-                                ],
-                                "to_after_key_up": [
-                                    {
-                                        "set_variable": {
-                                            "name": "hyper_right_option",
-                                            "value": 0
-                                        }
-                                    }
-                                ],
-                                "type": "basic"
-                            }
-                        ]
-                    },
-                    {
-                        "description": "Post space is pressed alone, left_ctrl otherwise",
-                        "enabled": false,
-                        "manipulators": [
-                            {
-                                "from": {
-                                    "key_code": "spacebar",
-                                    "modifiers": { "optional": ["any"] }
-                                },
-                                "parameters": { "basic.to_if_alone_timeout_milliseconds": 200 },
-                                "to": [{ "key_code": "left_control" }],
-                                "to_if_alone": [{ "key_code": "spacebar" }],
-                                "type": "basic"
-                            }
-                        ]
-                    },
-                    {
                         "description": "Hyper + J/K for smooth scrolling",
                         "manipulators": [
                             {
@@ -369,19 +300,17 @@
                     {
                         "manipulators": [
                             {
-                                "description": "Change caps_lock to command+control+option. or escape",
+                                "description": "Change caps_lock to command+control+option.",
                                 "from": {
                                     "key_code": "caps_lock",
                                     "modifiers": { "optional": ["any"] }
                                 },
-                                "parameters": { "basic.to_if_alone_timeout_milliseconds": 500 },
                                 "to": [
                                     {
                                         "key_code": "left_command",
                                         "modifiers": ["left_control", "left_option"]
                                     }
                                 ],
-                                "to_if_alone": [{ "key_code": "escape" }],
                                 "type": "basic"
                             }
                         ]
@@ -479,7 +408,7 @@
                         },
                         {
                             "from": { "key_code": "right_option" },
-                            "to": [{ "key_code": "right_control" }]
+                            "to": [{ "key_code": "right_command" }]
                         }
                     ]
                 },
@@ -518,15 +447,6 @@
                         {
                             "from": { "pointing_button": "button5" },
                             "to": [{ "mouse_key": { "vertical_wheel": 32 } }]
-                        }
-                    ]
-                },
-                {
-                    "identifiers": { "is_keyboard": true },
-                    "simple_modifications": [
-                        {
-                            "from": { "key_code": "right_command" },
-                            "to": [{ "key_code": "right_control" }]
                         }
                     ]
                 }

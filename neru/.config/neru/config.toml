@@ -2,7 +2,7 @@
 # Hyper + K or I to enable scroll mode
 
 # Hyper + S to show labels (Hint Mode)
-"Cmd+Ctrl+Alt+Shift+A" = "hints --action left_click" # this will be fully vimium like.
+"Cmd+Ctrl+Alt+h" = "hints --action left_click" # this will be fully vimium likel.
 
 [general]
 # Optional: Returns cursor to original spot after you click/exit

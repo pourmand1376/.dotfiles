@@ -135,17 +135,74 @@ brew install --cask font-meslo-lg-nerd-font
 git clone https://github.com/LazyVim/starter ~/.config/nvim
 rm -rf ~/.config/nvim/.git
 
-# add jump as default cd for mac
-brew install jump
-LINE='eval "$(jump shell)"'
+## install zoxide (replacement for cd)
+brew install zoxide
+echo 'eval "$(zoxide init zsh --cmd cd)"' >>~/.zshrc
 
-if ! grep -qF "$LINE" ~/.zshrc; then
-  echo "$LINE" >>~/.zshrc
-fi
+### install eza (alternative to ls)
+cat >>~/.zshrc <<'EOF'
 
-LINE='eval "$(jump shell --bind=cd)"'
+# eza: better ls
+alias ls='eza --group-directories-first'
+alias ll='eza -lh --git --group-directories-first'
+alias la='eza -lah --git --group-directories-first'
+alias lt='eza --tree --level=2 --group-directories-first'
+EOF
 
-if ! grep -qF "$LINE" ~/.zshrc; then
-  echo "$LINE" >>~/.zshrc
-fi
-### end of story
+## to make it short
+brew install eza bat ripgrep fd zoxide btop atuin trash tldr git-delta
+
+cat >>~/.zshrc <<'EOF'
+
+# ------------------------------------------------------------
+# Modern CLI replacements
+# ------------------------------------------------------------
+
+# eza: better ls
+alias ls='eza --group-directories-first'
+alias ll='eza -lh --git --group-directories-first'
+alias la='eza -lah --git --group-directories-first'
+alias lt='eza --tree --level=2 --group-directories-first'
+
+# bat: better cat
+alias cat='bat'
+alias less='bat --paging=always'
+
+# ripgrep: better grep
+alias grep='rg'
+
+# fd: better find
+alias find='fd'
+
+# zoxide: smarter cd
+eval "$(zoxide init zsh --cmd cd)"
+
+# btop: better top
+alias top='btop'
+
+# trash: safer rm
+alias rm='trash'
+alias del='trash'
+
+# tldr: simpler man pages
+alias man='tldr'
+
+# atuin: better shell history
+eval "$(atuin init zsh)"
+
+EOF
+
+git config --global core.pager delta
+git config --global interactive.diffFilter "delta --color-only"
+git config --global delta.navigate true
+git config --global delta.side-by-side true
+git config --global delta.line-numbers true
+git config --global merge.conflictstyle zdiff3
+
+mkdir -p ~/.config/atuin
+
+cat >~/.config/atuin/config.toml <<'EOF'
+sync_address = ""
+auto_sync = false
+update_check = false
+EOF
