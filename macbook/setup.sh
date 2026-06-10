@@ -150,7 +150,7 @@ alias lt='eza --tree --level=2 --group-directories-first'
 EOF
 
 ## to make it short
-brew install eza bat ripgrep fd zoxide btop atuin trash tldr git-delta
+brew install eza bat ripgrep fd zoxide btop trash tldr git-delta
 
 cat >>~/.zshrc <<'EOF'
 
@@ -186,10 +186,6 @@ alias del='trash'
 
 # tldr: simpler man pages
 alias man='tldr'
-
-# atuin: better shell history
-eval "$(atuin init zsh)"
-
 EOF
 
 git config --global core.pager delta
@@ -199,10 +195,5 @@ git config --global delta.side-by-side true
 git config --global delta.line-numbers true
 git config --global merge.conflictstyle zdiff3
 
-mkdir -p ~/.config/atuin
-
-cat >~/.config/atuin/config.toml <<'EOF'
-sync_address = ""
-auto_sync = false
-update_check = false
-EOF
+# Set up fzf key bindings and fuzzy completion
+source <(fzf --zsh)
