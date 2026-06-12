@@ -197,3 +197,8 @@ git config --global merge.conflictstyle zdiff3
 
 # Set up fzf key bindings and fuzzy completion
 source <(fzf --zsh)
+
+brew install tlrc # tldr rust client
+
+# for for code. a very good font.
+brew install --cask font-jetbrains-mono-nerd-font
