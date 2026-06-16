@@ -89,7 +89,9 @@ brew install uv ## install uv dependency manager
 #brew install --cask espanso ## text replacer
 # use raycast as text replacer! use snippets.
 
-# drop over. cleanshot X
+brew install --cask macshot # best tool for screenshot and free and open source
+# depcreated: drop over. cleanshot X
+
 # Homerow
 brew install pearcleaner # app cleaner
 
@@ -202,3 +204,6 @@ brew install tlrc # tldr rust client
 
 # for for code. a very good font.
 brew install --cask font-jetbrains-mono-nerd-font
+
+# then add vi mode for zsh and bash
+# for recording add OBS + Presenter-overlay for camera
