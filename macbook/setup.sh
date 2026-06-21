@@ -207,3 +207,6 @@ brew install --cask font-jetbrains-mono-nerd-font
 
 # then add vi mode for zsh and bash
 # for recording add OBS + Presenter-overlay for camera
+#
+#
+brew install --cask tomatobar # A pomodoro time.
