@@ -209,4 +209,4 @@ brew install --cask font-jetbrains-mono-nerd-font
 # for recording add OBS + Presenter-overlay for camera
 #
 #
-brew install --cask tomatobar # A pomodoro time.
+brew install --cask tomatobar # A pomodoro time. TickTick does it as well
