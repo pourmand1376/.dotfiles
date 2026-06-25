@@ -1,8 +1,4 @@
 [hotkeys]
-# Hyper + K or I to enable scroll mode
-
-# Hyper + S to show labels (Hint Mode)
-"Cmd+Ctrl+Alt+h" = "hints --action left_click" # this will be fully vimium likel.
 
 [general]
 # Optional: Returns cursor to original spot after you click/exit
@@ -17,7 +13,8 @@ hint_characters = "asdfghjkl"
 # Standard Vim-like scroll speeds
 scroll_step = 50
 
-include_menubar_hints = false # top menubar
+
+include_menubar_hints = true # top menubar
 additional_menubar_hints_targets = [
     "com.apple.TextInputMenuAgent",
     "com.apple.controlcenter",
@@ -25,8 +22,8 @@ additional_menubar_hints_targets = [
     "com.y3owk1n.neru",
 ]
 include_dock_hints = false # dock plus mission control
-include_nc_hints = false # notification center
+include_nc_hints = true # notification center
 include_stage_manager_hints = false # stage manager
 include_pip_hints = false # native picture-in-picture controls
 include_screen_capture_hints = false # screen capture controls
-detect_mission_control = false 
+detect_mission_control = true
