@@ -35,8 +35,9 @@ v = ["Visual Studio Code", "VS Code"]
 [l]
 label = "[links]" # the "label" key is reserved to change the label of the group
 g = "https://github.com"
-b = "https://bsky.app"
-t = "https://twitter.com"
+l = "https://git.partnerz.io"
+c = "https://chatgpt.com"
+e = "http://gemini.google.com"
 
 
 # groups can be nested too!
@@ -109,6 +110,10 @@ s = "raycast://extensions/raycast/navigation/search-menu-items"
 # bluesky @saml.dev - <leader> l m b
 # github saml-dev   - <leader> l m g
 
+[n]
+label= "Neru"
+h = "hs:hs.execute('/opt/homebrew/bin/neru hints --action left_click')"
+r = "bneru recursive_grid"
 
 # for advanced hammerspoon users, you can use
 # the hs: prefix as an escape hatch to run any

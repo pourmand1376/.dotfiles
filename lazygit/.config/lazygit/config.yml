@@ -1,0 +1,7 @@
+ git:
+    log:
+      showWholeGraph: true
+    pagers:
+      - pager: delta --dark --paging=never 
+      - pager: bat --color=always --style=plain --paging=never --language=diff
+      - {} # The empty object brings back the default raw view
