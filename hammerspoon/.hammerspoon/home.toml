@@ -112,8 +112,8 @@ s = "raycast://extensions/raycast/navigation/search-menu-items"
 
 [n]
 label= "Neru"
-h = "hs:hs.execute('/opt/homebrew/bin/neru hints --action left_click')"
-r = "bneru recursive_grid"
+h = ["hs:hs.execute('/opt/homebrew/bin/neru hints --action left_click')", "Hint Mode"]
+r = ["hs:hs.execute('/opt/homebrew/bin/neru recursive_grid')", "Recursive Grid"] 
 
 # for advanced hammerspoon users, you can use
 # the hs: prefix as an escape hatch to run any
