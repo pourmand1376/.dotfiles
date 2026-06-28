@@ -1,0 +1,261 @@
+{
+  "profiles" : [
+    {
+      "id" : "D858B594-6DA0-4A59-A8DE-5C01BE069681",
+      "name" : "Default",
+      "workspaces" : [
+        {
+          "apps" : [
+            {
+              "bundleIdentifier" : "com.todesktop.230313mzl4w4u92",
+              "iconPath" : "/Applications/Cursor.app/Contents/Resources/Cursor.icns",
+              "name" : "Cursor"
+            },
+            {
+              "bundleIdentifier" : "com.microsoft.VSCode",
+              "iconPath" : "/Applications/Visual Studio Code.app/Contents/Resources/Code.icns",
+              "name" : "Code"
+            },
+            {
+              "bundleIdentifier" : "dev.kiro.desktop",
+              "iconPath" : "/Applications/Kiro.app/Contents/Resources/Kiro.icns",
+              "name" : "Kiro"
+            },
+            {
+              "bundleIdentifier" : "com.google.antigravity",
+              "iconPath" : "/Applications/Antigravity.app/Contents/Resources/Antigravity.icns",
+              "name" : "Antigravity"
+            },
+            {
+              "bundleIdentifier" : "dev.zed.Zed",
+              "iconPath" : "/Applications/Zed.app/Contents/Resources/Zed.icns",
+              "name" : "Zed"
+            }
+          ],
+          "display" : "S24C36x",
+          "id" : "96BA5F3C-6A46-4DF4-AA65-D4A2506B44E5",
+          "name" : "Source (S)",
+          "openAppsOnActivation" : false,
+          "symbolIconName" : "rectangle.on.rectangle.badge.gearshape"
+        },
+        {
+          "apps" : [
+            {
+              "bundleIdentifier" : "ru.keepcoder.Telegram",
+              "iconPath" : "/Applications/Telegram.localized/Telegram.app/Contents/Resources/AppIcon.icns",
+              "name" : "Telegram"
+            },
+            {
+              "bundleIdentifier" : "com.apple.mail",
+              "iconPath" : "/System/Applications/Mail.app/Contents/Resources/ApplicationIcon.icns",
+              "name" : "Mail"
+            },
+            {
+              "bundleIdentifier" : "com.hnc.Discord",
+              "iconPath" : "/Applications/Discord.app/Contents/Resources/electron.icns",
+              "name" : "Discord"
+            },
+            {
+              "bundleIdentifier" : "com.apple.FaceTime",
+              "iconPath" : "/System/Applications/FaceTime.app/Contents/Resources/AppIcon.icns",
+              "name" : "FaceTime"
+            }
+          ],
+          "display" : "S24C36x",
+          "id" : "40461E03-6E6D-4C79-A766-B72B509F3028",
+          "name" : "Engage (E)",
+          "openAppsOnActivation" : false,
+          "symbolIconName" : "figure.socialdance"
+        },
+        {
+          "apps" : [
+            {
+              "bundleIdentifier" : "com.microsoft.edgemac",
+              "iconPath" : "/Applications/Microsoft Edge.app/Contents/Resources/app.icns",
+              "name" : "Microsoft Edge"
+            },
+            {
+              "bundleIdentifier" : "com.apple.Safari",
+              "iconPath" : "/System/Volumes/Preboot/Cryptexes/App/System/Applications/Safari.app/Contents/Resources/AppIcon.icns",
+              "name" : "Safari"
+            },
+            {
+              "bundleIdentifier" : "org.mozilla.firefox",
+              "iconPath" : "/Applications/Firefox.app/Contents/Resources/firefox.icns",
+              "name" : "Firefox"
+            }
+          ],
+          "display" : "S24C36x",
+          "id" : "71EFC3D8-9B8F-4FCB-B08B-EA6D6C79F951",
+          "name" : "Web (W)",
+          "openAppsOnActivation" : false,
+          "symbolIconName" : "globe"
+        },
+        {
+          "apps" : [
+            {
+              "bundleIdentifier" : "com.google.Chrome",
+              "iconPath" : "/Applications/Google Chrome.app/Contents/Resources/app.icns",
+              "name" : "Google Chrome"
+            }
+          ],
+          "display" : "S24C36x",
+          "id" : "81918EE1-8BAC-435D-86B3-26BEB57EFAF7",
+          "name" : "Deep Web (D)",
+          "openAppsOnActivation" : false
+        },
+        {
+          "apps" : [
+            {
+              "bundleIdentifier" : "com.apple.shortcuts",
+              "iconPath" : "/System/Applications/Shortcuts.app/Contents/Resources/AppIcon.icns",
+              "name" : "Shortcuts"
+            },
+            {
+              "bundleIdentifier" : "dev.kdrag0n.MacVirt",
+              "iconPath" : "/Applications/OrbStack.app/Contents/Resources/AppIcon.icns",
+              "name" : "OrbStack"
+            },
+            {
+              "bundleIdentifier" : "com.DanPristupov.Fork",
+              "iconPath" : "/Applications/Fork.app/Contents/Resources/AppIcon.icns",
+              "name" : "Fork"
+            },
+            {
+              "bundleIdentifier" : "com.electron.kontena-lens",
+              "iconPath" : "/Applications/Lens.app/Contents/Resources/icon.icns",
+              "name" : "Lens"
+            },
+            {
+              "bundleIdentifier" : "com.microsoft.rdc.macos",
+              "iconPath" : "/Applications/Windows App.app/Contents/Resources/AppIcon.icns",
+              "name" : "Windows App"
+            },
+            {
+              "bundleIdentifier" : "com.obsproject.obs-studio",
+              "iconPath" : "/Applications/OBS.app/Contents/Resources/AppIcon.icns",
+              "name" : "OBS Studio"
+            }
+          ],
+          "display" : "S24C36x",
+          "id" : "B1CFD8DD-F386-4450-9C88-79D249FC2CBD",
+          "name" : "Flow (F)"
+        },
+        {
+          "apps" : [
+            {
+              "bundleIdentifier" : "com.googlecode.iterm2",
+              "iconPath" : "/Applications/iTerm.app/Contents/Resources/AppIcon.icns",
+              "name" : "iTerm2"
+            },
+            {
+              "bundleIdentifier" : "dev.warp.Warp-Stable",
+              "iconPath" : "/Applications/Warp.app/Contents/Resources/AppIcon.icns",
+              "name" : "Warp"
+            },
+            {
+              "bundleIdentifier" : "org.pqrs.Karabiner-Elements.Settings",
+              "iconPath" : "/Applications/Karabiner-Elements.app/Contents/Resources/app.icns",
+              "name" : "Karabiner-Elements"
+            }
+          ],
+          "display" : "S24C36x",
+          "id" : "C863385A-3C51-4BAB-BA12-4224B0369833",
+          "name" : "Run (R)",
+          "openAppsOnActivation" : false,
+          "symbolIconName" : "apple.terminal.fill"
+        },
+        {
+          "apps" : [
+            {
+              "bundleIdentifier" : "com.TickTick.task.mac",
+              "iconPath" : "/Applications/TickTick.app/Contents/Resources/AppIcon.icns",
+              "name" : "TickTick"
+            },
+            {
+              "bundleIdentifier" : "com.apple.iCal",
+              "iconPath" : "/System/Applications/Calendar.app/Contents/Resources/AppIcon.icns",
+              "name" : "Calendar"
+            }
+          ],
+          "display" : "S24C36x",
+          "id" : "7679AE84-A850-406C-80DD-BF59C33F283C",
+          "name" : "Task (T)",
+          "openAppsOnActivation" : false,
+          "symbolIconName" : "checkmark"
+        },
+        {
+          "apps" : [
+            {
+              "bundleIdentifier" : "md.obsidian",
+              "iconPath" : "/Applications/Obsidian.app/Contents/Resources/icon.icns",
+              "name" : "Obsidian"
+            }
+          ],
+          "display" : "S24C36x",
+          "id" : "6CB70159-3A02-4BDB-A46A-2B7018116E9C",
+          "name" : "Global Note (G)",
+          "openAppsOnActivation" : false,
+          "symbolIconName" : "pencil.line"
+        },
+        {
+          "apps" : [
+            {
+              "bundleIdentifier" : "com.colliderli.iina",
+              "iconPath" : "/Applications/IINA.app/Contents/Resources/AppIcon.icns",
+              "name" : "IINA"
+            },
+            {
+              "bundleIdentifier" : "com.spotify.client",
+              "iconPath" : "/Applications/Spotify.app/Contents/Resources/AppIcon.icns",
+              "name" : "Spotify"
+            }
+          ],
+          "display" : "Built-in Retina Display",
+          "id" : "2C3E170F-3444-4380-B116-76E4715CF009",
+          "name" : "eXtras (X)",
+          "openAppsOnActivation" : false
+        },
+        {
+          "apps" : [
+            {
+              "bundleIdentifier" : "com.wireguard.macos",
+              "iconPath" : "/Applications/WireGuard.app/Contents/Resources/AppIcon.icns",
+              "name" : "WireGuard"
+            },
+            {
+              "bundleIdentifier" : "2dust.v2rayN",
+              "iconPath" : "/Applications/v2rayN.app/Contents/Resources/AppIcon.icns",
+              "name" : "v2rayN"
+            },
+            {
+              "bundleIdentifier" : "com.cisco.secureclient.gui",
+              "iconPath" : "/Applications/Cisco/Cisco Secure Client.app/Contents/Resources/vpngui.icns",
+              "name" : "Cisco Secure Client"
+            },
+            {
+              "bundleIdentifier" : "com.nebula.karing",
+              "iconPath" : "/Applications/Karing.app/Contents/Resources/AppIcon.icns",
+              "name" : "Karing"
+            },
+            {
+              "bundleIdentifier" : "io.github.clash-verge-rev.clash-verge-rev",
+              "iconPath" : "/Applications/Clash Verge.app/Contents/Resources/icon.icns",
+              "name" : "Clash Verge"
+            },
+            {
+              "bundleIdentifier" : "moe.Throne.macosx",
+              "iconPath" : "/Applications/Throne.app/Contents/Resources/Throne.icns",
+              "name" : "Throne"
+            }
+          ],
+          "display" : "S24C36x",
+          "id" : "4226D183-0BEA-4B80-B521-CCACD7AFE467",
+          "name" : "VPN (V)",
+          "openAppsOnActivation" : false,
+          "symbolIconName" : "lock.open"
+        }
+      ]
+    }
+  ]
+}

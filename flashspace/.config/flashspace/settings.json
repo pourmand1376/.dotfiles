@@ -1,0 +1,71 @@
+{
+  "activeWorkspaceOnFocusChange" : true,
+  "alternativeDisplays" : "",
+  "centerCursorOnFocusChange" : true,
+  "centerCursorOnWorkspaceChange" : true,
+  "changeWorkspaceOnAppAssign" : true,
+  "checkForUpdatesAutomatically" : true,
+  "displayMode" : "dynamic",
+  "enableFocusManagement" : true,
+  "enableIntegrations" : false,
+  "enablePictureInPictureSupport" : true,
+  "enableSpaceControl" : true,
+  "enableSpaceControlAnimations" : true,
+  "enableSpaceControlTilesAnimations" : true,
+  "enableSwipeGestures" : true,
+  "enableWorkspaceTransitions" : false,
+  "floatingApps" : [
+    {
+      "bundleIdentifier" : "pl.maketheweb.cleanshotx",
+      "iconPath" : "/Applications/CleanShot X.app/Contents/Resources/AppIcon.icns",
+      "name" : "CleanShot X"
+    }
+  ],
+  "focusFrontmostWindow" : true,
+  "keepUnassignedAppsOnSwitch" : true,
+  "loopWorkspaces" : true,
+  "loopWorkspacesOnAllDisplays" : false,
+  "menuBarDisplayAliases" : "",
+  "menuBarTitleTemplate" : "$WORKSPACE",
+  "pipApps" : [
+    {
+      "bundleIdentifier" : "com.microsoft.edgemac",
+      "name" : "Microsoft Edge",
+      "pipWindowTitleRegex" : "*Meet*"
+    },
+    {
+      "bundleIdentifier" : "com.google.Chrome",
+      "name" : "Google Chrome",
+      "pipWindowTitleRegex" : "*Meet*"
+    }
+  ],
+  "pipScreenCornerOffset" : 15,
+  "restartAppOnWakeUp" : false,
+  "restoreHiddenAppsOnSwitch" : true,
+  "runScriptAfterWorkspaceChange" : "",
+  "runScriptOnLaunch" : "",
+  "runScriptOnProfileChange" : "sketchybar --reload",
+  "runScriptOnWorkspaceChange" : "sketchybar --trigger flashspace_workspace_change WORKSPACE=\"$WORKSPACE\" DISPLAY=\"$DISPLAY\"",
+  "showFloatingNotifications" : true,
+  "showMenuBarIcon" : true,
+  "showMenuBarTitle" : true,
+  "showSpaceControl" : "f4",
+  "skipEmptyWorkspacesOnSwitch" : true,
+  "spaceControlCurrentDisplayWorkspaces" : false,
+  "spaceControlHideEmptyWorkspaces" : false,
+  "spaceControlNumberOfColumns" : 0,
+  "spaceControlUpdateScreenshotsOnOpen" : false,
+  "swipeDown3FingerAction" : "none",
+  "swipeDown4FingerAction" : "none",
+  "swipeLeft3FingerAction" : "previousWorkspace",
+  "swipeLeft4FingerAction" : "none",
+  "swipeRight3FingerAction" : "nextWorkspace",
+  "swipeRight4FingerAction" : "none",
+  "swipeThreshold" : 0.2,
+  "swipeUp3FingerAction" : "none",
+  "swipeUp4FingerAction" : "none",
+  "switchWorkspaceOnCursorScreen" : false,
+  "switchWorkspaceWhenPipCloses" : true,
+  "workspaceTransitionDimming" : 0.2,
+  "workspaceTransitionDuration" : 0.3
+}

@@ -1,0 +1,28 @@
+{
+  "profiles" : [
+    {
+      "id" : "D858B594-6DA0-4A59-A8DE-5C01BE069681",
+      "name" : "Default",
+      "workspaces" : [
+        {
+          "apps" : [
+            {
+              "bundleIdentifier" : "dev.warp.Warp-Stable",
+              "iconPath" : "/Applications/Warp.app/Contents/Resources/Warp.icns",
+              "name" : "Warp"
+            },
+            {
+              "bundleIdentifier" : "com.googlecode.iterm2",
+              "iconPath" : "/Applications/iTerm.app/Contents/Resources/AppIcon.icns",
+              "name" : "iTerm2"
+            }
+          ],
+          "display" : "S24C36x",
+          "id" : "C863385A-3C51-4BAB-BA12-4224B0369833",
+          "name" : "Terminal",
+          "symbolIconName" : "apple.terminal.fill"
+        }
+      ]
+    }
+  ]
+}
