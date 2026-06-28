@@ -210,3 +210,13 @@ brew install --cask font-jetbrains-mono-nerd-font
 #
 #
 brew install --cask tomatobar # A pomodoro time. TickTick does it as well
+## install lazyvim
+
+brew install neovim git ripgrep fd fzf lazygit
+xcode-select --install
+brew install --cask font-meslo-lg-nerd-font
+
+git clone https://github.com/LazyVim/starter ~/.config/nvim
+rm -rf ~/.config/nvim/.git
+
+# end of install lazyvim
