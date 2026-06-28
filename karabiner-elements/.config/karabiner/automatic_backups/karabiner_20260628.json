@@ -4,47 +4,6 @@
             "complex_modifications": {
                 "rules": [
                     {
-                        "description": "Any Control or Any Command key to F18 if pressed alone",
-                        "manipulators": [
-                            {
-                                "from": {
-                                    "key_code": "left_control",
-                                    "modifiers": { "optional": ["any"] }
-                                },
-                                "to": [{ "key_code": "left_control" }],
-                                "to_if_alone": [{ "key_code": "f18" }],
-                                "type": "basic"
-                            },
-                            {
-                                "from": {
-                                    "key_code": "right_control",
-                                    "modifiers": { "optional": ["any"] }
-                                },
-                                "to": [{ "key_code": "right_control" }],
-                                "to_if_alone": [{ "key_code": "f18" }],
-                                "type": "basic"
-                            },
-                            {
-                                "from": {
-                                    "key_code": "left_command",
-                                    "modifiers": { "optional": ["any"] }
-                                },
-                                "to": [{ "key_code": "left_command" }],
-                                "to_if_alone": [{ "key_code": "f18" }],
-                                "type": "basic"
-                            },
-                            {
-                                "from": {
-                                    "key_code": "right_command",
-                                    "modifiers": { "optional": ["any"] }
-                                },
-                                "to": [{ "key_code": "right_command" }],
-                                "to_if_alone": [{ "key_code": "f18" }],
-                                "type": "basic"
-                            }
-                        ]
-                    },
-                    {
                         "description": "Command + Shift to control + spacebar",
                         "manipulators": [
                             {
@@ -104,7 +63,6 @@
                     },
                     {
                         "description": "Map Hyper+D, Hyper+L to F18",
-                        "enabled": false,
                         "manipulators": [
                             {
                                 "from": {
