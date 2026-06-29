@@ -4,23 +4,41 @@
             "complex_modifications": {
                 "rules": [
                     {
-                        "description": "Any Option key to F18 if pressed alone",
+                        "description": "Any Control or Any Command key to F18 if pressed alone",
                         "manipulators": [
                             {
                                 "from": {
-                                    "key_code": "left_option",
+                                    "key_code": "left_control",
                                     "modifiers": { "optional": ["any"] }
                                 },
-                                "to": [{ "key_code": "left_option" }],
+                                "to": [{ "key_code": "left_control" }],
                                 "to_if_alone": [{ "key_code": "f18" }],
                                 "type": "basic"
                             },
                             {
                                 "from": {
-                                    "key_code": "right_option",
+                                    "key_code": "right_control",
                                     "modifiers": { "optional": ["any"] }
                                 },
-                                "to": [{ "key_code": "right_option" }],
+                                "to": [{ "key_code": "right_control" }],
+                                "to_if_alone": [{ "key_code": "f18" }],
+                                "type": "basic"
+                            },
+                            {
+                                "from": {
+                                    "key_code": "left_command",
+                                    "modifiers": { "optional": ["any"] }
+                                },
+                                "to": [{ "key_code": "left_command" }],
+                                "to_if_alone": [{ "key_code": "f18" }],
+                                "type": "basic"
+                            },
+                            {
+                                "from": {
+                                    "key_code": "right_command",
+                                    "modifiers": { "optional": ["any"] }
+                                },
+                                "to": [{ "key_code": "right_command" }],
                                 "to_if_alone": [{ "key_code": "f18" }],
                                 "type": "basic"
                             }
