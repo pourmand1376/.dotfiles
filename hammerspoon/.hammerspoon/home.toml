@@ -38,10 +38,10 @@ e = "http://gemini.google.com"
 label = "[window]"
 h = ["raycast://extensions/raycast/window-management/left-half", "left half"]
 l = ["raycast://extensions/raycast/window-management/right-half", "right half"]
-t = ["raycast://extensions/raycast/window-management/top-half", "top half"]
+k = ["raycast://extensions/raycast/window-management/top-half", "top half"]
 m = ["raycast://extensions/raycast/window-management/maximize", "maximize"]
 e = ["raycast://extensions/raycast/window-management/last-third", "last third"]
-f = ["raycast://extensions/raycast/window-management/first-two-thirds", "first two-thirds"]
+r = ["raycast://extensions/raycast/window-management/first-two-thirds", "first two-thirds"]
 
 # ── [s] spaces (FlashSpace) ─────────────────────────────────
 # switch workspace: f18 s <key>   ·   move app: f18 s m <key>
