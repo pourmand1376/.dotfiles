@@ -2,6 +2,6 @@
     log:
       showWholeGraph: true
     pagers:
-      - pager: delta --paging=never --line-numbers-left-format="" --line-numbers-right-format=""
+      - pager: delta --paging=never --line-numbers-left-format="" --line-numbers-right-format="" --color-only
       - pager: bat --color=always --style=plain --paging=never --language=diff
       - {} # The empty object brings back the default raw view
