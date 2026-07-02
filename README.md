@@ -23,6 +23,8 @@ or in mac system
 stow folder_name -t $HOME
 ```
 
+https://www.josean.com/posts/how-to-manage-dotfiles-with-gnu-stow
+
 Also take a look at `setup_stow_config.sh` in macbook folder. 
 ## Terminal Fonts 
 
