@@ -4,59 +4,6 @@
             "complex_modifications": {
                 "rules": [
                     {
-                        "description": "Simultaneous keys (jk -> Escape, kl -> Enter) - English Layout Only",
-                        "manipulators": [
-                            {
-                                "conditions": [
-                                    {
-                                        "input_sources": [{ "input_source_id": "^com\\.apple\\.keylayout\\.US$|^com\\.apple\\.keylayout\\.ABC$|\\.en$" }],
-                                        "type": "input_source_if"
-                                    }
-                                ],
-                                "from": {
-                                    "modifiers": { "optional": ["any"] },
-                                    "simultaneous": [
-                                        { "key_code": "j" },
-                                        { "key_code": "k" }
-                                    ],
-                                    "simultaneous_options": {
-                                        "detect_key_down_uninterruptedly": false,
-                                        "key_down_order": "insensitive",
-                                        "key_up_order": "insensitive",
-                                        "key_up_when": "any"
-                                    }
-                                },
-                                "parameters": { "basic.simultaneous_threshold_milliseconds": 200 },
-                                "to": [{ "key_code": "escape" }],
-                                "type": "basic"
-                            },
-                            {
-                                "conditions": [
-                                    {
-                                        "input_sources": [{ "input_source_id": "^com\\.apple\\.keylayout\\.US$|^com\\.apple\\.keylayout\\.ABC$|\\.en$" }],
-                                        "type": "input_source_if"
-                                    }
-                                ],
-                                "from": {
-                                    "modifiers": { "optional": ["any"] },
-                                    "simultaneous": [
-                                        { "key_code": "k" },
-                                        { "key_code": "l" }
-                                    ],
-                                    "simultaneous_options": {
-                                        "detect_key_down_uninterruptedly": false,
-                                        "key_down_order": "insensitive",
-                                        "key_up_order": "insensitive",
-                                        "key_up_when": "any"
-                                    }
-                                },
-                                "parameters": { "basic.simultaneous_threshold_milliseconds": 200 },
-                                "to": [{ "key_code": "return_or_enter" }],
-                                "type": "basic"
-                            }
-                        ]
-                    },
-                    {
                         "description": "Any Option key to F18 if pressed alone",
                         "manipulators": [
                             {

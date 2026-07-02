@@ -4,15 +4,9 @@
             "complex_modifications": {
                 "rules": [
                     {
-                        "description": "Simultaneous keys (jk -> Escape, kl -> Enter) - English Layout Only",
+                        "description": "Simultaneous keys (jk -> Escape, kl -> Enter with parameters)",
                         "manipulators": [
                             {
-                                "conditions": [
-                                    {
-                                        "input_sources": [{ "input_source_id": "^com\\.apple\\.keylayout\\.US$|^com\\.apple\\.keylayout\\.ABC$|\\.en$" }],
-                                        "type": "input_source_if"
-                                    }
-                                ],
                                 "from": {
                                     "modifiers": { "optional": ["any"] },
                                     "simultaneous": [
@@ -31,12 +25,6 @@
                                 "type": "basic"
                             },
                             {
-                                "conditions": [
-                                    {
-                                        "input_sources": [{ "input_source_id": "^com\\.apple\\.keylayout\\.US$|^com\\.apple\\.keylayout\\.ABC$|\\.en$" }],
-                                        "type": "input_source_if"
-                                    }
-                                ],
                                 "from": {
                                     "modifiers": { "optional": ["any"] },
                                     "simultaneous": [
