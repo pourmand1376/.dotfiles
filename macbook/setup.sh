@@ -95,6 +95,8 @@ brew install --cask macshot # best tool for screenshot and free and open source
 # Homerow
 brew install pearcleaner # app cleaner
 
+brew install tmux # install tmux newer version
+
 # ticktick, obsidian, chatgpt
 
 # install lookaway (actually not, its annoying)
