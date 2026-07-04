@@ -40,11 +40,11 @@ brew "imagemagick", link: false
 # Tools and libraries to manipulate images in many formats
 brew "imagemagick-full", link: true
 # Feature-rich interactive Jira CLI
-brew "jira-cli"
+# brew "jira-cli"
 # Lightweight and flexible command-line JSON processor
 brew "jq"
 # Helps you navigate your file system faster by learning your habits
-brew "jump"
+# brew "jump"
 # Handy way to save and run project-specific commands
 brew "just"
 # Simple terminal UI for git commands
@@ -60,9 +60,9 @@ brew "pipx"
 # PDF rendering library (based on the xpdf-3.0 code base)
 brew "poppler"
 # Theme for zsh
-brew "powerlevel10k"
+# brew "powerlevel10k"
 # Python version management
-brew "pyenv"
+# brew "pyenv"
 # SVG rendering tool and library
 brew "resvg"
 # Search tool like grep and The Silver Searcher
@@ -93,10 +93,14 @@ brew "yank"
 brew "yazi"
 # Shell extension to navigate your filesystem faster
 brew "zoxide"
+
+# mole: system cleanup 
+brew "mole"
+
 # A simple terminal UI for docker, written in Go
 brew "jesseduffield/lazydocker/lazydocker", trusted: true
 # AeroSpace is an i3-like tiling window manager for macOS
-cask "nikitabobko/tap/aerospace"
+# cask "nikitabobko/tap/aerospace"
 # Terminal-based AI coding assistant
 cask "claude-code"
 # OpenAI's coding agent that runs in your terminal
@@ -112,9 +116,9 @@ cask "hammerspoon"
 # Free and open-source media player
 cask "iina"
 # Terminal emulator as alternative to Apple's Terminal app
-cask "iterm2"
+# cask "iterm2"
 # Menu bar manager
-cask "jordanbaird-ice"
+# cask "jordanbaird-ice"
 # Keyboard customiser
 cask "karabiner-elements"
 # File archiver
