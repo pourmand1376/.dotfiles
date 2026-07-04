@@ -646,10 +646,6 @@
                         {
                             "from": { "key_code": "right_option" },
                             "to": [{ "key_code": "right_control" }]
-                        },
-                        {
-                            "from": { "key_code": "application" },
-                            "to": [{ "key_code": "right_command" }]
                         }
                     ]
                 },
