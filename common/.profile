@@ -28,3 +28,7 @@ alias del='trash'
 
 # tldr: simpler man pages
 alias man='tldr'
+alias v='nvim'
+
+# for lazygit to know the directoy of config
+export XDG_CONFIG_HOME="$HOME/.config"
