@@ -16,4 +16,6 @@ if [ -f ~/.localrc ]; then
   source ~/.localrc
 fi
 
+eval "$(fzf --bash)"
+
 eval "$(starship init bash)"
