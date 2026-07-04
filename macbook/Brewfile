@@ -11,8 +11,6 @@ brew "bat"
 brew "btop"
 # Tool for provisioning self-hosted development environments with Terraform
 brew "coder"
-# Literate documentation system for C, C++, and Java
-brew "cweb"
 # Perl lib for reading and writing EXIF metadata
 brew "exiftool"
 # Modern, maintained replacement for ls
