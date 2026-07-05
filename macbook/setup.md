@@ -22,6 +22,7 @@ First install chrome and set it as default browser. Then install Edge as second 
     - Mission Control
         - Notification Center (Option + W)
         - Quick Note (Disable) - Later setup to new note in obsidian
+    - Custom Shortcuts -> Input Source > Use Ctrl + Space and Option+Space for changing layout. 
 - TrackPad
     - Tap to click
 - Dictionary
