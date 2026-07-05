@@ -35,6 +35,7 @@ alias vim='nvim'
 
 # for lazygit to know the directoy of config
 export XDG_CONFIG_HOME="$HOME/.config"
+export EDITOR=nvim
 
 # yazi for bash and zsh
 function y() {
