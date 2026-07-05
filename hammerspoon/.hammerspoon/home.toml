@@ -14,9 +14,9 @@ key_maps_per_line = 1     # keymaps per line in the popup
 
 # ── top-level quick launches ────────────────────────────────
 t = "Terminal"
-v = ["Visual Studio Code", "VS Code"]
+c = ["hs:hs.application.launchOrFocusByBundleID('com.google.Chrome')", "Chrome"]
+v = ["raycast://extensions/raycast/clipboard-history/clipboard-history", "clipboard history"]
 z = "Zed"
-c = ["raycast://extensions/raycast/clipboard-history/clipboard-history", "clipboard history"]
 
 # ── [o] open apps ───────────────────────────────────────────
 [o]

@@ -154,11 +154,6 @@
               "name" : "Warp"
             },
             {
-              "bundleIdentifier" : "org.pqrs.Karabiner-Elements.Settings",
-              "iconPath" : "/Applications/Karabiner-Elements.app/Contents/Resources/app.icns",
-              "name" : "Karabiner-Elements"
-            },
-            {
               "bundleIdentifier" : "com.github.wez.wezterm",
               "iconPath" : "/Applications/WezTerm.app/Contents/Resources/terminal.icns",
               "name" : "WezTerm"
