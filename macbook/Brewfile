@@ -11,6 +11,8 @@ brew "bat"
 brew "btop"
 # Tool for provisioning self-hosted development environments with Terraform
 brew "coder"
+# A command-line utility used to manage the Dock programmatically.
+brew "dockutil"
 # Perl lib for reading and writing EXIF metadata
 brew "exiftool"
 # Modern, maintained replacement for ls
