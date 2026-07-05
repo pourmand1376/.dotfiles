@@ -9,6 +9,8 @@ alias ll='eza -lh --git --group-directories-first --icons'
 alias la='eza -lah --git --group-directories-first --icons'
 alias lt='eza --tree --level=2 --group-directories-first'
 
+alias tree='eza --tree --level=2'
+
 # bat: better cat
 alias cat='bat'
 alias less='bat --paging=always'
