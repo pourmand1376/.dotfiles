@@ -5,6 +5,25 @@
                 "parameters": { "basic.to_if_held_down_threshold_milliseconds": 200 },
                 "rules": [
                     {
+                        "description": "Ergonomic Fix: Map Option + Space to Hyper + Space (Language Switch)",
+                        "enabled": false,
+                        "manipulators": [
+                            {
+                                "from": {
+                                    "key_code": "spacebar",
+                                    "modifiers": { "mandatory": ["left_option"] }
+                                },
+                                "to": [
+                                    {
+                                        "key_code": "spacebar",
+                                        "modifiers": ["left_control", "left_option", "left_shift", "left_command"]
+                                    }
+                                ],
+                                "type": "basic"
+                            }
+                        ]
+                    },
+                    {
                         "description": "Home row mods - opt, ctrl, cmd, shift",
                         "manipulators": [
                             {
@@ -888,11 +907,12 @@
                         ]
                     },
                     {
-                        "description": "Map Hyper+A, Hyper+' to F18",
+                        "description": "Map Hyper+D, Hyper+L to F18",
+                        "enabled": false,
                         "manipulators": [
                             {
                                 "from": {
-                                    "key_code": "a",
+                                    "key_code": "d",
                                     "modifiers": {
                                         "mandatory": ["command", "control", "option"],
                                         "optional": ["any"]
@@ -903,7 +923,7 @@
                             },
                             {
                                 "from": {
-                                    "key_code": "quote",
+                                    "key_code": "l",
                                     "modifiers": {
                                         "mandatory": ["command", "control", "option"],
                                         "optional": ["any"]
