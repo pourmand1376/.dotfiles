@@ -5,25 +5,33 @@
 # ============================================================
 
 # ── settings ────────────────────────────────────────────────
-leader_key = "f18"        # the key that starts a sequence
-leader_key_mods = ""      # optional modifiers for the leader key
-auto_reload = true        # reload when any file in this dir is saved
-toast_on_reload = true    # show a toast when the config reloads
-show_ui = true            # show the keymap popup
-key_maps_per_line = 1     # keymaps per line in the popup
+leader_key = "f18"     # the key that starts a sequence
+leader_key_mods = ""   # optional modifiers for the leader key
+auto_reload = true     # reload when any file in this dir is saved
+toast_on_reload = true # show a toast when the config reloads
+show_ui = true         # show the keymap popup
+key_maps_per_line = 1  # keymaps per line in the popup
 
 # ── top-level quick launches ────────────────────────────────
-t = "Terminal"
 c = ["hs:hs.application.launchOrFocusByBundleID('com.google.Chrome')", "Chrome"]
-v = ["raycast://extensions/raycast/clipboard-history/clipboard-history", "clipboard history"]
-z = "Zed"
-
-# ── [o] open apps ───────────────────────────────────────────
-[o]
-label = "[open apps]"
-t = "Terminal"
-v = ["Visual Studio Code", "VS Code"]
-z = "Zed"
+v = [
+  "raycast://extensions/raycast/clipboard-history/clipboard-history",
+  "clipboard history",
+]
+r = [
+  "hs:hs.application.launchOrFocusByBundleID('com.github.wez.wezterm')",
+  "WezTerm",
+]
+t = [
+  "hs:hs.application.launchOrFocusByBundleID('com.TickTick.task.mac')",
+  "TickTick",
+]
+k = ["hs:hs.application.launchOrFocusByBundleID('com.apple.iCal')", "Calendar"]
+g = ["hs:hs.application.launchOrFocusByBundleID('md.obsidian')", "Obsidian"]
+d = ["hs:hs.application.launchOrFocusByBundleID('com.hnc.Discord')", "Discord"]
+e = ["hs:hs.application.launchOrFocusByBundleID('ru.keepcoder.Telegram')", "Telegram"] # t is TickTick
+i = ["hs:hs.eventtap.keyStroke({'ctrl','alt','cmd'}, 'i')", "play relaxing sound"]
+u = ["hs:hs.eventtap.keyStroke({'ctrl','alt','cmd'}, 'u')", "ambient music app"]
 
 # ── [l] links ───────────────────────────────────────────────
 [l]
@@ -41,57 +49,95 @@ l = ["raycast://extensions/raycast/window-management/right-half", "right half"]
 k = ["raycast://extensions/raycast/window-management/top-half", "top half"]
 m = ["raycast://extensions/raycast/window-management/maximize", "maximize"]
 e = ["raycast://extensions/raycast/window-management/last-third", "last third"]
-r = ["raycast://extensions/raycast/window-management/first-two-thirds", "first two-thirds"]
+r = [
+  "raycast://extensions/raycast/window-management/first-two-thirds",
+  "first two-thirds",
+]
 
 # ── [s] spaces (FlashSpace) ─────────────────────────────────
-# switch workspace: f18 s <key>   ·   move app: f18 s m <key>
+# switch workspace: f18 s <key>   ·   move app: f18 m <key>
 [s]
 label = "[spaces]"
 s = ["cmd:/usr/local/bin/flashspace workspace --name 'Source (S)'", "Source"]
 e = ["cmd:/usr/local/bin/flashspace workspace --name 'Engage (E)'", "Engage"]
 w = ["cmd:/usr/local/bin/flashspace workspace --name 'Web (W)'", "Web"]
-d = ["cmd:/usr/local/bin/flashspace workspace --name 'Deep Web (D)'", "Deep Web"]
+d = [
+  "cmd:/usr/local/bin/flashspace workspace --name 'Deep Web (D)'",
+  "Deep Web",
+]
 f = ["cmd:/usr/local/bin/flashspace workspace --name 'Flow (F)'", "Flow"]
-t = ["cmd:/usr/local/bin/flashspace workspace --name 'Task (T)'", "Task"]
-r = ["cmd:/usr/local/bin/flashspace workspace --name 'Run (R)'", "Run"]
-g = ["cmd:/usr/local/bin/flashspace workspace --name 'Global Note (G)'", "Global Note"]
+u = ["cmd:/usr/local/bin/flashspace workspace --name 'Task (U)'", "Task"]
+p = ["cmd:/usr/local/bin/flashspace workspace --name 'Run (P)'", "Run"]
+g = [
+  "cmd:/usr/local/bin/flashspace workspace --name 'Global Note (G)'",
+  "Global Note",
+]
 x = ["cmd:/usr/local/bin/flashspace workspace --name 'eXtras (X)'", "eXtras"]
-v = ["cmd:/usr/local/bin/flashspace workspace --name 'VPN (V)'", "VPN"]
+y = ["cmd:/usr/local/bin/flashspace workspace --name 'VPN (Y)'", "VPN"]
 n = ["cmd:/usr/local/bin/flashspace focus --next-window", "next window"]
-p = ["cmd:/usr/local/bin/flashspace focus --prev-window", "prev window"]
+o = ["cmd:/usr/local/bin/flashspace focus --prev-window", "prev window"]
 
-# move the focused app to a workspace (and follow it there)
-[s.m]
+# ── [m] move the focused app to a workspace (and follow it there) ──
+[m]
 label = "[move app →]"
-s = ["cmd:/usr/local/bin/flashspace assign-app --name \"$(/usr/local/bin/flashspace get-app)\" --workspace 'Source (S)' --activate true", "→ Source"]
-e = ["cmd:/usr/local/bin/flashspace assign-app --name \"$(/usr/local/bin/flashspace get-app)\" --workspace 'Engage (E)' --activate true", "→ Engage"]
-w = ["cmd:/usr/local/bin/flashspace assign-app --name \"$(/usr/local/bin/flashspace get-app)\" --workspace 'Web (W)' --activate true", "→ Web"]
-d = ["cmd:/usr/local/bin/flashspace assign-app --name \"$(/usr/local/bin/flashspace get-app)\" --workspace 'Deep Web (D)' --activate true", "→ Deep Web"]
-f = ["cmd:/usr/local/bin/flashspace assign-app --name \"$(/usr/local/bin/flashspace get-app)\" --workspace 'Flow (F)' --activate true", "→ Flow"]
-t = ["cmd:/usr/local/bin/flashspace assign-app --name \"$(/usr/local/bin/flashspace get-app)\" --workspace 'Task (T)' --activate true", "→ Task"]
-r = ["cmd:/usr/local/bin/flashspace assign-app --name \"$(/usr/local/bin/flashspace get-app)\" --workspace 'Run (R)' --activate true", "→ Run"]
-g = ["cmd:/usr/local/bin/flashspace assign-app --name \"$(/usr/local/bin/flashspace get-app)\" --workspace 'Global Note (G)' --activate true", "→ Global Note"]
-x = ["cmd:/usr/local/bin/flashspace assign-app --name \"$(/usr/local/bin/flashspace get-app)\" --workspace 'eXtras (X)' --activate true", "→ eXtras"]
-v = ["cmd:/usr/local/bin/flashspace assign-app --name \"$(/usr/local/bin/flashspace get-app)\" --workspace 'VPN (V)' --activate true", "→ VPN"]
+s = [
+  "cmd:/usr/local/bin/flashspace assign-app --name \"$(/usr/local/bin/flashspace get-app)\" --workspace 'Source (S)' --activate true",
+  "→ Source",
+]
+e = [
+  "cmd:/usr/local/bin/flashspace assign-app --name \"$(/usr/local/bin/flashspace get-app)\" --workspace 'Engage (E)' --activate true",
+  "→ Engage",
+]
+w = [
+  "cmd:/usr/local/bin/flashspace assign-app --name \"$(/usr/local/bin/flashspace get-app)\" --workspace 'Web (W)' --activate true",
+  "→ Web",
+]
+d = [
+  "cmd:/usr/local/bin/flashspace assign-app --name \"$(/usr/local/bin/flashspace get-app)\" --workspace 'Deep Web (D)' --activate true",
+  "→ Deep Web",
+]
+f = [
+  "cmd:/usr/local/bin/flashspace assign-app --name \"$(/usr/local/bin/flashspace get-app)\" --workspace 'Flow (F)' --activate true",
+  "→ Flow",
+]
+p = [
+  "cmd:/usr/local/bin/flashspace assign-app --name \"$(/usr/local/bin/flashspace get-app)\" --workspace 'Run (P)' --activate true",
+  "→ Run",
+]
+u = [
+  "cmd:/usr/local/bin/flashspace assign-app --name \"$(/usr/local/bin/flashspace get-app)\" --workspace 'Task (U)' --activate true",
+  "→ Task",
+]
+g = [
+  "cmd:/usr/local/bin/flashspace assign-app --name \"$(/usr/local/bin/flashspace get-app)\" --workspace 'Global Note (G)' --activate true",
+  "→ Global Note",
+]
+x = [
+  "cmd:/usr/local/bin/flashspace assign-app --name \"$(/usr/local/bin/flashspace get-app)\" --workspace 'eXtras (X)' --activate true",
+  "→ eXtras",
+]
+y = [
+  "cmd:/usr/local/bin/flashspace assign-app --name \"$(/usr/local/bin/flashspace get-app)\" --workspace 'VPN (Y)' --activate true",
+  "→ VPN",
+]
 
-# ── [r] raycast ─────────────────────────────────────────────
-[r]
+# ── [o] raycast ─────────────────────────────────────────────
+[o]
 label = "[raycast]"
 o = "raycast"
-m = ["raycast://extensions/raycast/system/open-camera", "camera"]
+f = ["raycast://extensions/raycast/system/open-camera", "face camera"]
 e = ["raycast://extensions/raycast/emoji-symbols/search-emoji-symbols", "emoji"]
-s = ["raycast://extensions/raycast/calendar/my-schedule", "schedule"]
+c = ["raycast://extensions/raycast/calendar/my-schedule", "calendar"]
 t = ["raycast://extensions/appest/ticktick/create", "new task"]
-
-# ── [m] menu ────────────────────────────────────────────────
-[m]
-label = "[menu]"
-s = "raycast://extensions/raycast/navigation/search-menu-items"
+m = ["raycast://extensions/raycast/navigation/search-menu-items", "menu items"]
 
 # ── [n] neru ────────────────────────────────────────────────
 [n]
 label = "[neru]"
-h = ["hs:hs.execute('/opt/homebrew/bin/neru hints --action left_click')", "hint mode"]
+h = [
+  "hs:hs.execute('/opt/homebrew/bin/neru hints --action left_click')",
+  "hint mode",
+]
 r = ["hs:hs.execute('/opt/homebrew/bin/neru recursive_grid')", "recursive grid"]
 
 # ── [h] hammerspoon ─────────────────────────────────────────
@@ -100,72 +146,3 @@ label = "[hammerspoon]"
 c = "code: ~/.hammerspoon"
 r = "reload"
 
-
-# >>> flashspace-apps (generated by scripts/gen_flashspace_apps.py) >>>
-[a]
-label = "[apps]"
-
-[a.s]
-label = "[Source (S)]"
-c = ["hs:hs.application.launchOrFocusByBundleID('com.todesktop.230313mzl4w4u92')", "Cursor"]
-v = ["hs:hs.application.launchOrFocusByBundleID('com.microsoft.VSCode')", "VS Code"]
-k = ["hs:hs.application.launchOrFocusByBundleID('dev.kiro.desktop')", "Kiro"]
-a = ["hs:hs.application.launchOrFocusByBundleID('com.google.antigravity')", "Antigravity"]
-z = ["hs:hs.application.launchOrFocusByBundleID('dev.zed.Zed')", "Zed"]
-
-[a.e]
-label = "[Engage (E)]"
-t = ["hs:hs.application.launchOrFocusByBundleID('ru.keepcoder.Telegram')", "Telegram"]
-m = ["hs:hs.application.launchOrFocusByBundleID('com.apple.mail')", "Mail"]
-d = ["hs:hs.application.launchOrFocusByBundleID('com.hnc.Discord')", "Discord"]
-f = ["hs:hs.application.launchOrFocusByBundleID('com.apple.FaceTime')", "FaceTime"]
-
-[a.w]
-label = "[Web (W)]"
-e = ["hs:hs.application.launchOrFocusByBundleID('com.microsoft.edgemac')", "Microsoft Edge"]
-s = ["hs:hs.application.launchOrFocusByBundleID('com.apple.Safari')", "Safari"]
-f = ["hs:hs.application.launchOrFocusByBundleID('org.mozilla.firefox')", "Firefox"]
-
-[a.d]
-label = "[Deep Web (D)]"
-c = ["hs:hs.application.launchOrFocusByBundleID('com.google.Chrome')", "Google Chrome"]
-
-[a.f]
-label = "[Flow (F)]"
-s = ["hs:hs.application.launchOrFocusByBundleID('com.apple.shortcuts')", "Shortcuts"]
-o = ["hs:hs.application.launchOrFocusByBundleID('dev.kdrag0n.MacVirt')", "OrbStack"]
-f = ["hs:hs.application.launchOrFocusByBundleID('com.DanPristupov.Fork')", "Fork"]
-l = ["hs:hs.application.launchOrFocusByBundleID('com.electron.kontena-lens')", "Lens"]
-w = ["hs:hs.application.launchOrFocusByBundleID('com.microsoft.rdc.macos')", "Windows App"]
-b = ["hs:hs.application.launchOrFocusByBundleID('com.obsproject.obs-studio')", "OBS Studio"]
-
-[a.r]
-label = "[Run (R)]"
-i = ["hs:hs.application.launchOrFocusByBundleID('com.googlecode.iterm2')", "iTerm2"]
-w = ["hs:hs.application.launchOrFocusByBundleID('dev.warp.Warp-Stable')", "Warp"]
-k = ["hs:hs.application.launchOrFocusByBundleID('org.pqrs.Karabiner-Elements.Settings')", "Karabiner-Elements"]
-
-[a.t]
-label = "[Task (T)]"
-t = ["hs:hs.application.launchOrFocusByBundleID('com.TickTick.task.mac')", "TickTick"]
-c = ["hs:hs.application.launchOrFocusByBundleID('com.apple.iCal')", "Calendar"]
-
-[a.g]
-label = "[Global Note (G)]"
-o = ["hs:hs.application.launchOrFocusByBundleID('md.obsidian')", "Obsidian"]
-
-[a.x]
-label = "[eXtras (X)]"
-i = ["hs:hs.application.launchOrFocusByBundleID('com.colliderli.iina')", "IINA"]
-s = ["hs:hs.application.launchOrFocusByBundleID('com.spotify.client')", "Spotify"]
-
-[a.v]
-label = "[VPN (V)]"
-w = ["hs:hs.application.launchOrFocusByBundleID('com.wireguard.macos')", "WireGuard"]
-v = ["hs:hs.application.launchOrFocusByBundleID('2dust.v2rayN')", "v2rayN"]
-c = ["hs:hs.application.launchOrFocusByBundleID('com.cisco.secureclient.gui')", "Cisco Secure Client"]
-k = ["hs:hs.application.launchOrFocusByBundleID('com.nebula.karing')", "Karing"]
-l = ["hs:hs.application.launchOrFocusByBundleID('io.github.clash-verge-rev.clash-verge-rev')", "Clash Verge"]
-t = ["hs:hs.application.launchOrFocusByBundleID('moe.Throne.macosx')", "Throne"]
-
-# <<< flashspace-apps end <<<
