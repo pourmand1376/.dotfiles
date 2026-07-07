@@ -861,12 +861,15 @@
                         ]
                     },
                     {
-                        "description": "Use option+1/2 to switch language strictly.",
+                        "description": "Use option+1/2/3 to switch language.",
                         "manipulators": [
                             {
                                 "from": {
                                     "key_code": "1",
-                                    "modifiers": { "mandatory": ["option"] }
+                                    "modifiers": {
+                                        "mandatory": ["option"],
+                                        "optional": ["any"]
+                                    }
                                 },
                                 "to": [{ "select_input_source": { "language": "en" } }],
                                 "type": "basic"
@@ -874,7 +877,10 @@
                             {
                                 "from": {
                                     "key_code": "2",
-                                    "modifiers": { "mandatory": ["option"] }
+                                    "modifiers": {
+                                        "mandatory": ["option"],
+                                        "optional": ["any"]
+                                    }
                                 },
                                 "to": [{ "select_input_source": { "language": "fa" } }],
                                 "type": "basic"
@@ -1406,16 +1412,16 @@
                     "ignore_vendor_events": true,
                     "simple_modifications": [
                         {
-                            "from": { "pointing_button": "button3" },
-                            "to": [{ "key_code": "f18" }]
-                        },
-                        {
                             "from": { "pointing_button": "button4" },
                             "to": [{ "mouse_key": { "vertical_wheel": -32 } }]
                         },
                         {
                             "from": { "pointing_button": "button5" },
                             "to": [{ "mouse_key": { "vertical_wheel": 32 } }]
+                        },
+                        {
+                            "from": { "pointing_button": "button3" },
+                            "to": [{ "key_code": "f18" }]
                         }
                     ]
                 },
