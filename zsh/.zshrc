@@ -17,6 +17,12 @@ source <(fzf --zsh)
 
 eval "$(zoxide init zsh --cmd cd)"
 
+# https://github.com/starship/starship/issues/3418#issuecomment-1711630970
+if [[ "${widgets[zle-keymap-select]#user:}" == "starship_zle-keymap-select" || \
+      "${widgets[zle-keymap-select]#user:}" == "starship_zle-keymap-select-wrapped" ]]; then
+    zle -N zle-keymap-select "";
+fi
+
 eval "$(starship init zsh)"
 
 
@@ -38,3 +44,8 @@ autoload -Uz _zinit
 # Two regular plugins loaded without investigating.
 zinit light zsh-users/zsh-autosuggestions
 zinit light zdharma-continuum/fast-syntax-highlighting
+
+zinit ice depth=1
+zinit light jeffreytse/zsh-vi-mode
+
+
