@@ -18,6 +18,13 @@
 [pull]
     rebase = false
 
+# git mergetool
+[merge]
+    tool = nvimdiff
+
+[mergetool]
+    prompt = false
+
 [interactive]
     diffFilter = delta --color-only
 
