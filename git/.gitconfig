@@ -1,40 +1,45 @@
 [user]
-	name = Amir Pourmand
-	email = pourmand1376@gmail.com
-[url "git@github.com:"]
-	insteadOf = https://github.com/
-[core]
-	excludesfile = /Users/amirpourmand/.gitignore_global
-	pager = delta
-[push]
-	autoSetupRemote = true
-[diff]
-    tool = vscode
+    name = Amir Pourmand
+    email = pourmand1376@gmail.com
 
-[difftool "vscode"]
-    cmd = code --wait --diff $LOCAL $REMOTE
+[url "git@github.com:"]
+    insteadOf = https://github.com/
+
+[core]
+    excludesfile = ~/.gitignore_global
+    pager = delta
+
+[init]
+    defaultBranch = main
+
+[push]
+    autoSetupRemote = true
+
 [pull]
-	rebase = false
+    rebase = false
 
 [interactive]
-	diffFilter = delta --color-only
+    diffFilter = delta --color-only
+
 [add.interactive]
-    useBuiltin = false # required for git 2.37.0
-
-[delta]
-	navigate = true
-    light = false      # set to true if you're in a terminal w/ a light background color (e.g. the default macOS terminal)
-	side-by-side = true
-	line-numbers = true
-
-[merge]
-	conflictstyle = zdiff3
-    tool = kdiff3
+    useBuiltin = false
 
 [diff]
     colorMoved = default
 
-[pull]
-	rebase = false
+[delta]
+    navigate = true
+    side-by-side = true
+    line-numbers = true
+
+[rerere]
+    enabled = true
+
 [alias]
-	lg = log --graph --oneline --all --decorate
+    lg = log --graph --oneline --all --decorate
+    last = log -1 HEAD
+    undo = reset --soft HEAD^
+    amend = commit --amend --no-edit
+    unstage = restore --staged
+    branches = branch -vv
+    recent = log --oneline --decorate -20
