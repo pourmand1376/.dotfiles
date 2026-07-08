@@ -37,6 +37,11 @@ alias vim='nvim'
 export XDG_CONFIG_HOME="$HOME/.config"
 export EDITOR=nvim
 
+#### --- PATH ---------------------
+[ -f "$HOME/.cargo/env" ] && . "$HOME/.cargo/env"
+
+#### end of path variables
+
 # yazi for bash and zsh
 function y() {
   local tmp="$(mktemp -t "yazi-cwd.XXXXXX")" cwd

@@ -1,4 +1,4 @@
-# this is if you have sudo permission 
+# this is if you have sudo permission
 
 sudo timedatectl set-timezone Asia/Tehran
 timedatectl
@@ -12,4 +12,3 @@ cd
 git clone https://github.com/gpakosz/.tmux.git
 ln -s -f .tmux/.tmux.conf
 cp .tmux/.tmux.conf.local .
-
