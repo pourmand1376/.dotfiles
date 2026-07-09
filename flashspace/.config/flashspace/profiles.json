@@ -135,6 +135,11 @@
               "bundleIdentifier" : "com.obsproject.obs-studio",
               "iconPath" : "/Applications/OBS.app/Contents/Resources/AppIcon.icns",
               "name" : "OBS Studio"
+            },
+            {
+              "bundleIdentifier" : "com.railway.rtp",
+              "iconPath" : "/Applications/Railway.app/Contents/Resources/icon.icns",
+              "name" : "Railway"
             }
           ],
           "display" : "S24C36x",
