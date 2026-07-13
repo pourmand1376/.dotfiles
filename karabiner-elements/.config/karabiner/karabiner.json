@@ -5,6 +5,24 @@
                 "parameters": { "basic.to_if_held_down_threshold_milliseconds": 175 },
                 "rules": [
                     {
+                        "description": "Map Hyper + Space to Option + Space",
+                        "manipulators": [
+                            {
+                                "from": {
+                                    "key_code": "spacebar",
+                                    "modifiers": { "mandatory": ["left_command", "left_control", "left_option"] }
+                                },
+                                "to": [
+                                    {
+                                        "key_code": "spacebar",
+                                        "modifiers": ["left_option"]
+                                    }
+                                ],
+                                "type": "basic"
+                            }
+                        ]
+                    },
+                    {
                         "description": "Home row mods - opt, ctrl, cmd, shift",
                         "manipulators": [
                             {
