@@ -44,6 +44,7 @@ autoload -Uz _zinit
 # Two regular plugins loaded without investigating.
 zinit light zsh-users/zsh-autosuggestions
 zinit light zdharma-continuum/fast-syntax-highlighting
+zinit light Aloxaf/fzf-tab
 
 zinit ice depth=1
 zinit light jeffreytse/zsh-vi-mode
