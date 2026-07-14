@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+# run this before script to make wifi visible: sudo ipconfig setverbose 1
+
 # Color formatting (ANSI-C Quoting style)
 RED=$'\033[0;31m'
 GREEN=$'\033[0;32m'
