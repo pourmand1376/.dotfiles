@@ -50,3 +50,6 @@ function y() {
   [ "$cwd" != "$PWD" ] && [ -d "$cwd" ] && builtin cd -- "$cwd"
   command rm -f -- "$tmp"
 }
+
+alias internet_check="~/gitfolder/.dotfiles/scripts/internet_check.sh -p"
+alias ic="internet_check"
