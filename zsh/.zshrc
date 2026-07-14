@@ -12,6 +12,19 @@ if [ -f ~/.localrc ]; then
   source ~/.localrc
 fi
 
+# ==============================================================================
+# History Configurations
+# ==============================================================================
+HISTFILE=$HOME/.zsh_history
+HISTSIZE=50000
+SAVEHIST=50000
+
+# Share history across tabs and clean up duplicates
+setopt append_history
+setopt share_history
+setopt hist_ignore_all_dups
+setopt hist_ignore_space
+
 # fuzzy finder init
 source <(fzf --zsh)
 
@@ -40,6 +53,16 @@ autoload -Uz _zinit
 (( ${+_comps} )) && _comps[zinit]=_zinit
 ### End of Zinit's installer chunk
 #
+
+# ==============================================================================
+# Completion System Initialization (Required for Tab & fzf-tab to work!)
+# ==============================================================================
+autoload -Uz compinit && compinit
+zstyle ':completion:*' menu select # Fallback visual menu if fzf-tab isn't loaded
+
+# add very good fzf search when hitting tab after cd  
+zstyle ':fzf-tab:complete:cd:*' fzf-preview 'ls -1 --color=always $realpath'
+zstyle ':fzf-tab:complete:__zoxide_z:*' fzf-preview 'ls -1 --color=always $realpath'
 
 # Two regular plugins loaded without investigating.
 zinit light zsh-users/zsh-autosuggestions
