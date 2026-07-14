@@ -92,9 +92,28 @@ SYSTEM_DNS=$(scutil --dns | awk '/nameserver\[0\]/ {print $3; exit}')
 # FIRE ALL BACKGROUND PROCESSES & RECORD INDIVIDUAL PIDs
 # ----------------------------------------------------
 
-# Group 1: Infra
-(if [ -z "$ACTIVE_IF" ]; then echo "1|No active network interface"; else echo "0|Active on $ACTIVE_IF"; fi) >"$TMP_DIR/j_if" &
+# Group 1: Infra (Using your exact Wi-Fi extraction sequence)
+(
+  if [ -z "$ACTIVE_IF" ]; then
+    echo "1|No active network interface"
+  else
+    # Attempt 1: Get SSID using ipconfig (requires sudo ipconfig setverbose 1 once)
+    WIFI_SSID=$(ipconfig getsummary "$ACTIVE_IF" 2>/dev/null | awk -F': ' '/SSID/ {print $2}' | xargs)
+
+    # Attempt 2 Fallback: Private Apple80211 framework
+    if [ -z "$WIFI_SSID" ]; then
+      WIFI_SSID=$(/System/Library/PrivateFrameworks/Apple80211.framework/Versions/Current/Resources/airport -I 2>/dev/null | awk -F': ' '/ SSID/ {print $2}' | xargs)
+    fi
+
+    if [ -n "$WIFI_SSID" ]; then
+      echo "0|Active on $ACTIVE_IF (Wi-Fi SSID: $WIFI_SSID)"
+    else
+      echo "0|Active on $ACTIVE_IF (Wired/Ethernet Connection)"
+    fi
+  fi
+) >"$TMP_DIR/j_if" &
 PID_IF=$!
+
 (if [ -z "$GATEWAY" ]; then echo "1|No gateway IP found"; else
   ping -c 1 -t 2 "$GATEWAY" >/dev/null 2>&1
   echo "$?|Reaching router"
@@ -124,7 +143,7 @@ PID_VARZ=$!
 # Flags for Proxy vs Direct
 [ "$SELECTED_MODE" = "PROXY" ] && FLAG="true" || FLAG="false"
 
-# Group 3: Global Web Standpoints (Updated: Replaced Medium with Apple and Google)
+# Group 3: Global Web Standpoints
 check_site_worker "https://www.wikipedia.org" "w_wikipedia" "$FLAG" &
 PID_WIKI=$!
 check_site_worker "https://substack.com" "w_substack" "$FLAG" &
