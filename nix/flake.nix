@@ -21,6 +21,7 @@
           tmux
           fzf 
           zoxide
+          eza
           starship
           neovim
           yazi
