@@ -8,7 +8,9 @@ mkdir -p "$HOME/.local/share"
 
 ln -sfn "$CONFIG_DIR/nix.conf" "$HOME/.config/nix/nix.conf"
 
-nix build "$CONFIG_DIR#default" \
+nix \
+  --extra-experimental-features "nix-command flakes" \
+  build "$CONFIG_DIR#default" \
   --out-link "$HOME/.local/share/nix-tools"
 
 echo "Nix configuration and packages applied."
