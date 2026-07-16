@@ -27,6 +27,8 @@
           yazi
           lazygit
           delta
+          stow
+          fastfetch
       ];
     };
   };
