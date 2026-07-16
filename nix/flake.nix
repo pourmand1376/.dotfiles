@@ -5,21 +5,26 @@
 
   outputs = { nixpkgs, ... }:
     let
-      system = "x86_64-linux";
-      pkgs = nixpkgs.legacyPackages.${system};
-    in
-    {
-      packages.${system}.default = pkgs.buildEnv {
-        name = "my-packages";
+    system = "x86_64-linux";
+  pkgs = nixpkgs.legacyPackages.${system};
+  in
+  {
+    packages.${system}.default = pkgs.buildEnv {
+      name = "my-packages";
 
-        paths = with pkgs; [
-          git
+      paths = with pkgs; [
+        git
           ripgrep
           fd
           jq
           bat
           tmux
-        ];
-      };
+          fzf 
+          zoxide
+          starship
+          neovim
+          yazi
+      ];
     };
+  };
 }
