@@ -25,6 +25,8 @@
           starship
           neovim
           yazi
+          lazygit
+          delta
       ];
     };
   };
