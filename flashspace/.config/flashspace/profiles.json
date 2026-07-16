@@ -54,6 +54,11 @@
               "bundleIdentifier" : "com.apple.FaceTime",
               "iconPath" : "/System/Applications/FaceTime.app/Contents/Resources/AppIcon.icns",
               "name" : "FaceTime"
+            },
+            {
+              "bundleIdentifier" : "com.hnc.Discord",
+              "iconPath" : "/Applications/Discord.app/Contents/Resources/electron.icns",
+              "name" : "Discord"
             }
           ],
           "display" : "S24C36x",
@@ -92,11 +97,6 @@
               "bundleIdentifier" : "com.google.Chrome",
               "iconPath" : "/Applications/Google Chrome.app/Contents/Resources/app.icns",
               "name" : "Google Chrome"
-            },
-            {
-              "bundleIdentifier" : "com.hnc.Discord",
-              "iconPath" : "/Applications/Discord.app/Contents/Resources/electron.icns",
-              "name" : "Discord"
             }
           ],
           "display" : "S24C36x",

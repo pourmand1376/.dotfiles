@@ -8,6 +8,7 @@ tap "y3owk1n/tap"
 # Clone of cat(1) with syntax highlighting and Git integration
 brew "bat"
 # Resource monitor. C++ version and continuation of bashtop and bpytop
+brew "htop"
 brew "btop"
 # Tool for provisioning self-hosted development environments with Terraform
 brew "coder"
@@ -19,6 +20,8 @@ brew "exiftool"
 brew "eza"
 # Simple, fast and user-friendly alternative to find
 brew "fd"
+# A maintained, feature-rich and performance oriented, neofetch like system information tool.
+brew "fastfetch"
 # Image format providing lossless and lossy compression for web images
 brew "webp"
 # Play, record, convert, and stream select audio and video codecs

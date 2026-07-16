@@ -54,3 +54,5 @@ function y() {
 alias internet_check="~/gitfolder/.dotfiles/scripts/internet_check.sh -p"
 alias ic="internet_check"
 alias nq="networkQuality -v"
+
+alias info="fastfetch -c all"
