@@ -29,6 +29,7 @@
           delta
           stow
           fastfetch
+          btop
       ];
     };
   };
