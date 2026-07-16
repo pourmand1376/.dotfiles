@@ -1,3 +1,6 @@
+# add nix path to path if it exists
+[ -d "$HOME/.local/share/nix-tools/bin" ] && export PATH="$HOME/.local/share/nix-tools/bin:$PATH"
+
 # Modern CLI replacements
 # ------------------------------------------------------------
 
