@@ -14,3 +14,7 @@ nix \
   --out-link "$HOME/.local/share/nix-tools"
 
 echo "Nix configuration and packages applied."
+
+export PATH="$HOME/.local/share/nix-tools/bin:$PATH"
+cd ~/.dotfiles
+stow profile
