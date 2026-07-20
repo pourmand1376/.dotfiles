@@ -20,3 +20,6 @@ stow zsh
 stow tmux
 stow nvim
 stow lazygit
+
+git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
+./.tmux/plugins/tpm/bin/install_plugins

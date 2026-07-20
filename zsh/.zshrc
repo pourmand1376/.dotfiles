@@ -26,6 +26,9 @@ setopt hist_ignore_all_dups
 setopt hist_ignore_space
 
 # fuzzy finder init
+# NOTE: fzf keybindings (Ctrl+R, Ctrl+T, Alt+C) are (re)loaded via the
+# zvm_after_init hook at the bottom of this file, because zsh-vi-mode resets
+# keybindings on init and would otherwise clobber them.
 source <(fzf --zsh)
 
 eval "$(zoxide init zsh --cmd cd)"
@@ -71,5 +74,11 @@ zinit light Aloxaf/fzf-tab
 
 zinit ice depth=1
 zinit light jeffreytse/zsh-vi-mode
+
+# zsh-vi-mode resets keybindings during init, clobbering fzf's Ctrl+R.
+# Re-source fzf's keybindings after vi-mode finishes initializing.
+function zvm_after_init() {
+  source <(fzf --zsh)
+}
 
 
