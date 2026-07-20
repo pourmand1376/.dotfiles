@@ -16,6 +16,10 @@ config.window_decorations = "RESIZE"
 
 config.hide_tab_bar_if_only_one_tab = true
 
+-- transparent background
+config.window_background_opacity = 0.80
+config.macos_window_background_blur = 10
+
 -- enable rtl support
 config.bidi_enabled = true
 config.bidi_direction = "AutoLeftToRight"
