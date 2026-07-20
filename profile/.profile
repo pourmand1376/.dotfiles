@@ -59,3 +59,5 @@ alias ic="internet_check"
 alias nq="networkQuality -v"
 
 alias info="fastfetch -c all"
+
+alias remote="ssh -t main.portal-dev.amirpourmand.coder 'tmux new-session -A -s remote'"
