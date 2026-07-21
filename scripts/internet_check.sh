@@ -7,6 +7,11 @@
 TIMEOUT_SECONDS=2
 TIMEOUT_MS=2000
 
+# Hard ceiling per probe, enforced externally because macOS `ping -W` and
+# curl's DNS phase do not reliably honor their own timeout flags. Kept a
+# touch above TIMEOUT_SECONDS so a tool's own timeout fires first normally.
+HARDCAP_SECONDS=3
+
 # Colors
 RED=$'\033[0;31m'
 GREEN=$'\033[0;32m'
@@ -35,6 +40,18 @@ print_status() {
 now_ms() {
   perl -MTime::HiRes=time -e 'printf "%.0f\n", time() * 1000'
 }
+
+# Enforce a hard wall-clock limit on a command regardless of whether the
+# command honors its own timeout flags. The SIGALRM timer set by alarm()
+# survives exec, so it terminates the exec'd command if it overruns.
+hardcap() {
+  local seconds="$1"
+  shift
+  perl -e 'alarm shift; exec @ARGV or exit 127' "$seconds" "$@"
+}
+
+# Wall-clock start for the total-time report at the end.
+SCRIPT_START_MS=$(now_ms)
 
 get_system_proxy() {
   local proxy_info
@@ -110,7 +127,7 @@ check_site_worker() {
     curl_args+=(--noproxy "*")
   fi
 
-  result=$(curl "${curl_args[@]}" "$url" 2>/dev/null)
+  result=$(hardcap "$HARDCAP_SECONDS" curl "${curl_args[@]}" "$url" 2>/dev/null)
   curl_exit=$?
 
   http_code=${result%%|*}
@@ -125,7 +142,8 @@ check_site_worker() {
       'BEGIN { printf "%.0f", seconds * 1000 }'
   )
 
-  if [ "$curl_exit" -eq 28 ]; then
+  if [ "$curl_exit" -eq 28 ] || [ "$curl_exit" -eq 142 ]; then
+    # 28 = curl's own --max-time; 142 = 128+SIGALRM, our hardcap fired.
     printf '1|Timed out after %s ms\n' "$time_ms" \
       >"$TMP_DIR/$filename"
   elif [ "$curl_exit" -ne 0 ]; then
@@ -254,7 +272,7 @@ PID_IF=$!
   if [ -z "$GATEWAY" ]; then
     status=1
     message="No gateway IP found"
-  elif ping -c 1 -W "$TIMEOUT_MS" "$GATEWAY" >/dev/null 2>&1; then
+  elif hardcap "$HARDCAP_SECONDS" ping -c 1 -W "$TIMEOUT_MS" "$GATEWAY" >/dev/null 2>&1; then
     status=0
     message="Router reachable"
   else
@@ -275,7 +293,7 @@ PID_GW=$!
     message="No system DNS server found"
   else
     RESOLVED_IP=$(
-      dig \
+      hardcap "$HARDCAP_SECONDS" dig \
         +time="$TIMEOUT_SECONDS" \
         +tries=1 \
         +short \
@@ -301,7 +319,7 @@ PID_LDNS=$!
 (
   start_ms=$(now_ms)
 
-  if ping -c 1 -W "$TIMEOUT_MS" 1.1.1.1 >/dev/null 2>&1; then
+  if hardcap "$HARDCAP_SECONDS" ping -c 1 -W "$TIMEOUT_MS" 1.1.1.1 >/dev/null 2>&1; then
     status=0
     message="Global IP routing up"
   else
@@ -503,4 +521,10 @@ wait "$PID_FB"
 IFS="|" read -r status msg <"$TMP_DIR/w_facebook"
 print_status "Facebook" "$status" "$msg"
 
-printf "\n${YELLOW}===============================================${RESET}\n\n"
+printf "\n${YELLOW}===============================================${RESET}\n"
+
+TOTAL_MS=$(($(now_ms) - SCRIPT_START_MS))
+TOTAL_S=$(awk -v ms="$TOTAL_MS" 'BEGIN { printf "%.2f", ms / 1000 }')
+printf "   Total script time: ${CYAN}%s ms (%s s)${RESET}\n" \
+  "$TOTAL_MS" "$TOTAL_S"
+printf "${YELLOW}===============================================${RESET}\n\n"

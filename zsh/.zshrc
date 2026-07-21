@@ -63,9 +63,6 @@ autoload -Uz _zinit
 autoload -Uz compinit && compinit
 zstyle ':completion:*' menu select # Fallback visual menu if fzf-tab isn't loaded
 
-# add very good fzf search when hitting tab after cd  
-zstyle ':fzf-tab:complete:cd:*' fzf-preview 'ls -1 --color=always $realpath'
-zstyle ':fzf-tab:complete:__zoxide_z:*' fzf-preview 'ls -1 --color=always $realpath'
 
 # Two regular plugins loaded without investigating.
 zinit light zsh-users/zsh-autosuggestions
@@ -82,3 +79,6 @@ function zvm_after_init() {
 }
 
 
+# add very good fzf search when hitting tab after cd  
+zstyle ':fzf-tab:complete:cd:*' fzf-preview 'ls -1 --color=always $realpath'
+zstyle ':fzf-tab:complete:__zoxide_z:*' fzf-preview 'ls -1 --color=always $realpath'
