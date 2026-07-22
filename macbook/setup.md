@@ -27,6 +27,7 @@ First install chrome and set it as default browser. Then install Edge as second 
     - Tap to click
 - Dictionary
   - Don't Forget to Check some important Dictionaries in dictionary app
+- Wallpapers -> Shuffle Aerials
 
 My Raycast Shortcuts:
 - Hyper + G -> Search Snippets
