@@ -21,16 +21,16 @@ config.hide_tab_bar_if_only_one_tab = true
 config.use_fancy_tab_bar = false
 config.tab_bar_at_bottom = false
 config.colors = {
-  tab_bar = {
-    -- match the Catppuccin Mocha background so the bar blends in; the window
-    -- opacity below then makes it transparent along with the rest.
-    background = "#1e1e2e",
-  },
+	tab_bar = {
+		-- match the Catppuccin Mocha background so the bar blends in; the window
+		-- opacity below then makes it transparent along with the rest.
+		background = "#1e1e2e",
+	},
 }
 
 -- transparent background
-config.window_background_opacity = 0.80
-config.macos_window_background_blur = 10
+config.window_background_opacity = 0.75
+config.macos_window_background_blur = 0
 
 -- enable rtl support
 config.bidi_enabled = true
