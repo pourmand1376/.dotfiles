@@ -29,6 +29,7 @@ from pathlib import Path
 API_URL = "https://uiapi2.saapa.ir/api/ebills/PlannedBlackoutsReport"
 # Secrets are NOT hardcoded — they must come from the environment (see ~/.localrc).
 BILL_ID = os.environ.get("ELEC_BILL_ID", "")
+# this is your Authorization token. get it from website https://bargheman.com/profile/blackout/my-blackouts Network tab PlannedBlackoutsReport request header
 TOKEN = os.environ.get("ELEC_TOKEN", "")
 CALENDAR = os.environ.get("ELEC_CALENDAR", "Main Calendar")
 ALARM_MIN = int(os.environ.get("ELEC_ALARM_MIN", "30"))
@@ -36,7 +37,9 @@ DAYS_AHEAD = int(os.environ.get("ELEC_DAYS_AHEAD", "7"))
 REQUEST_TIMEOUT = 15
 RETRIES = 3
 
-STATE_DIR = Path(os.environ.get("ELEC_STATE_DIR", Path.home() / ".local/state/electricity"))
+STATE_DIR = Path(
+    os.environ.get("ELEC_STATE_DIR", Path.home() / ".local/state/electricity")
+)
 SEEN_FILE = STATE_DIR / "seen.json"
 LOG_FILE = STATE_DIR / "electricity.log"
 
@@ -160,13 +163,17 @@ def fetch_blackouts(from_date, to_date):
     }
     last_err = None
     for attempt in range(1, RETRIES + 1):
-        req = urllib.request.Request(API_URL, data=payload, headers=headers, method="POST")
+        req = urllib.request.Request(
+            API_URL, data=payload, headers=headers, method="POST"
+        )
         try:
             with urllib.request.urlopen(req, timeout=REQUEST_TIMEOUT) as resp:
                 body = resp.read().decode("utf-8")
             obj = json.loads(body)
             if obj.get("status") != 200:
-                raise ValueError(f"API status {obj.get('status')}: {obj.get('message')}")
+                raise ValueError(
+                    f"API status {obj.get('status')}: {obj.get('message')}"
+                )
             return obj.get("data") or []
         except (urllib.error.URLError, ValueError, TimeoutError) as exc:
             last_err = exc
@@ -275,16 +282,24 @@ end run
 
 def add_event(start_dt, end_dt, summary, description):
     args = [
-        "osascript", "-", CALENDAR, summary, description,
-        str(start_dt.year), str(start_dt.month), str(start_dt.day),
-        str(start_dt.hour), str(start_dt.minute),
-        str(end_dt.year), str(end_dt.month), str(end_dt.day),
-        str(end_dt.hour), str(end_dt.minute),
+        "osascript",
+        "-",
+        CALENDAR,
+        summary,
+        description,
+        str(start_dt.year),
+        str(start_dt.month),
+        str(start_dt.day),
+        str(start_dt.hour),
+        str(start_dt.minute),
+        str(end_dt.year),
+        str(end_dt.month),
+        str(end_dt.day),
+        str(end_dt.hour),
+        str(end_dt.minute),
         str(ALARM_MIN),
     ]
-    proc = subprocess.run(
-        args, input=ADD_EVENT_SCRIPT, capture_output=True, text=True
-    )
+    proc = subprocess.run(args, input=ADD_EVENT_SCRIPT, capture_output=True, text=True)
     if proc.returncode != 0:
         raise RuntimeError(proc.stderr.strip() or "osascript failed")
 
@@ -295,7 +310,9 @@ def add_event(start_dt, end_dt, summary, description):
 def main():
     dry_run = "--dry-run" in sys.argv or os.environ.get("ELEC_DRY_RUN") == "1"
 
-    missing = [n for n, v in (("ELEC_BILL_ID", BILL_ID), ("ELEC_TOKEN", TOKEN)) if not v]
+    missing = [
+        n for n, v in (("ELEC_BILL_ID", BILL_ID), ("ELEC_TOKEN", TOKEN)) if not v
+    ]
     if missing:
         raise SystemExit(
             f"Missing required env var(s): {', '.join(missing)}. "
