@@ -1,5 +1,6 @@
 # add nix path to path if it exists
 [ -d "$HOME/.local/share/nix-tools/bin" ] && export PATH="$HOME/.local/share/nix-tools/bin:$PATH"
+[ -d "$HOME/.local/bin" ] && export PATH="$HOME/.local/bin:$PATH"
 
 # Modern CLI replacements
 # ------------------------------------------------------------
@@ -60,4 +61,4 @@ alias nq="networkQuality -v"
 
 alias info="fastfetch -c all"
 
-alias remote="ssh -t main.portal-dev.amirpourmand.coder 'tmux new-session -A -s remote'"
+alias remote="ssh -t main.insight-dev.amirpourmand.coder 'tmux new-session -A -s remote'"

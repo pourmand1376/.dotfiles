@@ -7,9 +7,11 @@
 TIMEOUT_SECONDS=2
 TIMEOUT_MS=2000
 
-# Hard ceiling per probe, enforced externally because macOS `ping -W` and
-# curl's DNS phase do not reliably honor their own timeout flags. Kept a
-# touch above TIMEOUT_SECONDS so a tool's own timeout fires first normally.
+# Hard ceiling per probe, enforced externally because curl's DNS phase does
+# not reliably honor its own timeout flags. Kept a touch above
+# TIMEOUT_SECONDS so a tool's own timeout fires first normally.
+# NOTE: macOS `ping -W` (per-reply wait) is ignored for a silent host, so we
+# use `ping -t <seconds>` (total run time) which macOS ping does honor.
 HARDCAP_SECONDS=3
 
 # Colors
@@ -161,6 +163,39 @@ check_site_worker() {
   fi
 }
 
+# Short-circuit gate. A probe is only worth running once we know the
+# infrastructure it depends on is up. Direct-route probes resolve through the
+# local system resolver; when that resolver is unreachable, macOS serializes
+# the lookups and ~15 "parallel" probes collapse into ~15 sequential 2s waits.
+# Proxy-route probes (socks5h/CONNECT) resolve at the proxy, so they only need
+# the internet to be up. Skipped probes report instantly instead of hanging.
+INTERNET_OK=1
+DNS_OK=1
+
+dispatch_site() {
+  local url="$1"
+  local filename="$2"
+  local use_proxy="$3"
+
+  # Does this probe rely on the local system resolver?
+  local direct="true"
+  if [ "$use_proxy" = "true" ] && [ -n "$SYSTEM_PROXY" ]; then
+    direct="false"
+  fi
+
+  if [ "$INTERNET_OK" != "1" ]; then
+    printf '1|Skipped — no internet\n' >"$TMP_DIR/$filename" &
+    return
+  fi
+
+  if [ "$direct" = "true" ] && [ "$DNS_OK" != "1" ]; then
+    printf '1|Skipped — local DNS down\n' >"$TMP_DIR/$filename" &
+    return
+  fi
+
+  check_site_worker "$url" "$filename" "$use_proxy" &
+}
+
 # Parse mode argument
 SELECTED_MODE=""
 
@@ -272,7 +307,7 @@ PID_IF=$!
   if [ -z "$GATEWAY" ]; then
     status=1
     message="No gateway IP found"
-  elif hardcap "$HARDCAP_SECONDS" ping -c 1 -W "$TIMEOUT_MS" "$GATEWAY" >/dev/null 2>&1; then
+  elif hardcap "$HARDCAP_SECONDS" ping -c 1 -t "$TIMEOUT_SECONDS" "$GATEWAY" >/dev/null 2>&1; then
     status=0
     message="Router reachable"
   else
@@ -319,7 +354,7 @@ PID_LDNS=$!
 (
   start_ms=$(now_ms)
 
-  if hardcap "$HARDCAP_SECONDS" ping -c 1 -W "$TIMEOUT_MS" 1.1.1.1 >/dev/null 2>&1; then
+  if hardcap "$HARDCAP_SECONDS" ping -c 1 -t "$TIMEOUT_SECONDS" 1.1.1.1 >/dev/null 2>&1; then
     status=0
     message="Global IP routing up"
   else
@@ -332,34 +367,6 @@ PID_LDNS=$!
 ) >"$TMP_DIR/j_rawip" &
 PID_RAWIP=$!
 
-# -------------------------------------------------------------------
-# Group 2: Domestic websites — always direct
-# -------------------------------------------------------------------
-
-check_site_worker \
-  "https://digikala.com" \
-  "w_digikala" \
-  "false" &
-PID_DIGI=$!
-
-check_site_worker \
-  "https://www.iranketab.ir" \
-  "w_iranketab" \
-  "false" &
-PID_IRAN=$!
-
-check_site_worker \
-  "https://soft98.ir" \
-  "w_soft98" \
-  "false" &
-PID_SOFT=$!
-
-check_site_worker \
-  "https://www.varzesh3.com" \
-  "w_varzesh3" \
-  "false" &
-PID_VARZ=$!
-
 # Global and filtered websites use the selected mode.
 if [ "$SELECTED_MODE" = "PROXY" ]; then
   FLAG="true"
@@ -368,75 +375,8 @@ else
 fi
 
 # -------------------------------------------------------------------
-# Group 3: Global websites
-# -------------------------------------------------------------------
-
-check_site_worker \
-  "https://www.wikipedia.org" \
-  "w_wikipedia" \
-  "$FLAG" &
-PID_WIKI=$!
-
-check_site_worker \
-  "https://substack.com" \
-  "w_substack" \
-  "$FLAG" &
-PID_SUB=$!
-
-check_site_worker \
-  "https://www.apple.com" \
-  "w_apple" \
-  "$FLAG" &
-PID_APP=$!
-
-check_site_worker \
-  "https://www.google.com" \
-  "w_google" \
-  "$FLAG" &
-PID_GOOG=$!
-
-check_site_worker \
-  "https://motamem.org" \
-  "w_motamem" \
-  "$FLAG" &
-PID_MOT=$!
-
-# -------------------------------------------------------------------
-# Group 4: Filtered platforms
-# -------------------------------------------------------------------
-
-check_site_worker \
-  "https://www.youtube.com" \
-  "w_youtube" \
-  "$FLAG" &
-PID_YT=$!
-
-check_site_worker \
-  "https://t.me" \
-  "w_telegram" \
-  "$FLAG" &
-PID_TG=$!
-
-check_site_worker \
-  "https://www.instagram.com" \
-  "w_instagram" \
-  "$FLAG" &
-PID_IG=$!
-
-check_site_worker \
-  "https://x.com" \
-  "w_twitter" \
-  "$FLAG" &
-PID_TW=$!
-
-check_site_worker \
-  "https://www.facebook.com" \
-  "w_facebook" \
-  "$FLAG" &
-PID_FB=$!
-
-# -------------------------------------------------------------------
-# Stream results in display order
+# Stream infrastructure results, then decide whether site probes are
+# worth running (short-circuit) before dispatching them.
 # -------------------------------------------------------------------
 
 printf "${YELLOW}[+] Infrastructure Standpoints:${RESET}\n"
@@ -452,10 +392,55 @@ print_status "Ping Default Gateway ($GATEWAY)" "$status" "$msg"
 wait "$PID_LDNS"
 IFS="|" read -r status msg <"$TMP_DIR/j_ldns"
 print_status "Local DNS Query ($SYSTEM_DNS)" "$status" "$msg"
+[ "$status" -eq 0 ] && DNS_OK=1 || DNS_OK=0
 
 wait "$PID_RAWIP"
 IFS="|" read -r status msg <"$TMP_DIR/j_rawip"
 print_status "Ping Raw Global IP (1.1.1.1)" "$status" "$msg"
+[ "$status" -eq 0 ] && INTERNET_OK=1 || INTERNET_OK=0
+
+# -------------------------------------------------------------------
+# Group 2: Domestic websites — always direct
+# -------------------------------------------------------------------
+
+dispatch_site "https://digikala.com" "w_digikala" "false"
+PID_DIGI=$!
+dispatch_site "https://www.iranketab.ir" "w_iranketab" "false"
+PID_IRAN=$!
+dispatch_site "https://soft98.ir" "w_soft98" "false"
+PID_SOFT=$!
+dispatch_site "https://www.varzesh3.com" "w_varzesh3" "false"
+PID_VARZ=$!
+
+# -------------------------------------------------------------------
+# Group 3: Global websites
+# -------------------------------------------------------------------
+
+dispatch_site "https://www.wikipedia.org" "w_wikipedia" "$FLAG"
+PID_WIKI=$!
+dispatch_site "https://substack.com" "w_substack" "$FLAG"
+PID_SUB=$!
+dispatch_site "https://www.apple.com" "w_apple" "$FLAG"
+PID_APP=$!
+dispatch_site "https://www.google.com" "w_google" "$FLAG"
+PID_GOOG=$!
+dispatch_site "https://motamem.org" "w_motamem" "$FLAG"
+PID_MOT=$!
+
+# -------------------------------------------------------------------
+# Group 4: Filtered platforms
+# -------------------------------------------------------------------
+
+dispatch_site "https://www.youtube.com" "w_youtube" "$FLAG"
+PID_YT=$!
+dispatch_site "https://t.me" "w_telegram" "$FLAG"
+PID_TG=$!
+dispatch_site "https://www.instagram.com" "w_instagram" "$FLAG"
+PID_IG=$!
+dispatch_site "https://x.com" "w_twitter" "$FLAG"
+PID_TW=$!
+dispatch_site "https://www.facebook.com" "w_facebook" "$FLAG"
+PID_FB=$!
 
 printf "\n${CYAN}[*] Domestic Websites (DIRECT Route):${RESET}\n"
 
