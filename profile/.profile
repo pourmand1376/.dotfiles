@@ -6,7 +6,10 @@
 # ------------------------------------------------------------
 
 alias lg="lazygit"
-
+alias gg="git-graph"
+alias graph="serie"
+alias serie="serie --protocol iterm"
+#
 # eza: better ls
 alias ls='eza --group-directories-first --icons'
 alias ll='eza -lh --git --group-directories-first --icons'
