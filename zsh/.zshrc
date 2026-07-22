@@ -82,3 +82,4 @@ function zvm_after_init() {
 # add very good fzf search when hitting tab after cd  
 zstyle ':fzf-tab:complete:cd:*' fzf-preview 'ls -1 --color=always $realpath'
 zstyle ':fzf-tab:complete:__zoxide_z:*' fzf-preview 'ls -1 --color=always $realpath'
+
