@@ -44,6 +44,9 @@ AIRPORT = (
     "/Versions/Current/Resources/airport"
 )
 
+# Hosts shown explicitly in the DNS Resolution section.
+DNS_HOSTS = ["digikala.com", "motamem.org", "www.google.com", "soft98.ir"]
+
 
 def run(cmd, timeout=HARDCAP):
     """Run a command with a hard wall-clock cap.
@@ -162,6 +165,13 @@ def resolve(host):
     return None
 
 
+def resolve_timed(host):
+    """Resolve a host and return (ip_or_None, elapsed_ms)."""
+    start = time.monotonic()
+    ip = resolve(host)
+    return ip, int((time.monotonic() - start) * 1000)
+
+
 # --- Site probes ---------------------------------------------------------
 
 @dataclass
@@ -238,21 +248,6 @@ def check_gateway(gw):
     ok = check_ping(gw)
     msg = "Router reachable" if ok else "Router unreachable or timed out"
     return f"Ping Default Gateway ({gw})", ok, msg
-
-
-def check_local_dns(servers):
-    if not servers:
-        return "Local DNS Query", False, "No system DNS server found"
-    server = servers[0]
-    _, out = run(
-        ["dig", f"+time={TIMEOUT}", "+tries=1", "+short",
-         f"@{server}", "digikala.com"]
-    )
-    ip = next((l.strip() for l in out.splitlines() if is_ip(l.strip())), None)
-    label = f"Local DNS Query ({server})"
-    if ip:
-        return label, True, f"Resolved digikala.com to {ip}"
-    return label, False, "DNS lookup failed or timed out"
 
 
 def check_raw_ip():
@@ -336,26 +331,36 @@ def main():
         # Infrastructure, in parallel; printed in a fixed order.
         f_if = ex.submit(timed, check_interface, iface, ip)
         f_gw = ex.submit(timed, check_gateway, gw)
-        f_dns = ex.submit(timed, check_local_dns, servers)
         f_raw = ex.submit(timed, check_raw_ip)
 
         print(f"{YELLOW}[+] Infrastructure Standpoints:{RESET}")
-        for f in (f_if, f_gw, f_dns, f_raw):
+        for f in (f_if, f_gw, f_raw):
             print_status(*f.result())
         internet_ok = f_raw.result()[1]
 
-        # Pre-resolve every direct probe's host (bounded, bypasses the wedge).
+        # --- Part 2: DNS resolution -------------------------------------
+        # Resolve the reported hosts plus every direct probe host (so curl
+        # can be handed an IP and never call getaddrinfo). Bounded via dig,
+        # which bypasses the mDNSResponder wedge.
         direct_hosts = {
             urlparse(p.url).hostname
             for p in all_probes if not (p.use_proxy and proxy)
         }
         resolved = dict(zip(
-            direct_hosts,
-            ex.map(resolve, direct_hosts),
+            direct_hosts | set(DNS_HOSTS),
+            ex.map(resolve_timed, direct_hosts | set(DNS_HOSTS)),
         ))
         for p in all_probes:
             if not (p.use_proxy and proxy):
-                p.ip = resolved.get(urlparse(p.url).hostname)
+                p.ip = resolved.get(urlparse(p.url).hostname, (None, 0))[0]
+
+        print(f"\n{YELLOW}[+] DNS Resolution:{RESET}")
+        for host in DNS_HOSTS:
+            host_ip, ms = resolved.get(host, (None, 0))
+            if host_ip:
+                print_status(host, True, f"Resolved to {host_ip} — {ms} ms")
+            else:
+                print_status(host, False, f"Resolution failed or timed out — {ms} ms")
 
         # Fire all site probes at once; collect by label.
         futs = {
