@@ -62,6 +62,18 @@ do
 	end
 end
 
+-- Sync planned electricity blackouts into Calendar every 2 hours.
+-- Runs inside Hammerspoon (a GUI-session app), so the Calendar Automation
+-- permission actually works — which is exactly what cron couldn't do.
+do
+	local script = os.getenv("HOME") .. "/gitfolder/.dotfiles/scripts/check_electricity.sh"
+	local function checkElectricity()
+		hs.task.new("/bin/bash", nil, { script }):start()
+	end
+	hs.timer.doEvery(2 * 60 * 60, checkElectricity)  -- every 2h
+	hs.timer.doAfter(30, checkElectricity)           -- and shortly after load
+end
+
 spoon.Hammerflow.loadFirstValidTomlFile({
 	"home.toml",
 	"work.toml",
