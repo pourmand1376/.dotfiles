@@ -1,7 +1,7 @@
 # https://www.youtube.com/watch?v=GK7zLYAXdDs
 
-brew install --cask iterm2
-
+# brew install --cask iterm2
+brew install --cask wezterm
 ## brew installs
 brew install ffmpeg
 brew install iina # video player # utitlies -> Set as default
@@ -222,3 +222,7 @@ git clone https://github.com/LazyVim/starter ~/.config/nvim
 rm -rf ~/.config/nvim/.git
 
 # end of install lazyvim
+#
+#
+# also you need to have BetterDisplay for external monitors to show better.
+# and maybe superwhisper

@@ -10,6 +10,8 @@ alias gg="git-graph"
 alias graph="serie"
 alias serie="serie --protocol iterm"
 #
+#
+alias c="claude"
 # eza: better ls
 alias ls='eza --group-directories-first --icons'
 alias ll='eza -lh --git --group-directories-first --icons'
@@ -58,7 +60,7 @@ function y() {
   command rm -f -- "$tmp"
 }
 
-alias internet_check="~/gitfolder/.dotfiles/scripts/internet_check.sh -p"
+alias internet_check="~/gitfolder/.dotfiles/scripts/internet_check.py -p"
 alias ic="internet_check"
 alias nq="networkQuality -v"
 
