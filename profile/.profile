@@ -61,7 +61,7 @@ function y() {
 }
 
 alias internet_check="~/gitfolder/.dotfiles/scripts/internet_check.py -p"
-alias ic="internet_check"
+alias ic="netchecker"
 alias nq="networkQuality -v"
 
 alias info="fastfetch -c all"
