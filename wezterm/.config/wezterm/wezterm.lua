@@ -36,5 +36,8 @@ config.macos_window_background_blur = 0
 config.bidi_enabled = true
 config.bidi_direction = "AutoLeftToRight"
 
+config.front_end = "Software"
+-- this is to resolve the problem of hanging after some time
+
 -- Finally, return the configuration to wezterm:
 return config
