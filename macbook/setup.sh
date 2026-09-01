@@ -82,7 +82,14 @@ brew install lazygit # better than fork
 
 brew install bruno # alternative to postman, insomnia, https://httpie.io/app
 
-brew install orbstack ## alternative to docker desktop
+# orbstack asks for internet access which I don't like
+# brew install orbstack ## alternative to docker desktop
+brew install container # apple itself releases this
+# then you just have to use `container system start`
+# then install this to have docker command instead of container
+brew install appautomaton/tap/docker-for-apple-container
+mkdir -p /usr/local/bin
+ln -sf /opt/homebrew/bin/container /usr/local/bin/container
 
 brew install uv ## install uv dependency manager
 

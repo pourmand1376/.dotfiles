@@ -70,8 +70,19 @@ do
 	local function checkElectricity()
 		hs.task.new("/bin/bash", nil, { script }):start()
 	end
-	hs.timer.doEvery(2 * 60 * 60, checkElectricity)  -- every 2h
+	hs.timer.doEvery(2 * 60 * 60, checkElectricity)  -- every 2h (only while awake)
 	hs.timer.doAfter(30, checkElectricity)           -- and shortly after load
+
+	-- doEvery does NOT fire during sleep and never replays missed fires, so
+	-- also sync whenever the machine wakes or the screen unlocks. Kept global
+	-- (no `local`) so it isn't garbage-collected and silently stops firing.
+	elecWakeWatcher = hs.caffeinate.watcher.new(function(ev)
+		if ev == hs.caffeinate.watcher.systemDidWake
+			or ev == hs.caffeinate.watcher.screensDidUnlock then
+			checkElectricity()
+		end
+	end)
+	elecWakeWatcher:start()
 end
 
 spoon.Hammerflow.loadFirstValidTomlFile({
