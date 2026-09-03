@@ -1,0 +1,68 @@
+{
+  "hooks": {
+    "SessionStart": [
+      {
+        "matcher": "*",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "bash '/Users/amirpourmand/.claude/hooks/herdr-agent-state.sh' session",
+            "timeout": 10
+          }
+        ]
+      }
+    ],
+    "Notification": [
+      {
+        "matcher": "",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "zellij pipe --name \"zellij-attention::waiting::$ZELLIJ_PANE_ID\""
+          }
+        ]
+      }
+    ],
+    "Stop": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "zellij pipe --name \"zellij-attention::completed::$ZELLIJ_PANE_ID\""
+          }
+        ]
+      }
+    ]
+  },
+  "enabledPlugins": {
+    "warp@claude-code-warp": true,
+    "rust-analyzer-lsp@claude-plugins-official": true,
+    "daily-tools@smk": true,
+    "learnable@smk": true,
+    "open-design-guide@smk": true,
+    "portal-skills@smk": true,
+    "readable@smk": true
+  },
+  "extraKnownMarketplaces": {
+    "claude-code-warp": {
+      "source": {
+        "source": "github",
+        "repo": "warpdotdev/claude-code-warp"
+      }
+    },
+    "smk": {
+      "source": {
+        "source": "github",
+        "repo": "smk-labs/claude-plugins"
+      }
+    }
+  },
+  "effortLevel": "high",
+  "skipWorkflowUsageWarning": true,
+  "theme": "light",
+  "editorMode": "vim",
+  "preferredNotifChannel": "ghostty",
+  "inputNeededNotifEnabled": true,
+  "agentPushNotifEnabled": true,
+  "model": "haiku"
+}
