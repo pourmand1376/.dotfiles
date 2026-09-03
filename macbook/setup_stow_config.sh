@@ -10,3 +10,4 @@ stow git -t $HOME
 stow karabiner-elements -t $HOME
 stow lazygit -t $HOME
 stow zellij -t $HOME
+stwo claude -t $HOME
