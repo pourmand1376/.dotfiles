@@ -140,6 +140,11 @@
               "bundleIdentifier" : "com.railway.rtp",
               "iconPath" : "/Applications/Railway.app/Contents/Resources/icon.icns",
               "name" : "Railway"
+            },
+            {
+              "bundleIdentifier" : "com.apple.iBooksX",
+              "iconPath" : "/System/Applications/Books.app/Contents/Resources/AppIcon.icns",
+              "name" : "Books"
             }
           ],
           "display" : "S24C36x",

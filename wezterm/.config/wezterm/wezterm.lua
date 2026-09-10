@@ -38,6 +38,15 @@ config.bidi_direction = "AutoLeftToRight"
 
 config.front_end = "Software"
 -- this is to resolve the problem of hanging after some time
-
+config.keys = {
+	-- Disable default Ctrl+Tab tab switching
+	-- Send Ctrl+Tab as kitty-encoded CSI sequence to Zellij
+	-- CSI 9;5u = Tab(9) with Ctrl modifier(5) in kitty keyboard protocol
+	{
+		key = "Tab",
+		mods = "CTRL",
+		action = wezterm.action.SendString("\x1b[9;5u"),
+	},
+}
 -- Finally, return the configuration to wezterm:
 return config
