@@ -3,6 +3,9 @@
 //
 
 keybinds clear-defaults=true {
+    normal {
+        bind "Ctrl Tab" { GoToNextTab; }
+    }
     locked {
         bind "Ctrl g" { SwitchToMode "normal"; }
     }
