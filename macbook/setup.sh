@@ -71,7 +71,9 @@ brew install unzip
 # https://github.com/ehsania/Persian-Glossaries-for-Apple-Dictionary
 # https://github.com/wayneclub/Apple-Dictionary
 
-brew install --cask transmission #download torrent files
+# brew install --cask transmission #download torrent files
+# no need for any of those since we have aria2
+brew install aria2 # I have note in obsidian for this. this is god of download
 
 # folx for regular downloads
 

@@ -281,7 +281,10 @@ plugins {
     session-manager location="zellij:session-manager"
     status-bar location="zellij:status-bar"
     strider location="zellij:strider"
-    tab-bar location="zellij:tab-bar"
+    // tab-bar location="zellij:tab-bar"
+    tab-bar location="https://github.com/ivoronin/zellij-tab-bar-indexed/releases/latest/download/tab-bar.wasm" {
+        show_tab_indices true
+    }
     welcome-screen location="zellij:session-manager" {
         welcome_screen true
     }
