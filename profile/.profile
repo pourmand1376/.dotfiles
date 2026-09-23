@@ -2,6 +2,16 @@
 [ -d "$HOME/.local/share/nix-tools/bin" ] && export PATH="$HOME/.local/share/nix-tools/bin:$PATH"
 [ -d "$HOME/.local/bin" ] && export PATH="$HOME/.local/bin:$PATH"
 
+# nix packages: nixapply = install flake.nix, nixup = update + clean old versions
+for _d in "$HOME/gitfolder/.dotfiles" "$HOME/.dotfiles"; do
+  if [ -x "$_d/nix/apply.sh" ]; then
+    alias nixapply="$_d/nix/apply.sh"
+    alias nixup="$_d/nix/apply.sh update && nix store gc"
+    break
+  fi
+done
+unset _d
+
 # Modern CLI replacements
 # ------------------------------------------------------------
 

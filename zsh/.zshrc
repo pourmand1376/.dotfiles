@@ -31,7 +31,6 @@ setopt hist_ignore_space
 # keybindings on init and would otherwise clobber them.
 source <(fzf --zsh)
 
-eval "$(zoxide init zsh --cmd cd)"
 
 # https://github.com/starship/starship/issues/3418#issuecomment-1711630970
 if [[ "${widgets[zle-keymap-select]#user:}" == "starship_zle-keymap-select" || \
@@ -78,6 +77,7 @@ function zvm_after_init() {
   source <(fzf --zsh)
 }
 
+eval "$(zoxide init zsh --cmd cd)"
 
 # add very good fzf search when hitting tab after cd  
 zstyle ':fzf-tab:complete:cd:*' fzf-preview 'ls -1 --color=always $realpath'
