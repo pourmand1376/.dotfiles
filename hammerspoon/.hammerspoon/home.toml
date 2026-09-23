@@ -29,15 +29,20 @@ t = [
 k = ["hs:hs.application.launchOrFocusByBundleID('com.apple.iCal')", "Calendar"]
 g = ["hs:hs.application.launchOrFocusByBundleID('md.obsidian')", "Obsidian"]
 d = ["hs:hs.application.launchOrFocusByBundleID('com.hnc.Discord')", "Discord"]
-e = ["hs:hs.application.launchOrFocusByBundleID('ru.keepcoder.Telegram')", "Telegram"] # t is TickTick
-i = ["hs:hs.eventtap.keyStroke({'ctrl','alt','cmd'}, 'i')", "play relaxing sound"]
+e = [
+  "hs:hs.application.launchOrFocusByBundleID('ru.keepcoder.Telegram')",
+  "Telegram",
+] # t is TickTick
+i = [
+  "hs:hs.eventtap.keyStroke({'ctrl','alt','cmd'}, 'i')",
+  "play relaxing sound",
+]
 u = ["hs:hs.eventtap.keyStroke({'ctrl','alt','cmd'}, 'u')", "ambient music app"]
 
 # ── [l] links ───────────────────────────────────────────────
 [l]
 label = "[links]"
 g = "https://github.com"
-l = "https://git.partnerz.io"
 c = "https://chatgpt.com"
 e = "http://gemini.google.com"
 
@@ -145,4 +150,3 @@ r = ["hs:hs.execute('/opt/homebrew/bin/neru recursive_grid')", "recursive grid"]
 label = "[hammerspoon]"
 c = "code: ~/.hammerspoon"
 r = "reload"
-
