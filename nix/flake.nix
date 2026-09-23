@@ -18,6 +18,7 @@
             name = "my-packages";
 
             paths = with pkgs; [
+              # shell & core
               git
               ripgrep
               fd
@@ -28,13 +29,61 @@
               zoxide
               eza
               starship
+              stow
+              tlrc # provides `tldr`
+              yank
+              wget
+              aria2
+              mosh
+              just
+
+              # editor & file managers
               neovim
+              tree-sitter
               yazi
+
+              # git
               lazygit
               delta
-              stow
-              fastfetch
+              gh
+              glab
+              git-graph
+              serie
+              onefetch
+              pre-commit
+
+              # system monitoring / disk
               btop
+              htop
+              fastfetch
+              dua
+
+              # languages & runtimes
+              go
+              nodejs # includes npm, npx, corepack
+              prettier
+              uv
+
+              # media, docs, images
+              ffmpeg
+              imagemagick
+              libwebp # cwebp, dwebp
+              hugo
+
+              # archives
+              unzip
+              _7zz # `7zz`
+
+              # dev / cloud
+              kubectl
+              k9s
+              lazydocker
+              gemini-cli
+              exercism
+              rtk
+            ] ++ lib.optionals stdenv.isDarwin [
+              dockutil
+              terminal-notifier
             ];
           };
         });

@@ -1,9 +1,13 @@
 # https://www.youtube.com/watch?v=GK7zLYAXdDs
 
+# CLI tools (ffmpeg, neovim, ripgrep, lazygit, uv, tmux, ...) come from nix:
+#   ../nix/apply.sh          install
+#   ../nix/apply.sh update   update
+# brew is only for GUI apps (casks) and the few formulae left in ./Brewfile.
+
 # brew install --cask iterm2
 brew install --cask wezterm
 ## brew installs
-brew install ffmpeg
 brew install iina # video player # utitlies -> Set as default
 # brew install --cask alfred (replaced with raycast)
 # brew install --cask rectangle (replaced with raycast) # removed in favor of Aerospace
@@ -52,9 +56,7 @@ brew install --cask unnaturalscrollwheels # this is better than scroll-reverser
 # https://superuser.com/questions/18212/remapping-keys-for-the-mac
 brew install --cask karabiner-elements
 
-brew install webp
 # cwebp test.jpg -o test.webp
-brew install unzip
 
 # best pdf editor (free) - PDF Gear
 
@@ -73,14 +75,12 @@ brew install unzip
 
 # brew install --cask transmission #download torrent files
 # no need for any of those since we have aria2
-brew install aria2 # I have note in obsidian for this. this is god of download
 
 # folx for regular downloads
 
 brew install --cask nikitabobko/tap/aerospace
 # https://nikitabobko.github.io/AeroSpace/guide
 
-brew install lazygit # better than fork
 
 brew install bruno # alternative to postman, insomnia, https://httpie.io/app
 
@@ -93,7 +93,6 @@ brew install appautomaton/tap/docker-for-apple-container
 mkdir -p /usr/local/bin
 ln -sf /opt/homebrew/bin/container /usr/local/bin/container
 
-brew install uv ## install uv dependency manager
 
 #brew install --cask espanso ## text replacer
 # use raycast as text replacer! use snippets.
@@ -104,7 +103,6 @@ brew install --cask macshot # best tool for screenshot and free and open source
 # Homerow
 brew install pearcleaner # app cleaner
 
-brew install tmux # install tmux newer version
 
 # ticktick, obsidian, chatgpt
 
@@ -134,14 +132,12 @@ if ! grep -q "export \$(cat .env | xargs)" ~/.zshrc; then
 fi
 
 # Add NeoVim as default vim for mac
-brew install neovim
 echo 'alias vim=nvim' >>~/.zshrc
 echo 'alias vi=nvim' >>~/.zshrc
 source ~/.zshrc
 
 ## add lazyvim
 
-brew install neovim git ripgrep fd fzf lazygit
 xcode-select --install
 brew install --cask font-meslo-lg-nerd-font
 
@@ -149,7 +145,6 @@ git clone https://github.com/LazyVim/starter ~/.config/nvim
 rm -rf ~/.config/nvim/.git
 
 ## install zoxide (replacement for cd)
-brew install zoxide
 echo 'eval "$(zoxide init zsh --cmd cd)"' >>~/.zshrc
 
 ### install eza (alternative to ls)
@@ -163,7 +158,6 @@ alias lt='eza --tree --level=2 --group-directories-first'
 EOF
 
 ## to make it short
-brew install eza bat ripgrep fd zoxide btop trash tldr git-delta
 
 cat >>~/.zshrc <<'EOF'
 
@@ -211,7 +205,6 @@ git config --global merge.conflictstyle zdiff3
 # Set up fzf key bindings and fuzzy completion
 source <(fzf --zsh)
 
-brew install tlrc # tldr rust client
 
 # for for code. a very good font.
 brew install --cask font-jetbrains-mono-nerd-font
@@ -223,7 +216,6 @@ brew install --cask font-jetbrains-mono-nerd-font
 brew install --cask tomatobar # A pomodoro time. TickTick does it as well
 ## install lazyvim
 
-brew install neovim git ripgrep fd fzf lazygit
 xcode-select --install
 brew install --cask font-meslo-lg-nerd-font
 
