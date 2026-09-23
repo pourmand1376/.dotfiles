@@ -1,8 +1,9 @@
 #!/usr/bin/env bash
-# Usage: ./apply.sh [switch|update]
+# Usage: ./apply.sh [switch|update|gc]
 #   switch (default): macOS -> darwin-rebuild switch (packages, brew, App Store, macOS settings)
 #                     Linux -> build packages into ~/.local/share/nix-tools
-#   update:           bump inputs in flake.lock, switch, upgrade brew, delete generations older than 30 days
+#   update:           bump inputs in flake.lock, switch, upgrade brew, then gc
+#   gc:               delete generations older than 30 days and everything in /nix/store nothing uses
 set -euo pipefail
 
 CONFIG_DIR="$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" && pwd)"
@@ -41,20 +42,27 @@ switch() {
   if [ "$(uname)" = Darwin ]; then switch_darwin; else switch_linux; fi
 }
 
+gc() {
+  # old generations first (keeps 30 days of rollback), then unreferenced store paths
+  if [ "$(uname)" = Darwin ]; then
+    sudo nix-collect-garbage --delete-older-than 30d
+  else
+    nix-collect-garbage --delete-older-than 30d
+  fi
+  du -sh /nix/store 2>/dev/null || true
+}
+
 case "${1:-switch}" in
   switch) switch ;;
   update)
     "${NIX[@]}" flake update --flake "$CONFIG_DIR"
     switch
-    if [ "$(uname)" = Darwin ]; then
-      brew update && brew upgrade
-      sudo nix-collect-garbage --delete-older-than 30d
-    else
-      nix-collect-garbage --delete-older-than 30d
-    fi
+    [ "$(uname)" = Darwin ] && brew update && brew upgrade
+    gc
     ;;
+  gc) gc ;;
   *)
-    echo "usage: $0 [switch|update]" >&2
+    echo "usage: $0 [switch|update|gc]" >&2
     exit 1
     ;;
 esac

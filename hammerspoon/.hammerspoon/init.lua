@@ -1,5 +1,8 @@
 ---@diagnostic disable: undefined-global
 
+-- lets the `hs` CLI talk to Hammerspoon (for debugging from the terminal)
+require("hs.ipc")
+
 -- instant movement for built-in window management
 hs.window.animationDuration = 0
 
@@ -85,6 +88,9 @@ do
 	elecWakeWatcher:start()
 end
 
+-- Telegram friction + distracting-site redirect (see focus.lua)
+require("focus")
+
 spoon.Hammerflow.loadFirstValidTomlFile({
 	"home.toml",
 	"work.toml",
@@ -93,5 +99,11 @@ spoon.Hammerflow.loadFirstValidTomlFile({
 
 if spoon.Hammerflow.auto_reload then
 	hs.loadSpoon("ReloadConfiguration")
+	-- files in ~/.hammerspoon are symlinks; edits land in the dotfiles copy,
+	-- so watch that real directory too or saves never trigger a reload
+	spoon.ReloadConfiguration.watch_paths = {
+		hs.configdir,
+		os.getenv("HOME") .. "/gitfolder/.dotfiles/hammerspoon/.hammerspoon",
+	}
 	spoon.ReloadConfiguration:start()
 end

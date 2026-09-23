@@ -2,11 +2,12 @@
 [ -d "$HOME/.local/share/nix-tools/bin" ] && export PATH="$HOME/.local/share/nix-tools/bin:$PATH"
 [ -d "$HOME/.local/bin" ] && export PATH="$HOME/.local/bin:$PATH"
 
-# nix: nixapply = apply config, nixup = update everything + clean old versions
+# nix: nixapply = apply config, nixup = update everything + clean, nixgc = clean only
 for _d in "$HOME/gitfolder/.dotfiles" "$HOME/.dotfiles"; do
   if [ -x "$_d/nix/apply.sh" ]; then
     alias nixapply="$_d/nix/apply.sh"
     alias nixup="$_d/nix/apply.sh update"
+    alias nixgc="$_d/nix/apply.sh gc"
     break
   fi
 done

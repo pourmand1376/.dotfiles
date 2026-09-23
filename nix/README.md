@@ -15,10 +15,13 @@ Aliases from `profile/.profile`, usable from any folder:
 
 ```bash
 nixapply    # apply the config (asks for sudo on macOS)
-nixup       # update nixpkgs + nix-darwin, apply, brew upgrade, delete generations older than 30 days
+nixup       # update nixpkgs + nix-darwin, apply, brew upgrade, then nixgc
+nixgc       # delete generations older than 30 days + unused /nix/store paths (asks for sudo on macOS)
 ```
 
-Without the aliases: `./apply.sh` and `./apply.sh update` from this folder.
+Without the aliases: `./apply.sh`, `./apply.sh update`, `./apply.sh gc` from this folder.
+
+To delete *all* old generations (no rollback left): `sudo nix-collect-garbage -d`.
 
 ## Find a package
 
