@@ -1,4 +1,7 @@
 {
+  "permissions": {
+    "defaultMode": "plan"
+  },
   "hooks": {
     "SessionStart": [
       {
@@ -18,6 +21,11 @@
         "hooks": [
           {
             "type": "command",
+            "command": "sh '/Users/amirpourmand/.claude/hooks/notify-macos.sh'",
+            "timeout": 5
+          },
+          {
+            "type": "command",
             "command": "zellij pipe --name \"zellij-attention::waiting::$ZELLIJ_PANE_ID\""
           }
         ]
@@ -32,7 +40,23 @@
           }
         ]
       }
+    ],
+    "PreToolUse": [
+      {
+        "matcher": "Bash",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "rtk hook claude"
+          }
+        ]
+      }
     ]
+  },
+  "disableAgentView": true,
+  "statusLine": {
+    "type": "command",
+    "command": "bash ~/.claude/statusline-command.sh"
   },
   "enabledPlugins": {
     "warp@claude-code-warp": true,
@@ -59,10 +83,20 @@
   },
   "effortLevel": "high",
   "skipWorkflowUsageWarning": true,
-  "theme": "light",
+  "theme": "custom:catppuccin-mocha",
   "editorMode": "vim",
-  "preferredNotifChannel": "ghostty",
+  "verbose": false,
+  "preferredNotifChannel": "notifications_disabled",
   "inputNeededNotifEnabled": true,
   "agentPushNotifEnabled": true,
-  "model": "haiku"
+  "autoMode": {
+    "allow": [
+      "$defaults",
+      "Bash(glab mr view:*)",
+      "Bash(glab mr list:*)",
+      "Bash(acli jira workitem view:*)",
+      "Bash(kubectl -n insight-core get pods:*)",
+      "Bash(kubectl -n jamshid-analytics get pods:*)"
+    ]
+  }
 }
