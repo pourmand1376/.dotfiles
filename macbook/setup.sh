@@ -1,9 +1,9 @@
 # https://www.youtube.com/watch?v=GK7zLYAXdDs
 
-# CLI tools (ffmpeg, neovim, ripgrep, lazygit, uv, tmux, ...) come from nix:
-#   ../nix/apply.sh          install
-#   ../nix/apply.sh update   update
-# brew is only for GUI apps (casks) and the few formulae left in ./Brewfile.
+# Packages, brew casks, App Store apps and macOS settings (dock, finder, keyboard)
+# are managed by nix-darwin in ../nix (see ../nix/README.md):
+#   nixapply   apply the config
+#   nixup      update everything
 
 # brew install --cask iterm2
 brew install --cask wezterm
