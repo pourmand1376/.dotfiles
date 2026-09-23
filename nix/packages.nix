@@ -50,7 +50,7 @@ with pkgs;
   ffmpeg
   imagemagick
   libwebp # cwebp, dwebp
-  hugo
+  hugo # pinned to 0.148.2 in flake.nix (matches deploy HUGO_VERSION)
 
   # archives
   unzip
