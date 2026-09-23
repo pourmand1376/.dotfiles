@@ -5,32 +5,38 @@
 
   outputs = { nixpkgs, ... }:
     let
-    system = "x86_64-linux";
-  pkgs = nixpkgs.legacyPackages.${system};
-  in
-  {
-    packages.${system}.default = pkgs.buildEnv {
-      name = "my-packages";
+      systems = [ "aarch64-darwin" "x86_64-darwin" "x86_64-linux" "aarch64-linux" ];
+      forAllSystems = nixpkgs.lib.genAttrs systems;
+    in
+    {
+      packages = forAllSystems (system:
+        let
+          pkgs = nixpkgs.legacyPackages.${system};
+        in
+        {
+          default = pkgs.buildEnv {
+            name = "my-packages";
 
-      paths = with pkgs; [
-        git
-          ripgrep
-          fd
-          jq
-          bat
-          tmux
-          fzf 
-          zoxide
-          eza
-          starship
-          neovim
-          yazi
-          lazygit
-          delta
-          stow
-          fastfetch
-          btop
-      ];
+            paths = with pkgs; [
+              git
+              ripgrep
+              fd
+              jq
+              bat
+              tmux
+              fzf
+              zoxide
+              eza
+              starship
+              neovim
+              yazi
+              lazygit
+              delta
+              stow
+              fastfetch
+              btop
+            ];
+          };
+        });
     };
-  };
 }
