@@ -18,9 +18,10 @@ local BLOCKED_HOSTS = {
 }
 -- { url, weight }: higher weight = picked more often
 local REDIRECTS = {
-	{ "https://motamem.org", 45 },
-	{ "https://substack.com/home", 45 },
+	{ "https://motamem.org", 40 },
+	{ "https://substack.com/home", 40 },
 	{ "https://app.raindrop.io/my/58953882", 10 },
+	{ "https://fidibo.com/library/book/all", 10 },
 }
 
 -- bundle id → AppleScript name of the current tab
