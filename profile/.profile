@@ -60,6 +60,13 @@ export EDITOR=nvim
 #### --- PATH ---------------------
 [ -f "$HOME/.cargo/env" ] && . "$HOME/.cargo/env"
 
+# homebrew (formulae nix can't provide, e.g. mole): appended so nix wins on duplicates.
+# ~/.zprofile only runs in login shells; this covers tmux/zellij/editor shells too.
+case ":$PATH:" in
+  *:/opt/homebrew/bin:*) ;;
+  *) [ -d /opt/homebrew/bin ] && export PATH="$PATH:/opt/homebrew/bin:/opt/homebrew/sbin" ;;
+esac
+
 #### end of path variables
 
 # yazi for bash and zsh

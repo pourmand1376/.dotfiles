@@ -17,7 +17,6 @@
       keycastr
       macshot
       mos
-      unnaturalscrollwheels
     ]);
 
   # fonts -> /Library/Fonts/Nix Fonts
@@ -57,7 +56,7 @@
       "atlassian/acli/acli" # nixpkgs: not available on aarch64-darwin
       "container" # Apple's container runtime
       "appautomaton/tap/docker-for-apple-container" # not in nixpkgs
-      "mole" # nixpkgs: not available on aarch64-darwin
+      "mole" # nixpkgs `mole-cleaner` lags brew (1.46 vs 1.55); nixpkgs `mole` is a different tool
       "wtfutil" # nixpkgs: not available on aarch64-darwin
       "mas" # used by brew bundle to install masApps below
       "gemini-cli" # nixpkgs marks it for removal
