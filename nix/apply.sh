@@ -14,14 +14,16 @@ NIX=(nix --extra-experimental-features "nix-command flakes")
 switch_darwin() {
   # Both Macs intentionally use the same shared configuration.
   local flake="$CONFIG_DIR#AmirMac"
+  local primary_user
+  primary_user="$(id -un)"
   if command -v darwin-rebuild >/dev/null; then
-    sudo darwin-rebuild switch --flake "$flake"
+    sudo env "NIX_PRIMARY_USER=$primary_user" darwin-rebuild switch --impure --flake "$flake"
   else
     # first run: build nix-darwin, then use its darwin-rebuild
     local tmp
     tmp="$(mktemp -d)/system"
-    "${NIX[@]}" build "$CONFIG_DIR#darwinConfigurations.AmirMac.system" --out-link "$tmp"
-    sudo "$tmp/sw/bin/darwin-rebuild" switch --flake "$flake"
+    NIX_PRIMARY_USER="$primary_user" "${NIX[@]}" build --impure "$CONFIG_DIR#darwinConfigurations.AmirMac.system" --out-link "$tmp"
+    sudo env "NIX_PRIMARY_USER=$primary_user" "$tmp/sw/bin/darwin-rebuild" switch --impure --flake "$flake"
   fi
 
   # packages now live in /run/current-system/sw; drop the old buildEnv link
