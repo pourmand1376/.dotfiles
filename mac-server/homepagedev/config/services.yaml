@@ -1,0 +1,45 @@
+---
+# services.yaml
+
+- Media & Reading:
+    - Immich:
+        icon: immich
+        href: http://192.168.1.50:2283
+        description: Photo and video backup
+        # widget:
+        #   type: immich
+        #   url: http://192.168.1.50:2283
+        #   key: your_immich_api_key_here
+
+    - Books:
+        icon: calibre-web # Assuming Calibre-web based on port 8083
+        href: http://192.168.1.50:8083
+        description: E-book library management
+
+- Files & Sync:
+    - Filebrowser:
+        icon: filebrowser
+        href: http://192.168.1.50:8080
+        description: Web-based file manager
+
+    - Syncthing:
+        icon: syncthing
+        href: http://192.168.1.50:8384
+        description: Continuous file synchronization
+        # widget:
+        #   type: syncthing
+        #   url: http://192.168.1.50:8384
+        #   key: your_syncthing_api_key_here
+
+- Infrastructure:
+    - Network Share (SMB):
+        icon: smb
+        href: smb://192.168.1.50
+        description: Local network file share
+
+    - Restic Backups:
+        icon: restic
+        # Restic is primarily CLI, so this link acts as documentation/inventory
+        href: ssh://192.168.1.50 
+        description: Deduplicated encrypted backups
+
