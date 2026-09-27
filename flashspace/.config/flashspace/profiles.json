@@ -30,6 +30,11 @@
               "bundleIdentifier" : "dev.zed.Zed",
               "iconPath" : "/Applications/Zed.app/Contents/Resources/Zed.icns",
               "name" : "Zed"
+            },
+            {
+              "bundleIdentifier" : "org.godotengine.godot",
+              "iconPath" : "/Applications/Godot_mono.app/Contents/Resources/GodotLG.icns",
+              "name" : "Godot"
             }
           ],
           "display" : "S24C36x",

@@ -4,7 +4,7 @@
 |---|---|
 | `packages.nix` | CLI packages, shared by macOS and Linux |
 | `darwin.nix` | macOS only (nix-darwin): packages, brew formulae/casks, App Store apps, macOS settings, Dock |
-| `flake.nix` | wires it up: `darwinConfigurations.AmirWork` (Mac), `packages.<system>.default` (Linux) |
+| `flake.nix` | wires it up: hostname-based macOS configurations, `packages.<system>.default` (Linux) |
 | `apply.sh` | applies it: nix-darwin on macOS, `buildEnv` into `~/.local/share/nix-tools` on Linux |
 
 Nix itself is installed and managed by Determinate Nix, so `darwin.nix` sets `nix.enable = false`.
@@ -71,8 +71,9 @@ macOS
 2. **Homebrew**:
    `/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"`
 3. **This repo**: `git clone git@github.com:pourmand1376/.dotfiles.git ~/gitfolder/.dotfiles`
-4. If the hostname is not `AmirWork`, rename `darwinConfigurations.AmirWork` in `flake.nix`
-   (`scutil --get LocalHostName` shows it).
+4. Ensure the Mac's hostname has a matching entry in `darwinConfigurations` in `flake.nix`
+   (`scutil --get LocalHostName` shows it). This repo includes `AmirWork` and
+   `Amir-Macbook-Air-2`, both using the shared macOS configuration.
 5. Sign in to the App Store (needed for App Store apps).
 6. **nix-darwin**: run `~/gitfolder/.dotfiles/nix/apply.sh`. The first run builds nix-darwin from
    this flake and switches to it (asks for sudo). Stock `/etc/zshrc`, `/etc/bashrc` etc. are renamed

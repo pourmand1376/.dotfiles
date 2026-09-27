@@ -44,15 +44,28 @@
           };
         });
 
-      # macOS: ./apply.sh runs darwin-rebuild with this
-      darwinConfigurations.AmirWork = nix-darwin.lib.darwinSystem {
-        modules = [
-          ./darwin.nix
-          {
-            nixpkgs.config.allowUnfreePredicate = allowUnfreePredicate;
-            nixpkgs.overlays = [ hugoOverlay ];
-          }
-        ];
+      # macOS: ./apply.sh selects the configuration matching LocalHostName.
+      # Both Macs intentionally share the same configuration.
+      darwinConfigurations = {
+        AmirWork = nix-darwin.lib.darwinSystem {
+          modules = [
+            ./darwin.nix
+            {
+              nixpkgs.config.allowUnfreePredicate = allowUnfreePredicate;
+              nixpkgs.overlays = [ hugoOverlay ];
+            }
+          ];
+        };
+
+        "Amir-Macbook-Air-2" = nix-darwin.lib.darwinSystem {
+          modules = [
+            ./darwin.nix
+            {
+              nixpkgs.config.allowUnfreePredicate = allowUnfreePredicate;
+              nixpkgs.overlays = [ hugoOverlay ];
+            }
+          ];
+        };
       };
     };
 }
