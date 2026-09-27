@@ -1,0 +1,9 @@
+services:
+  'git-ssh.partnerz.io': 'gitlab:git.partnerz.io'
+git:
+  log:
+    showWholeGraph: true
+  diffRenderers:
+    - command: delta --paging=never --line-numbers-left-format="" --line-numbers-right-format="" --color-only
+    - command: bat --color=always --style=plain --paging=never --language=diff
+    - type: rawGit

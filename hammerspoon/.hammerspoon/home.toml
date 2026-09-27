@@ -1,0 +1,152 @@
+# ============================================================
+# Hammerflow leader-key config
+# Press the leader key, then follow the on-screen menu.
+# Syntax reference: Spoons/Hammerflow.spoon/README.md
+# ============================================================
+
+# ── settings ────────────────────────────────────────────────
+leader_key = "f18"     # the key that starts a sequence
+leader_key_mods = ""   # optional modifiers for the leader key
+auto_reload = true     # reload when any file in this dir is saved
+toast_on_reload = true # show a toast when the config reloads
+show_ui = true         # show the keymap popup
+key_maps_per_line = 1  # keymaps per line in the popup
+
+# ── top-level quick launches ────────────────────────────────
+c = ["hs:hs.application.launchOrFocusByBundleID('com.google.Chrome')", "Chrome"]
+v = [
+  "raycast://extensions/raycast/clipboard-history/clipboard-history",
+  "clipboard history",
+]
+r = [
+  "hs:hs.application.launchOrFocusByBundleID('com.github.wez.wezterm')",
+  "WezTerm",
+]
+t = [
+  "hs:hs.application.launchOrFocusByBundleID('com.TickTick.task.mac')",
+  "TickTick",
+]
+k = ["hs:hs.application.launchOrFocusByBundleID('com.apple.iCal')", "Calendar"]
+g = ["hs:hs.application.launchOrFocusByBundleID('md.obsidian')", "Obsidian"]
+d = ["hs:hs.application.launchOrFocusByBundleID('com.hnc.Discord')", "Discord"]
+e = [
+  "hs:hs.application.launchOrFocusByBundleID('ru.keepcoder.Telegram')",
+  "Telegram",
+] # t is TickTick
+i = [
+  "hs:hs.eventtap.keyStroke({'ctrl','alt','cmd'}, 'i')",
+  "play relaxing sound",
+]
+u = ["hs:hs.eventtap.keyStroke({'ctrl','alt','cmd'}, 'u')", "ambient music app"]
+
+# ── [l] links ───────────────────────────────────────────────
+[l]
+label = "[links]"
+g = "https://github.com"
+c = "https://chatgpt.com"
+e = "http://gemini.google.com"
+
+# ── [w] window management (Raycast) ─────────────────────────
+[w]
+label = "[window]"
+h = ["raycast://extensions/raycast/window-management/left-half", "left half"]
+l = ["raycast://extensions/raycast/window-management/right-half", "right half"]
+k = ["raycast://extensions/raycast/window-management/top-half", "top half"]
+m = ["raycast://extensions/raycast/window-management/maximize", "maximize"]
+e = ["raycast://extensions/raycast/window-management/last-third", "last third"]
+r = [
+  "raycast://extensions/raycast/window-management/first-two-thirds",
+  "first two-thirds",
+]
+
+# ── [s] spaces (FlashSpace) ─────────────────────────────────
+# switch workspace: f18 s <key>   ·   move app: f18 m <key>
+[s]
+label = "[spaces]"
+s = ["cmd:/usr/local/bin/flashspace workspace --name 'Source (S)'", "Source"]
+e = ["cmd:/usr/local/bin/flashspace workspace --name 'Engage (E)'", "Engage"]
+w = ["cmd:/usr/local/bin/flashspace workspace --name 'Web (W)'", "Web"]
+d = [
+  "cmd:/usr/local/bin/flashspace workspace --name 'Deep Web (D)'",
+  "Deep Web",
+]
+f = ["cmd:/usr/local/bin/flashspace workspace --name 'Flow (F)'", "Flow"]
+u = ["cmd:/usr/local/bin/flashspace workspace --name 'Task (U)'", "Task"]
+p = ["cmd:/usr/local/bin/flashspace workspace --name 'Run (P)'", "Run"]
+g = [
+  "cmd:/usr/local/bin/flashspace workspace --name 'Global Note (G)'",
+  "Global Note",
+]
+x = ["cmd:/usr/local/bin/flashspace workspace --name 'eXtras (X)'", "eXtras"]
+y = ["cmd:/usr/local/bin/flashspace workspace --name 'VPN (Y)'", "VPN"]
+n = ["cmd:/usr/local/bin/flashspace focus --next-window", "next window"]
+o = ["cmd:/usr/local/bin/flashspace focus --prev-window", "prev window"]
+
+# ── [m] move the focused app to a workspace (and follow it there) ──
+[m]
+label = "[move app →]"
+s = [
+  "cmd:/usr/local/bin/flashspace assign-app --name \"$(/usr/local/bin/flashspace get-app)\" --workspace 'Source (S)' --activate true",
+  "→ Source",
+]
+e = [
+  "cmd:/usr/local/bin/flashspace assign-app --name \"$(/usr/local/bin/flashspace get-app)\" --workspace 'Engage (E)' --activate true",
+  "→ Engage",
+]
+w = [
+  "cmd:/usr/local/bin/flashspace assign-app --name \"$(/usr/local/bin/flashspace get-app)\" --workspace 'Web (W)' --activate true",
+  "→ Web",
+]
+d = [
+  "cmd:/usr/local/bin/flashspace assign-app --name \"$(/usr/local/bin/flashspace get-app)\" --workspace 'Deep Web (D)' --activate true",
+  "→ Deep Web",
+]
+f = [
+  "cmd:/usr/local/bin/flashspace assign-app --name \"$(/usr/local/bin/flashspace get-app)\" --workspace 'Flow (F)' --activate true",
+  "→ Flow",
+]
+p = [
+  "cmd:/usr/local/bin/flashspace assign-app --name \"$(/usr/local/bin/flashspace get-app)\" --workspace 'Run (P)' --activate true",
+  "→ Run",
+]
+u = [
+  "cmd:/usr/local/bin/flashspace assign-app --name \"$(/usr/local/bin/flashspace get-app)\" --workspace 'Task (U)' --activate true",
+  "→ Task",
+]
+g = [
+  "cmd:/usr/local/bin/flashspace assign-app --name \"$(/usr/local/bin/flashspace get-app)\" --workspace 'Global Note (G)' --activate true",
+  "→ Global Note",
+]
+x = [
+  "cmd:/usr/local/bin/flashspace assign-app --name \"$(/usr/local/bin/flashspace get-app)\" --workspace 'eXtras (X)' --activate true",
+  "→ eXtras",
+]
+y = [
+  "cmd:/usr/local/bin/flashspace assign-app --name \"$(/usr/local/bin/flashspace get-app)\" --workspace 'VPN (Y)' --activate true",
+  "→ VPN",
+]
+
+# ── [o] raycast ─────────────────────────────────────────────
+[o]
+label = "[raycast]"
+o = "raycast"
+f = ["raycast://extensions/raycast/system/open-camera", "face camera"]
+e = ["raycast://extensions/raycast/emoji-symbols/search-emoji-symbols", "emoji"]
+c = ["raycast://extensions/raycast/calendar/my-schedule", "calendar"]
+t = ["raycast://extensions/appest/ticktick/create", "new task"]
+m = ["raycast://extensions/raycast/navigation/search-menu-items", "menu items"]
+
+# ── [n] neru ────────────────────────────────────────────────
+[n]
+label = "[neru]"
+h = [
+  "hs:hs.execute('/opt/homebrew/bin/neru hints --action left_click')",
+  "hint mode",
+]
+r = ["hs:hs.execute('/opt/homebrew/bin/neru recursive_grid')", "recursive grid"]
+
+# ── [h] hammerspoon ─────────────────────────────────────────
+[h]
+label = "[hammerspoon]"
+c = "code: ~/.hammerspoon"
+r = "reload"
