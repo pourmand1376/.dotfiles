@@ -1,0 +1,2 @@
+restic -r ~/Backups/restic-repo/ backup /Users/amir/gitfolder/.dotfiles/mac-server/ --exclude /Users/amir/gitfolder/.dotfiles/mac-server/immich-app/library/encoded-video/ --exclude /Users/amir/gitfolder/.dotfiles/mac-server/immich-app/library/thumbs
+restic -r /Volumes/09130027522/Backup/restic-backup backup /Users/amir/gitfolder/.dotfiles/mac-server/ --exclude /Users/amir/gitfolder/.dotfiles/mac-server/immich-app/library/encoded-video/ --exclude /Users/amir/gitfolder/.dotfiles/mac-server/immich-app/library/thumbs

@@ -1,0 +1,78 @@
+name: bookorbit
+
+services:
+  app:
+    container_name: bookorbit-app
+    image: ${APP_IMAGE?required}
+    restart: unless-stopped
+    init: true
+    env_file:
+      - .env
+    ports:
+      - "${APP_PORT:-3000}:${PORT:-3000}"
+    environment:
+      NODE_ENV: production
+      PORT: ${PORT:-3000}
+      DATABASE_URL: ${DATABASE_URL:-}
+      POSTGRES_HOST: ${POSTGRES_HOST:-postgres}
+      POSTGRES_PORT: ${POSTGRES_PORT:-5432}
+      POSTGRES_USER: ${POSTGRES_USER?required}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD?required}
+      POSTGRES_DB: ${POSTGRES_DB?required}
+      JWT_SECRET: ${JWT_SECRET?required}
+      SETUP_BOOTSTRAP_TOKEN: ${SETUP_BOOTSTRAP_TOKEN?required}
+      APP_URL: ${APP_URL?required}
+      CLIENT_URL: ${CLIENT_URL:-${APP_URL?required}}
+      PUID: ${PUID:-1000}
+      PGID: ${PGID:-1000}
+      NODE_MAX_OLD_SPACE_SIZE: ${NODE_MAX_OLD_SPACE_SIZE:-2048}
+    depends_on:
+      postgres:
+        condition: service_healthy
+    volumes:
+      - ${BOOKS_HOST_PATH:-./books}:/books
+      - ./data/app:/data
+      - ${BOOK_DROP_HOST_PATH:-./data/app/book-dock}:/data/book-dock
+    read_only: true
+    tmpfs:
+      - /tmp
+    cap_drop:
+      - ALL
+    cap_add:
+      - CHOWN
+      - DAC_OVERRIDE
+      - FOWNER
+      - SETGID
+      - SETUID
+    security_opt:
+      - no-new-privileges:true
+    stop_grace_period: 30s
+    healthcheck:
+      test:
+        [
+          "CMD-SHELL",
+          'node -e "fetch(''http://127.0.0.1:''+(process.env.PORT||3000)+''/api/v1/health'').then(r=>process.exit(r.ok?0:1)).catch(()=>process.exit(1))"',
+        ]
+      interval: 30s
+      timeout: 5s
+      retries: 3
+      start_period: 20s
+
+  postgres:
+    container_name: bookorbit-db
+    image: hub.hamdocker.ir/pgvector/pgvector:pg16@sha256:7d400e340efb42f4d8c9c12c6427adb253f726881a9985d2a471bf0eed824dff
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER?required}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD?required}
+      POSTGRES_DB: ${POSTGRES_DB?required}
+      PGDATA: /var/lib/postgresql/data/pgdata
+    volumes:
+      - ./data/postgres:/var/lib/postgresql/data
+    healthcheck:
+      test:
+        ["CMD-SHELL", 'pg_isready -U "$${POSTGRES_USER}" -d "$${POSTGRES_DB}"']
+      interval: 10s
+      timeout: 5s
+      retries: 10
+      start_period: 20s

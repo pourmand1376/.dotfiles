@@ -1,0 +1,15 @@
+services:
+  filebrowser:
+    image: docker.arvancloud.ir/gtstef/filebrowser:1.3.10-beta
+    container_name: filebrowser-quantum
+    restart: unless-stopped
+
+    ports:
+      - "8080:80"
+
+    volumes:
+      - ./data:/home/filebrowser/data
+      - /Users/smbuser/SharedSMB:/srv/files
+
+    security_opt:
+      - no-new-privileges:true
