@@ -1,0 +1,11 @@
+services:
+  homepage:
+    image: ghcr-mirror.liara.ir/gethomepage/homepage:v1.13.1
+    container_name: homepage
+    ports:
+      - 80:3000
+    volumes:
+      - ./config:/app/config # Make sure your local config directory exists
+      - /var/run/docker.sock:/var/run/docker.sock:ro # (optional) For docker integrations
+    environment:
+      HOMEPAGE_ALLOWED_HOSTS: 192.168.1.50

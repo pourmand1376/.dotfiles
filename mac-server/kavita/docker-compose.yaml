@@ -1,0 +1,11 @@
+services:
+  kavita:
+    image: docker.arvancloud.ir/jvmilazz0/kavita:0.9.0.2
+    container_name: kavita
+    volumes:
+      - ./config:/kavita/config
+      - ./books:/books
+      - ./comics:/comics
+    ports:
+      - "5800:5000"
+    restart: unless-stopped
