@@ -996,36 +996,28 @@
                         ]
                     },
                     {
-                        "description": "Hyper + J/K — smooth continuous scroll",
+                        "description": "Hyper + J/K for smooth scrolling",
                         "manipulators": [
                             {
                                 "from": {
                                     "key_code": "j",
-                                    "modifiers": { "mandatory": ["left_command", "left_control", "left_option"] }
-                                },
-                                "to": [
-                                    {
-                                        "mouse_key": {
-                                            "speed_multiplier": 1.5,
-                                            "vertical_wheel": 32
-                                        }
+                                    "modifiers": {
+                                        "mandatory": ["left_command", "left_control", "left_option"],
+                                        "optional": ["any"]
                                     }
-                                ],
+                                },
+                                "to": [{ "mouse_key": { "vertical_wheel": 24 } }],
                                 "type": "basic"
                             },
                             {
                                 "from": {
                                     "key_code": "k",
-                                    "modifiers": { "mandatory": ["left_command", "left_control", "left_option"] }
-                                },
-                                "to": [
-                                    {
-                                        "mouse_key": {
-                                            "speed_multiplier": 1.5,
-                                            "vertical_wheel": -32
-                                        }
+                                    "modifiers": {
+                                        "mandatory": ["left_command", "left_control", "left_option"],
+                                        "optional": ["any"]
                                     }
-                                ],
+                                },
+                                "to": [{ "mouse_key": { "vertical_wheel": -24 } }],
                                 "type": "basic"
                             }
                         ]

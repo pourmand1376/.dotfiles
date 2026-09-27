@@ -1,0 +1,102 @@
+{
+  "permissions": {
+    "defaultMode": "plan"
+  },
+  "hooks": {
+    "SessionStart": [
+      {
+        "matcher": "*",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "bash '/Users/amirpourmand/.claude/hooks/herdr-agent-state.sh' session",
+            "timeout": 10
+          }
+        ]
+      }
+    ],
+    "Notification": [
+      {
+        "matcher": "",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "sh '/Users/amirpourmand/.claude/hooks/notify-macos.sh'",
+            "timeout": 5
+          },
+          {
+            "type": "command",
+            "command": "zellij pipe --name \"zellij-attention::waiting::$ZELLIJ_PANE_ID\""
+          }
+        ]
+      }
+    ],
+    "Stop": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "zellij pipe --name \"zellij-attention::completed::$ZELLIJ_PANE_ID\""
+          }
+        ]
+      }
+    ],
+    "PreToolUse": [
+      {
+        "matcher": "Bash",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "rtk hook claude"
+          }
+        ]
+      }
+    ]
+  },
+  "disableAgentView": true,
+  "statusLine": {
+    "type": "command",
+    "command": "bash ~/.claude/statusline-command.sh"
+  },
+  "enabledPlugins": {
+    "warp@claude-code-warp": true,
+    "rust-analyzer-lsp@claude-plugins-official": true,
+    "daily-tools@smk": true,
+    "learnable@smk": true,
+    "open-design-guide@smk": true,
+    "portal-skills@smk": true,
+    "readable@smk": true
+  },
+  "extraKnownMarketplaces": {
+    "claude-code-warp": {
+      "source": {
+        "source": "github",
+        "repo": "warpdotdev/claude-code-warp"
+      }
+    },
+    "smk": {
+      "source": {
+        "source": "github",
+        "repo": "smk-labs/claude-plugins"
+      }
+    }
+  },
+  "effortLevel": "high",
+  "skipWorkflowUsageWarning": true,
+  "theme": "custom:catppuccin-mocha",
+  "editorMode": "vim",
+  "verbose": false,
+  "preferredNotifChannel": "notifications_disabled",
+  "inputNeededNotifEnabled": true,
+  "agentPushNotifEnabled": true,
+  "autoMode": {
+    "allow": [
+      "$defaults",
+      "Bash(glab mr view:*)",
+      "Bash(glab mr list:*)",
+      "Bash(acli jira workitem view:*)",
+      "Bash(kubectl -n insight-core get pods:*)",
+      "Bash(kubectl -n jamshid-analytics get pods:*)"
+    ]
+  }
+}

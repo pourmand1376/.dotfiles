@@ -1,0 +1,109 @@
+---@diagnostic disable: undefined-global
+
+-- lets the `hs` CLI talk to Hammerspoon (for debugging from the terminal)
+require("hs.ipc")
+
+-- instant movement for built-in window management
+hs.window.animationDuration = 0
+
+hs.loadSpoon("Hammerflow")
+
+-- Set the UI format BEFORE loading the toml config.
+-- 🐱 Catppuccin Mocha inspired theme
+-- palette: base #1e1e2e · mauve #cba6f7 · text #cdd6f4 · lavender #b4befe
+spoon.Hammerflow.registerFormat({
+	atScreenEdge = 2,
+	fillColor = { alpha = 0.95, hex = "1e1e2e" },   -- base
+	padding = 18,
+	radius = 12,
+	strokeColor = { alpha = 0.95, hex = "cba6f7" },  -- mauve
+	textColor = { alpha = 1, hex = "cdd6f4" },       -- text
+	textStyle = {
+		paragraphStyle = { lineSpacing = 6 },
+		shadow = { offset = { h = -1, w = 1 }, blurRadius = 10, color = { alpha = 0.50, white = 0 } },
+	},
+	strokeWidth = 6,
+	textFont = "Monaco",
+	textSize = 18,
+})
+
+-- Make the leader key (f18) toggle the panel: pressing it while the menu is
+-- already open closes the menu instead of re-showing the top layer.
+-- We track the currently-entered modal (RecursiveBinder enters/exits a modal
+-- per layer) and wrap only the top-level binding produced by recursiveBind.
+do
+	local RB = spoon.RecursiveBinder
+
+	-- track the active modal so the leader handler knows the panel is open
+	local activeModal = nil
+	local origEnter = hs.hotkey.modal.enter
+	local origExit = hs.hotkey.modal.exit
+	function hs.hotkey.modal.enter(self, ...)
+		activeModal = self
+		return origEnter(self, ...)
+	end
+	function hs.hotkey.modal.exit(self, ...)
+		if activeModal == self then activeModal = nil end
+		return origExit(self, ...)
+	end
+
+	-- wrap recursiveBind; only the top-level call (no `modals` arg) becomes a toggle
+	local origRecursiveBind = RB.recursiveBind
+	function RB.recursiveBind(keymap, modals)
+		local starter = origRecursiveBind(keymap, modals)
+		if modals ~= nil or type(starter) ~= "function" then
+			return starter
+		end
+		return function()
+			if activeModal then
+				activeModal:exit()      -- close the open layer
+				hs.alert.closeAll()     -- dismiss the helper popup
+			else
+				starter()               -- open the menu
+			end
+		end
+	end
+end
+
+-- Sync planned electricity blackouts into Calendar every 2 hours.
+-- Runs inside Hammerspoon (a GUI-session app), so the Calendar Automation
+-- permission actually works — which is exactly what cron couldn't do.
+do
+	local script = os.getenv("HOME") .. "/gitfolder/.dotfiles/scripts/check_electricity.sh"
+	local function checkElectricity()
+		hs.task.new("/bin/bash", nil, { script }):start()
+	end
+	hs.timer.doEvery(2 * 60 * 60, checkElectricity)  -- every 2h (only while awake)
+	hs.timer.doAfter(30, checkElectricity)           -- and shortly after load
+
+	-- doEvery does NOT fire during sleep and never replays missed fires, so
+	-- also sync whenever the machine wakes or the screen unlocks. Kept global
+	-- (no `local`) so it isn't garbage-collected and silently stops firing.
+	elecWakeWatcher = hs.caffeinate.watcher.new(function(ev)
+		if ev == hs.caffeinate.watcher.systemDidWake
+			or ev == hs.caffeinate.watcher.screensDidUnlock then
+			checkElectricity()
+		end
+	end)
+	elecWakeWatcher:start()
+end
+
+-- Telegram friction + distracting-site redirect (see focus.lua)
+require("focus")
+
+spoon.Hammerflow.loadFirstValidTomlFile({
+	"home.toml",
+	"work.toml",
+	"Spoons/Hammerflow.spoon/sample.toml",
+})
+
+if spoon.Hammerflow.auto_reload then
+	hs.loadSpoon("ReloadConfiguration")
+	-- files in ~/.hammerspoon are symlinks; edits land in the dotfiles copy,
+	-- so watch that real directory too or saves never trigger a reload
+	spoon.ReloadConfiguration.watch_paths = {
+		hs.configdir,
+		os.getenv("HOME") .. "/gitfolder/.dotfiles/hammerspoon/.hammerspoon",
+	}
+	spoon.ReloadConfiguration:start()
+end

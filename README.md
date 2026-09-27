@@ -14,16 +14,30 @@ For using config files, use:
 ```bash
 stow folder_name
 ```
+
+or in mac system
+```
+
+```
+```
+stow folder_name -t $HOME
+```
+
+https://www.josean.com/posts/how-to-manage-dotfiles-with-gnu-stow
+
+Also take a look at `setup_stow_config.sh` in macbook folder. 
 ## Terminal Fonts 
 
 [Nerd-Fonts](https://www.nerdfonts.com/)
 
-### Customizing Stuff
+### Customizing Stuff (Deprecated)
 
 - [oh-my-bash](https://github.com/ohmybash/oh-my-bash)
 - [oh-my-zsh](https://github.com/ohmyzsh/ohmyzsh)
 - [oh-my-tmux](https://github.com/gpakosz/.tmux)
 - [oh-my-posh](https://ohmyposh.dev/)
+
+I actually use none of above. I have a cleaner setup that uses `tpm` for tmux plugin management and `starship` for theme of bash and zsh.  
 
 ### Useful Scripts
 
