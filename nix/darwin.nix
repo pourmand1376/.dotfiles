@@ -3,7 +3,9 @@
 {
   nixpkgs.hostPlatform = "aarch64-darwin";
   system.stateVersion = 7;
-  system.primaryUser = "amirpourmand";
+  # The same configuration is used on Macs whose local account may be
+  # `amir` or `amirpourmand`. apply.sh supplies this before sudo activation.
+  system.primaryUser = builtins.getEnv "NIX_PRIMARY_USER";
 
   # Determinate Nix manages the nix daemon and /etc/nix/nix.conf
   nix.enable = false;
