@@ -71,9 +71,8 @@ macOS
 2. **Homebrew**:
    `/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"`
 3. **This repo**: `git clone git@github.com:pourmand1376/.dotfiles.git ~/gitfolder/.dotfiles`
-4. Ensure the Mac's hostname has a matching entry in `darwinConfigurations` in `flake.nix`
-   (`scutil --get LocalHostName` shows it). This repo includes `AmirWork` and
-   `Amir-Macbook-Air-2`, both using the shared macOS configuration.
+4. Both Macs use the shared `AmirMac` configuration. The hostname does not need to
+   match; `apply.sh` selects it directly.
 5. Sign in to the App Store (needed for App Store apps).
 6. **nix-darwin**: run `~/gitfolder/.dotfiles/nix/apply.sh`. The first run builds nix-darwin from
    this flake and switches to it (asks for sudo). Stock `/etc/zshrc`, `/etc/bashrc` etc. are renamed

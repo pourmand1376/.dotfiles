@@ -12,14 +12,15 @@ OUT_LINK="$HOME/.local/share/nix-tools"
 NIX=(nix --extra-experimental-features "nix-command flakes")
 
 switch_darwin() {
-  local flake="$CONFIG_DIR#$(scutil --get LocalHostName)"
+  # Both Macs intentionally use the same shared configuration.
+  local flake="$CONFIG_DIR#AmirMac"
   if command -v darwin-rebuild >/dev/null; then
     sudo darwin-rebuild switch --flake "$flake"
   else
     # first run: build nix-darwin, then use its darwin-rebuild
     local tmp
     tmp="$(mktemp -d)/system"
-    "${NIX[@]}" build "$CONFIG_DIR#darwinConfigurations.$(scutil --get LocalHostName).system" --out-link "$tmp"
+    "${NIX[@]}" build "$CONFIG_DIR#darwinConfigurations.AmirMac.system" --out-link "$tmp"
     sudo "$tmp/sw/bin/darwin-rebuild" switch --flake "$flake"
   fi
 

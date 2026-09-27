@@ -47,7 +47,7 @@
       # macOS: ./apply.sh selects the configuration matching LocalHostName.
       # Both Macs intentionally share the same configuration.
       darwinConfigurations = {
-        AmirWork = nix-darwin.lib.darwinSystem {
+        AmirMac = nix-darwin.lib.darwinSystem {
           modules = [
             ./darwin.nix
             {
