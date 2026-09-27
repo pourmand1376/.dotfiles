@@ -49,7 +49,7 @@
       "atlassian/acli"
       "nikitabobko/tap"
       "tw93/tap"
-      "y3owk1n/tap"
+      # "y3owk1n/tap" # disabled: neru cask configuration is invalid
     ];
 
     # formulae nixpkgs can't provide on macOS
@@ -73,7 +73,7 @@
       "hammerspoon" # not in nixpkgs
       "karabiner-elements" # installs a DriverKit system extension
       "keyclu" # not in nixpkgs
-      "y3owk1n/tap/neru" # not in nixpkgs
+      # "y3owk1n/tap/neru" # disabled: cask configuration is invalid
       "orbstack" # privileged helper + own updater
       "pearcleaner" # not in nixpkgs
       "visual-studio-code" # needed by the vscode extension lines below
