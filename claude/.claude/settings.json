@@ -1,6 +1,6 @@
 {
   "permissions": {
-    "defaultMode": "plan"
+    "defaultMode": "auto"
   },
   "hooks": {
     "SessionStart": [

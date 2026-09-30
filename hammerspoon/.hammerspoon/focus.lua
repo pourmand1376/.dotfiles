@@ -2,13 +2,17 @@
 
 -- Focus guard:
 --   1. Telegram opens only after a short countdown (friction, not a lock).
---   2. Distracting sites in Chrome / Edge / Safari get redirected to reading.
+--   2. Distracting sites in Chrome / Edge / Safari get redirected to reading,
+--      then a countdown starts: wait it out and the site comes back, unlocked
+--      for a while. Esc gives up and keeps the reading page.
 -- Watchers and timers are globals so they aren't garbage-collected.
 
 -- ── settings ────────────────────────────────────────────────
 local TELEGRAM = "ru.keepcoder.Telegram"
 local TELEGRAM_DELAY = 15   -- seconds of waiting before Telegram shows
 local UNLOCK_MINUTES = 10   -- after waiting once, free access for this long
+local SITE_DELAY = 30       -- seconds of waiting before a blocked site comes back
+local SITE_UNLOCK_MINUTES = 20
 
 local BLOCKED_HOSTS = {
 	"youtube.com", "youtu.be",
@@ -33,9 +37,8 @@ local BROWSERS = {
 
 math.randomseed(os.time())
 
--- ── Telegram friction ───────────────────────────────────────
-local unlockedUntil = 0
-local countdown = nil  -- timer while waiting
+-- ── countdown (shared by Telegram and sites) ────────────────
+local countdown = nil  -- timer while waiting; one countdown at a time
 local escKey = nil
 local alertId = nil
 
@@ -50,29 +53,36 @@ local function stopCountdown()
 	if alertId then hs.alert.closeSpecific(alertId); alertId = nil end
 end
 
+local function startCountdown(label, delay, onDone, onGiveUp)
+	local left = delay
+	local function tick() showAlert(label .. " in " .. left .. "s  ·  Esc to give up") end
+	tick()
+	escKey = hs.hotkey.bind({}, "escape", function()
+		stopCountdown()
+		if onGiveUp then onGiveUp() end
+		hs.alert.show("Good call.", 1)
+	end)
+	countdown = hs.timer.doEvery(1, function()
+		left = left - 1
+		if left > 0 then return tick() end
+		stopCountdown()
+		onDone()
+	end)
+end
+
+-- ── Telegram friction ───────────────────────────────────────
+local unlockedUntil = 0
+
 local function hideTelegram(app)
 	app = app or hs.application.get(TELEGRAM)
 	if app then app:hide() end
 end
 
-local function startCountdown()
-	local left = TELEGRAM_DELAY
-	showAlert("Telegram in " .. left .. "s  ·  Esc to give up")
-	escKey = hs.hotkey.bind({}, "escape", function()
-		stopCountdown()
-		hideTelegram()
-		hs.alert.show("Good call.", 1)
-	end)
-	countdown = hs.timer.doEvery(1, function()
-		left = left - 1
-		if left > 0 then
-			showAlert("Telegram in " .. left .. "s  ·  Esc to give up")
-			return
-		end
-		stopCountdown()
+local function startTelegramCountdown()
+	startCountdown("Telegram", TELEGRAM_DELAY, function()
 		unlockedUntil = os.time() + UNLOCK_MINUTES * 60
 		hs.application.launchOrFocusByBundleID(TELEGRAM)
-	end)
+	end, hideTelegram)
 end
 
 focusTelegramWatcher = hs.application.watcher.new(function(_, event, app)
@@ -84,7 +94,7 @@ focusTelegramWatcher = hs.application.watcher.new(function(_, event, app)
 	if os.time() < unlockedUntil then return end
 
 	hideTelegram(app)
-	if not countdown then startCountdown() end
+	if not countdown then startTelegramCountdown() end
 end)
 focusTelegramWatcher:start()
 
@@ -109,6 +119,8 @@ local function isBlocked(host)
 	return nil
 end
 
+local siteUnlockedUntil = {}  -- blocked host → os.time() it stays open until
+
 local function checkBrowser()
 	local front = hs.application.frontmostApplication()
 	if not front then return end
@@ -123,10 +135,18 @@ local function checkBrowser()
 	local host = url:match("^%a[%w+.-]*://([^/:?#]+)")
 	local blocked = host and isBlocked(host:lower())
 	if not blocked then return end
+	if os.time() < (siteUnlockedUntil[blocked] or 0) then return end
 
 	local dest = pickRedirect()
 	hs.osascript.applescript(target .. "set URL of " .. tab .. ' of front window to "' .. dest .. '"')
-	hs.alert.show(blocked .. "  →  " .. dest:match("://([^/]+)"), 2)
+	if countdown then
+		hs.alert.show(blocked .. "  →  " .. dest:match("://([^/]+)"), 2)
+		return
+	end
+	startCountdown(blocked, SITE_DELAY, function()
+		siteUnlockedUntil[blocked] = os.time() + SITE_UNLOCK_MINUTES * 60
+		hs.urlevent.openURLWithBundle(url, bid)
+	end)
 end
 
 focusBrowserTimer = hs.timer.doEvery(2, checkBrowser)
