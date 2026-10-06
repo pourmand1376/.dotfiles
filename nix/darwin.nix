@@ -76,6 +76,7 @@
       # "y3owk1n/tap/neru" # disabled: cask configuration is invalid
       "orbstack" # privileged helper + own updater
       "pearcleaner" # not in nixpkgs
+      "raycast" # own updater
       "visual-studio-code" # needed by the vscode extension lines below
       "macpacker"
     ];
