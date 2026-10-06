@@ -8,6 +8,7 @@ with pkgs;
   jq
   bat
   tmux
+  tuios # terminal window manager
   fzf
   zoxide
   eza
