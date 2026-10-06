@@ -1,5 +1,5 @@
 # macOS system config (nix-darwin). Applied with ./apply.sh (darwin-rebuild switch).
-{ pkgs, ... }:
+{ config, pkgs, ... }:
 {
   nixpkgs.hostPlatform = "aarch64-darwin";
   system.stateVersion = 7;
@@ -169,11 +169,20 @@
       NSGlobalDomain.AppleKeyboardUIMode = 2; # Tab moves focus between controls
       "com.apple.desktopservices".DSDontWriteNetworkStores = true;
       "com.apple.ActivityMonitor".ShowCategory = 0; # all processes
-      "com.apple.Safari" = {
-        IncludeDevelopMenu = true;
-        WebKitDeveloperExtrasEnabledPreferenceKey = true;
-        "com.apple.Safari.ContentPageGroupIdentifier.WebKit2DeveloperExtrasEnabled" = true;
-      };
     };
   };
+
+  # Safari Develop menu. Not in CustomUserPreferences: Safari's prefs live in a sandbox
+  # container that needs Full Disk Access for the terminal, and a failed write there aborts
+  # the whole activation. Here it only warns.
+  system.activationScripts.postActivation.text = ''
+    safari_write() {
+      sudo --user=${config.system.primaryUser} -- defaults write com.apple.Safari "$1" -bool true
+    }
+    if ! { safari_write IncludeDevelopMenu &&
+      safari_write WebKitDeveloperExtrasEnabledPreferenceKey &&
+      safari_write com.apple.Safari.ContentPageGroupIdentifier.WebKit2DeveloperExtrasEnabled; } 2>/dev/null; then
+      echo >&2 "warning: Safari Develop menu not set (give your terminal Full Disk Access, then nixapply)"
+    fi
+  '';
 }
