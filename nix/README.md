@@ -37,6 +37,26 @@ From the terminal: `nix search nixpkgs <name>`.
 
 Then run `nixapply` and commit.
 
+`nixapply` installs only what you added; it does not upgrade anything. Versions come from
+`flake.lock`, which only `nixup` changes, so existing packages stay the same build and are
+reused from the store. Brew also only installs what is missing (`upgrade = false`).
+
+Avoid `nix profile install nixpkgs#<name>`: it uses the latest nixpkgs instead of `flake.lock`
+and is not recorded in this repo, so the other Mac won't get it. To try a tool once without
+installing it: `nix shell nixpkgs#<name>`.
+
+## Dotfiles (stow)
+
+Every `nixapply` / `nixup` also re-stows the dotfile folders into `$HOME` (`stow -R`, which also
+removes links to files deleted from the repo). The lists are at the top of `apply.sh`:
+
+- `STOW_COMMON`: macOS and Linux
+- `STOW_MAC`: macOS only
+- `STOW_SKIP`: top-level folders that are not stow packages
+
+A new top-level folder that is in none of these lists prints a warning on apply, so add it to one.
+If stow reports a conflict, a real file is in the way in `$HOME`: move it into the repo or delete it.
+
 ## Roll back (macOS)
 
 ```bash
@@ -68,8 +88,7 @@ macOS
 1. **Determinate Nix**: download and run the macOS installer (.pkg) from
    https://install.determinate.systems/determinate-pkg/stable/Universal
    (or: `curl -fsSL https://install.determinate.systems/nix | sh -s -- install`)
-2. **Homebrew**:
-   `/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"`
+2. **Homebrew**: nothing to do; `apply.sh` installs it if `brew` is missing.
 3. **This repo**: `git clone git@github.com:pourmand1376/.dotfiles.git ~/gitfolder/.dotfiles`
 4. Both Macs use the shared `AmirMac` configuration. The hostname does not need to
    match; `apply.sh` selects it directly.

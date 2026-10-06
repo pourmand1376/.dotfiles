@@ -11,7 +11,43 @@ REPO_DIR="$(dirname "$CONFIG_DIR")"
 OUT_LINK="$HOME/.local/share/nix-tools"
 NIX=(nix --extra-experimental-features "nix-command flakes")
 
+# stow packages (top-level folders of the repo) linked into $HOME on every apply
+STOW_COMMON=(profile zsh starship tmux nvim lazygit)
+STOW_MAC=(bash git claude flashspace hammerspoon karabiner-elements neru wezterm zellij)
+# top-level folders that are not stow packages
+STOW_SKIP=(archive install mac-server macbook nix scripts)
+
+ensure_homebrew() {
+  # nix-darwin's homebrew module needs brew to exist; it does not install it
+  [ -x /opt/homebrew/bin/brew ] || [ -x /usr/local/bin/brew ] && return
+  echo "Homebrew not found, installing it..."
+  # installer runs as the user and needs cached sudo in NONINTERACTIVE mode
+  sudo -v
+  # Apple's curl: it goes through the VPN, nix's curl does not
+  NONINTERACTIVE=1 /bin/bash -c "$(/usr/bin/curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+}
+
+stow_all() {
+  local stow="$1"; shift
+  # -R also removes links to files deleted from the repo
+  # README.md: ~/.hammerspoon is a hammerflow clone with its own README
+  "$stow" -R -d "$REPO_DIR" -t "$HOME" --ignore='README\.md' --ignore='\.DS_Store' "$@"
+  echo "Stowed: $*"
+
+  # warn about new top-level folders that are in no list, so nothing is missed
+  local dir name
+  for dir in "$REPO_DIR"/*/; do
+    name="$(basename "$dir")"
+    case " ${STOW_COMMON[*]} ${STOW_MAC[*]} ${STOW_SKIP[*]} " in
+      *" $name "*) ;;
+      *) echo "WARNING: '$name' is not in STOW_COMMON/STOW_MAC/STOW_SKIP in apply.sh" >&2 ;;
+    esac
+  done
+}
+
 switch_darwin() {
+  ensure_homebrew
+
   # Both Macs intentionally use the same shared configuration.
   local flake="$CONFIG_DIR#AmirMac"
   local primary_user
@@ -29,12 +65,12 @@ switch_darwin() {
   # packages now live in /run/current-system/sw; drop the old buildEnv link
   [ -L "$OUT_LINK" ] && rm "$OUT_LINK"
 
-  /run/current-system/sw/bin/stow -d "$REPO_DIR" -t "$HOME" profile
+  stow_all /run/current-system/sw/bin/stow "${STOW_COMMON[@]}" "${STOW_MAC[@]}"
 }
 
 switch_linux() {
   "${NIX[@]}" build "$CONFIG_DIR#default" --out-link "$OUT_LINK"
-  "$OUT_LINK/bin/stow" -d "$REPO_DIR" -t "$HOME" profile
+  stow_all "$OUT_LINK/bin/stow" "${STOW_COMMON[@]}"
   echo "Nix packages applied: $(readlink "$OUT_LINK")"
 }
 

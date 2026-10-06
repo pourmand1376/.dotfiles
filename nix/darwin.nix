@@ -77,6 +77,7 @@
       "orbstack" # privileged helper + own updater
       "pearcleaner" # not in nixpkgs
       "visual-studio-code" # needed by the vscode extension lines below
+      "macpacker"
     ];
 
     # App Store (needs you signed in to the App Store; installs only apps your Apple ID already has)
@@ -133,6 +134,8 @@
         "/Applications/Microsoft Edge.app"
         "/Applications/WezTerm.app"
       ];
+      # folders/stacks next to the trash; [] = none. Unset would leave whatever is there.
+      persistent-others = [ ];
     };
 
     finder = {
