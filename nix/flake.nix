@@ -18,7 +18,6 @@
 
       # unfree packages allowed by name
       allowUnfreePredicate = pkg: builtins.elem (nixpkgs.lib.getName pkg) [
-        "claude-code"
         "keka"
         "mos"
       ];

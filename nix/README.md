@@ -81,7 +81,9 @@ macOS
   - GUI apps: `/Applications/Nix Apps`
   - fonts: `/Library/Fonts/Nix Fonts`
   - brew apps: `/Applications` and `/opt/homebrew`
-- Claude Code comes from nix; its own updater is off, `nixup` updates it. codex and gemini-cli come from brew.
+- Claude Code is not managed here: install it with `curl -fsSL https://claude.ai/install.sh | bash`
+  (it updates itself). Nix's downloader gets HTTP 403 from downloads.claude.ai on this network.
+  codex and gemini-cli come from brew.
 
 ## Install on a new Mac
 

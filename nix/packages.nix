@@ -62,9 +62,6 @@ with pkgs;
   lazydocker
   exercism
   rtk
-
-  # AI coding agent (updated by `nixup`, not by its own updater); codex + gemini-cli: brew
-  claude-code
 ]
 ++ lib.optionals stdenv.hostPlatform.isDarwin [
   terminal-notifier
