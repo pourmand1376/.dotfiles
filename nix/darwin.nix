@@ -80,13 +80,18 @@
       "macpacker"
     ];
 
-    # App Store (needs you signed in to the App Store; installs only apps your Apple ID already has)
-    masApps = {
-      "TickTick" = 966085870;
-      "Roozegar" = 1171425651;
-      "Windows App" = 1295203466;
-      "Tacque" = 6778518424;
-    };
+    # App Store (needs you signed in to the App Store; installs only apps your Apple ID already has).
+    # Only when apply.sh was answered "yes" (NIX_MAS_APPS=1); skipping never uninstalls them.
+    masApps =
+      if builtins.getEnv "NIX_MAS_APPS" == "1" then
+        {
+          "TickTick" = 966085870;
+          "Roozegar" = 1171425651;
+          "Windows App" = 1295203466;
+          "Tacque" = 6778518424;
+        }
+      else
+        { };
 
     # Brewfile lines nix-darwin has no option for
     extraConfig = ''

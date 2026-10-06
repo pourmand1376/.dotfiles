@@ -21,6 +21,9 @@ nixgc       # delete generations older than 30 days + unused /nix/store paths (a
 
 Without the aliases: `./apply.sh`, `./apply.sh update`, `./apply.sh gc` from this folder.
 
+On macOS, `nixapply` / `nixup` ask "Install App Store apps too? [y/N]". Enter skips them (they are
+slow and need an App Store sign-in); skipping never uninstalls apps already installed.
+
 To delete *all* old generations (no rollback left): `sudo nix-collect-garbage -d`.
 
 ## Find a package

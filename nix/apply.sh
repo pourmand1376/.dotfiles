@@ -60,14 +60,21 @@ switch_darwin() {
   local flake="$CONFIG_DIR#AmirMac"
   local primary_user
   primary_user="$(id -un)"
+
+  # App Store apps are slow and need an App Store sign-in, so ask (default: skip)
+  local mas=0 answer
+  if [ -t 0 ]; then
+    read -r -p "Install App Store apps too? [y/N] " answer
+    case "$answer" in [yY]*) mas=1 ;; esac
+  fi
   if command -v darwin-rebuild >/dev/null; then
-    sudo env "NIX_PRIMARY_USER=$primary_user" darwin-rebuild switch --impure --flake "$flake"
+    sudo env "NIX_PRIMARY_USER=$primary_user" "NIX_MAS_APPS=$mas" darwin-rebuild switch --impure --flake "$flake"
   else
     # first run: build nix-darwin, then use its darwin-rebuild
     local tmp
     tmp="$(mktemp -d)/system"
-    NIX_PRIMARY_USER="$primary_user" "${NIX[@]}" build --impure "$CONFIG_DIR#darwinConfigurations.AmirMac.system" --out-link "$tmp"
-    sudo env "NIX_PRIMARY_USER=$primary_user" "$tmp/sw/bin/darwin-rebuild" switch --impure --flake "$flake"
+    NIX_PRIMARY_USER="$primary_user" NIX_MAS_APPS="$mas" "${NIX[@]}" build --impure "$CONFIG_DIR#darwinConfigurations.AmirMac.system" --out-link "$tmp"
+    sudo env "NIX_PRIMARY_USER=$primary_user" "NIX_MAS_APPS=$mas" "$tmp/sw/bin/darwin-rebuild" switch --impure --flake "$flake"
   fi
 
   # packages now live in /run/current-system/sw; drop the old buildEnv link
