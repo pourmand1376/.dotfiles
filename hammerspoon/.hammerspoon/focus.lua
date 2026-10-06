@@ -13,6 +13,10 @@ local TELEGRAM_DELAY = 15   -- seconds of waiting before Telegram shows
 local UNLOCK_MINUTES = 10   -- after waiting once, free access for this long
 local SITE_DELAY = 30       -- seconds of waiting before a blocked site comes back
 local SITE_UNLOCK_MINUTES = 20
+-- per-site override of SITE_UNLOCK_MINUTES
+local SITE_UNLOCK_OVERRIDE = { ["youtube.com"] = 30 }
+-- hosts that share one unlock (a youtu.be link shouldn't re-ask mid-session)
+local SITE_ALIAS = { ["youtu.be"] = "youtube.com" }
 
 local BLOCKED_HOSTS = {
 	"youtube.com", "youtu.be",
@@ -113,7 +117,7 @@ end
 local function isBlocked(host)
 	for _, blocked in ipairs(BLOCKED_HOSTS) do
 		if host == blocked or host:sub(-(#blocked + 1)) == "." .. blocked then
-			return blocked
+			return SITE_ALIAS[blocked] or blocked
 		end
 	end
 	return nil
@@ -144,7 +148,8 @@ local function checkBrowser()
 		return
 	end
 	startCountdown(blocked, SITE_DELAY, function()
-		siteUnlockedUntil[blocked] = os.time() + SITE_UNLOCK_MINUTES * 60
+		local minutes = SITE_UNLOCK_OVERRIDE[blocked] or SITE_UNLOCK_MINUTES
+		siteUnlockedUntil[blocked] = os.time() + minutes * 60
 		hs.urlevent.openURLWithBundle(url, bid)
 	end)
 end
