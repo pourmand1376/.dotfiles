@@ -13,7 +13,7 @@ NIX=(nix --extra-experimental-features "nix-command flakes")
 
 # stow packages (top-level folders of the repo) linked into $HOME on every apply
 STOW_COMMON=(profile zsh starship tmux nvim lazygit)
-STOW_MAC=(bash git claude codex flashspace hammerspoon karabiner-elements neru wezterm zellij)
+STOW_MAC=(bash git claude flashspace hammerspoon karabiner-elements neru wezterm zellij)
 # top-level folders that are not stow packages
 STOW_SKIP=(archive install mac-server macbook nix scripts)
 
@@ -53,6 +53,23 @@ ensure_wezterm_plugins() {
   git clone https://github.com/abidibo/wezterm-cmdpicker "$dir"
 }
 
+ensure_codex_config() {
+  # Codex rewrites config.toml with private state (trusted project paths, hook hashes),
+  # so it stays untracked; only pin the approval settings at the top level
+  local cfg="$HOME/.codex/config.toml" kv key
+  mkdir -p "$(dirname "$cfg")"
+  touch "$cfg"
+  for kv in 'approval_policy = "on-request"' 'approvals_reviewer = "auto_review"' 'sandbox_mode = "workspace-write"'; do
+    key="${kv%% =*}"
+    # only touch the top-level key: lines before the first [table]
+    if awk -v k="$key" '/^\[/{exit} $0 ~ "^"k" *=" {f=1} END{exit !f}' "$cfg"; then
+      awk -v k="$key" -v kv="$kv" '/^\[/{t=1} !t && $0 ~ "^"k" *=" {$0=kv} 1' "$cfg" > "$cfg.tmp" && mv "$cfg.tmp" "$cfg"
+    else
+      { echo "$kv"; cat "$cfg"; } > "$cfg.tmp" && mv "$cfg.tmp" "$cfg"
+    fi
+  done
+}
+
 switch_darwin() {
   ensure_homebrew
 
@@ -82,6 +99,7 @@ switch_darwin() {
 
   stow_all /run/current-system/sw/bin/stow "${STOW_COMMON[@]}" "${STOW_MAC[@]}"
   ensure_wezterm_plugins
+  ensure_codex_config
 }
 
 switch_linux() {
