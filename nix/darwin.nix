@@ -189,5 +189,14 @@
       safari_write com.apple.Safari.ContentPageGroupIdentifier.WebKit2DeveloperExtrasEnabled; } 2>/dev/null; then
       echo >&2 "warning: Safari Develop menu not set (give your terminal Full Disk Access, then nixapply)"
     fi
+
+    # FlashSpace CLI: the cask doesn't link it; karabiner.json calls /usr/local/bin/flashspace
+    flashspace_bin=/Applications/FlashSpace.app/Contents/Resources/flashspace
+    if [ -x "$flashspace_bin" ]; then
+      mkdir -p /usr/local/bin
+      ln -sfn "$flashspace_bin" /usr/local/bin/flashspace
+    else
+      echo >&2 "warning: FlashSpace CLI not linked ($flashspace_bin missing)"
+    fi
   '';
 }
