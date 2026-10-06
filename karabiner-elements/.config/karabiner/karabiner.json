@@ -880,6 +880,7 @@
                     },
                     {
                         "description": "Use option+1/2 to switch language strictly.",
+                        "enabled": false,
                         "manipulators": [
                             {
                                 "from": {
