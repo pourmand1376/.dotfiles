@@ -45,6 +45,14 @@ stow_all() {
   done
 }
 
+ensure_wezterm_plugins() {
+  # wezterm 20240203 can't fetch plugins over https itself, so wezterm.lua loads a local clone
+  local dir="$HOME/.local/share/wezterm-plugins/wezterm-cmdpicker"
+  [ -d "$dir/.git" ] && return
+  mkdir -p "$(dirname "$dir")"
+  git clone https://github.com/abidibo/wezterm-cmdpicker "$dir"
+}
+
 switch_darwin() {
   ensure_homebrew
 
@@ -66,6 +74,7 @@ switch_darwin() {
   [ -L "$OUT_LINK" ] && rm "$OUT_LINK"
 
   stow_all /run/current-system/sw/bin/stow "${STOW_COMMON[@]}" "${STOW_MAC[@]}"
+  ensure_wezterm_plugins
 }
 
 switch_linux() {

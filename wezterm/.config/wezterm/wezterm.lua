@@ -51,16 +51,21 @@ config.keys = {
 -- fuzzy picker over all keybindings: https://github.com/abidibo/wezterm-cmdpicker
 -- must run after config.keys is fully defined.
 -- loaded from a local clone because wezterm 20240203's libgit2 fails on https URLs
--- ("unsupported URL protocol"). install with:
---   git clone https://github.com/abidibo/wezterm-cmdpicker ~/.local/share/wezterm-plugins/wezterm-cmdpicker
-local cmdpicker = wezterm.plugin.require(
+-- ("unsupported URL protocol"). nix/apply.sh clones it; if it's missing, skip it
+-- instead of breaking the whole config.
+local ok, cmdpicker = pcall(
+	wezterm.plugin.require,
 	"file://" .. wezterm.home_dir .. "/.local/share/wezterm-plugins/wezterm-cmdpicker"
 )
-cmdpicker.apply_to_config(config, {
-	key = "k",
-	mods = "CMD|SHIFT",
-	title = "Command Picker",
-})
+if ok then
+	cmdpicker.apply_to_config(config, {
+		key = "k",
+		mods = "CMD|SHIFT",
+		title = "Command Picker",
+	})
+else
+	wezterm.log_warn("wezterm-cmdpicker not loaded (run nix/apply.sh): " .. tostring(cmdpicker))
+end
 
 -- Finally, return the configuration to wezterm:
 return config
