@@ -9,9 +9,11 @@
     };
     # hugo pinned to 0.148.2 to match the site's deploy HUGO_VERSION
     nixpkgs-hugo.url = "github:NixOS/nixpkgs/648f70160c03151bc2121d179291337ad6bc564b";
+    # tuios on its own nixpkgs so it can be bumped alone: nix flake update nixpkgs-tuios
+    nixpkgs-tuios.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
   };
 
-  outputs = { nixpkgs, nix-darwin, nixpkgs-hugo, ... }:
+  outputs = { nixpkgs, nix-darwin, nixpkgs-hugo, nixpkgs-tuios, ... }:
     let
       systems = [ "aarch64-darwin" "x86_64-darwin" "x86_64-linux" "aarch64-linux" ];
       forAllSystems = nixpkgs.lib.genAttrs systems;
@@ -25,6 +27,10 @@
       hugoOverlay = final: prev: {
         hugo = nixpkgs-hugo.legacyPackages.${prev.stdenv.hostPlatform.system}.hugo;
       };
+
+      tuiosOverlay = final: prev: {
+        tuios = nixpkgs-tuios.legacyPackages.${prev.stdenv.hostPlatform.system}.tuios;
+      };
     in
     {
       # Linux (and any machine without nix-darwin): ./apply.sh builds this into ~/.local/share/nix-tools
@@ -32,7 +38,7 @@
         let
           pkgs = import nixpkgs {
             inherit system;
-            overlays = [ hugoOverlay ];
+            overlays = [ hugoOverlay tuiosOverlay ];
             config.allowUnfreePredicate = allowUnfreePredicate;
           };
         in
@@ -51,7 +57,7 @@
             ./darwin.nix
             {
               nixpkgs.config.allowUnfreePredicate = allowUnfreePredicate;
-              nixpkgs.overlays = [ hugoOverlay ];
+              nixpkgs.overlays = [ hugoOverlay tuiosOverlay ];
             }
           ];
         };
@@ -61,7 +67,7 @@
             ./darwin.nix
             {
               nixpkgs.config.allowUnfreePredicate = allowUnfreePredicate;
-              nixpkgs.overlays = [ hugoOverlay ];
+              nixpkgs.overlays = [ hugoOverlay tuiosOverlay ];
             }
           ];
         };
