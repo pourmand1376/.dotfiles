@@ -4,6 +4,6 @@ git:
   log:
     showWholeGraph: true
   diffRenderers:
-    - command: delta --paging=never --line-numbers-left-format="" --line-numbers-right-format="" --color-only
+    - command: delta-themed --paging=never --line-numbers-left-format="" --line-numbers-right-format="" --color-only
     - command: bat --color=always --style=plain --paging=never --language=diff
     - type: rawGit

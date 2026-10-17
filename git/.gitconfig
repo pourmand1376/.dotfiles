@@ -7,7 +7,7 @@
 
 [core]
     excludesfile = ~/.gitignore_global
-    pager = delta
+    pager = delta-themed
 
 [init]
     defaultBranch = main
@@ -26,7 +26,7 @@
     prompt = false
 
 [interactive]
-    diffFilter = delta --color-only
+    diffFilter = delta-themed --color-only
 
 [add.interactive]
     useBuiltin = false
@@ -38,6 +38,47 @@
     navigate = true
     side-by-side = true
     line-numbers = true
+    hyperlinks = true
+    file-decoration-style = none
+    hunk-header-decoration-style = none
+
+# picked by delta-themed (git/.local/bin) from the macOS appearance;
+# diff tints are the flavour's red/green blended into its background
+[delta "catppuccin-latte"]
+    light = true
+    syntax-theme = Catppuccin Latte
+    file-style = bold "#1e66f5"
+    hunk-header-style = file line-number syntax
+    hunk-header-file-style = "#8839ef"
+    hunk-header-line-number-style = "#df8e1d"
+    line-numbers-minus-style = "#d20f39"
+    line-numbers-plus-style = "#40a02b"
+    line-numbers-zero-style = "#9ca0b0"
+    line-numbers-left-style = "#bcc0cc"
+    line-numbers-right-style = "#bcc0cc"
+    minus-style = syntax "#eac8d3"
+    minus-emph-style = syntax "#e5a2b3"
+    plus-style = syntax "#d0e2d1"
+    plus-emph-style = syntax "#b2d5ae"
+    map-styles = bold purple => syntax "#d9c8f0", bold cyan => syntax "#c4e3ea"
+
+[delta "catppuccin-mocha"]
+    dark = true
+    syntax-theme = Catppuccin Mocha
+    file-style = bold "#89b4fa"
+    hunk-header-style = file line-number syntax
+    hunk-header-file-style = "#cba6f7"
+    hunk-header-line-number-style = "#f9e2af"
+    line-numbers-minus-style = "#f38ba8"
+    line-numbers-plus-style = "#a6e3a1"
+    line-numbers-zero-style = "#6c7086"
+    line-numbers-left-style = "#45475a"
+    line-numbers-right-style = "#45475a"
+    minus-style = syntax "#443244"
+    minus-emph-style = syntax "#694459"
+    plus-style = syntax "#364143"
+    plus-emph-style = syntax "#4e6356"
+    map-styles = bold purple => syntax "#493d63", bold cyan => syntax "#2f4a5a"
 
 [rerere]
     enabled = true

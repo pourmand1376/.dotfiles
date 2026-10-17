@@ -1,0 +1,10 @@
+#!/bin/sh
+# delta with the Catppuccin flavour that matches macOS light/dark mode,
+# so diffs follow WezTerm (Latte in light, Mocha in dark).
+# the features are defined in ~/.gitconfig under [delta "catppuccin-*"].
+if defaults read -g AppleInterfaceStyle >/dev/null 2>&1; then
+	flavour=catppuccin-mocha
+else
+	flavour=catppuccin-latte
+fi
+exec delta --features "$flavour" "$@"

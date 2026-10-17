@@ -229,7 +229,7 @@
   },
   "effortLevel": "high",
   "skipWorkflowUsageWarning": true,
-  "theme": "custom:catppuccin-mocha",
+  "theme": "custom:catppuccin-latte",
   "editorMode": "vim",
   "verbose": false,
   "preferredNotifChannel": "notifications_disabled",

@@ -8,9 +8,28 @@ local wezterm = require("wezterm")
 -- This will hold the configuration.
 local config = wezterm.config_builder()
 
-config.color_scheme = "Catppuccin Mocha"
+-- follow macOS light/dark mode: Latte in light, Mocha in dark.
+local function is_dark()
+	return wezterm.gui and wezterm.gui.get_appearance():find("Dark") ~= nil
+end
+local dark = is_dark()
+config.color_scheme = dark and "Catppuccin Mocha" or "Catppuccin Latte"
 config.font = wezterm.font("JetBrainsMono Nerd Font Mono")
 config.font_size = 17
+config.line_height = 1.1
+
+-- breathing room around the text
+config.window_padding = { left = 14, right = 14, top = 10, bottom = 8 }
+
+-- thin blinking bar cursor with a smooth fade instead of a hard blink
+config.default_cursor_style = "BlinkingBar"
+config.cursor_thickness = 2
+config.cursor_blink_rate = 600
+config.cursor_blink_ease_in = "EaseOut"
+config.cursor_blink_ease_out = "EaseOut"
+
+-- dim unfocused splits so the active one stands out
+config.inactive_pane_hsb = { saturation = 0.85, brightness = 0.8 }
 -- This is where you actually apply your config choices.
 config.window_decorations = "RESIZE"
 
@@ -22,15 +41,16 @@ config.use_fancy_tab_bar = false
 config.tab_bar_at_bottom = false
 config.colors = {
 	tab_bar = {
-		-- match the Catppuccin Mocha background so the bar blends in; the window
-		-- opacity below then makes it transparent along with the rest.
-		background = "#1e1e2e",
+		-- match the Catppuccin background (Mocha / Latte) so the bar blends in; the
+		-- window opacity below then makes it transparent along with the rest.
+		background = dark and "#1e1e2e" or "#eff1f5",
 	},
 }
 
 -- transparent background
-config.window_background_opacity = 0.75
-config.macos_window_background_blur = 0
+-- frosted glass: a bit more opaque + blur keeps text readable over busy windows
+config.window_background_opacity = 0.88
+config.macos_window_background_blur = 25
 
 -- enable rtl support
 config.bidi_enabled = true

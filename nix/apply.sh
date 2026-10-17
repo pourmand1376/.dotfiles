@@ -12,7 +12,7 @@ OUT_LINK="$HOME/.local/share/nix-tools"
 NIX=(nix --extra-experimental-features "nix-command flakes")
 
 # stow packages (top-level folders of the repo) linked into $HOME on every apply
-STOW_COMMON=(profile zsh starship tmux nvim lazygit)
+STOW_COMMON=(profile zsh starship tmux nvim lazygit tuios)
 STOW_MAC=(bash git claude flashspace hammerspoon karabiner-elements neru wezterm zellij)
 # top-level folders that are not stow packages
 STOW_SKIP=(archive install mac-server macbook nix scripts)
