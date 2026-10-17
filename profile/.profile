@@ -57,6 +57,19 @@ alias vim='nvim'
 export XDG_CONFIG_HOME="$HOME/.config"
 export EDITOR=nvim
 
+# lazygit with the Catppuccin flavour matching macOS light/dark mode (like
+# delta-themed). Leaves LG_CONFIG_FILE alone when a caller already set it,
+# e.g. snacks.nvim, which themes lazygit from the nvim colorscheme.
+lazygit() {
+  if [ -n "$LG_CONFIG_FILE" ]; then
+    command lazygit "$@"
+    return
+  fi
+  local dir="$XDG_CONFIG_HOME/lazygit" flavour=latte
+  defaults read -g AppleInterfaceStyle >/dev/null 2>&1 && flavour=mocha
+  LG_CONFIG_FILE="$dir/config.yml,$dir/theme-$flavour.yml" command lazygit "$@"
+}
+
 #### --- PATH ---------------------
 [ -f "$HOME/.cargo/env" ] && . "$HOME/.cargo/env"
 

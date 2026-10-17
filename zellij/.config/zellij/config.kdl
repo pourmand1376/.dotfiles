@@ -329,12 +329,12 @@ theme "catppuccin-macchiato"
 // Theme to use when the host terminal reports a dark color palette.
 // Requires `theme_light` to also be set; otherwise `theme` is used.
 // 
-// theme_dark "dracula"
- 
+theme_dark "catppuccin-mocha"
+
 // Theme to use when the host terminal reports a light color palette.
 // Requires `theme_dark` to also be set; otherwise `theme` is used.
-// 
-// theme_light "solarized-light"
+//
+theme_light "catppuccin-latte"
  
 // Choose the base input mode of zellij.
 // Default: normal

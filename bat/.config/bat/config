@@ -1,0 +1,7 @@
+# follow macOS light/dark mode (read from the system, not the terminal, so it
+# also works inside zellij); same Catppuccin flavours as WezTerm and delta.
+--theme="auto:system"
+--theme-light="Catppuccin Latte"
+--theme-dark="Catppuccin Mocha"
+--style="numbers,changes,header"
+--paging=auto
