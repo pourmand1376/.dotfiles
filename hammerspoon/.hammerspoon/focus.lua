@@ -5,6 +5,7 @@
 --   2. Distracting sites in Chrome / Edge / Safari get redirected to reading,
 --      then a countdown starts: wait it out and the site comes back, unlocked
 --      for a while. Esc gives up and keeps the reading page.
+--      Sites in SITE_MENU skip the countdown and ask how long instead.
 -- Watchers and timers are globals so they aren't garbage-collected.
 
 -- ── settings ────────────────────────────────────────────────
@@ -13,8 +14,16 @@ local TELEGRAM_DELAY = 15   -- seconds of waiting before Telegram shows
 local UNLOCK_MINUTES = 10   -- after waiting once, free access for this long
 local SITE_DELAY = 30       -- seconds of waiting before a blocked site comes back
 local SITE_UNLOCK_MINUTES = 20
--- per-site override of SITE_UNLOCK_MINUTES
-local SITE_UNLOCK_OVERRIDE = { ["youtube.com"] = 30 }
+-- sites that ask how long instead of counting down: { label, minutes };
+-- no minutes = keep the reading page
+local SITE_MENU = {
+	["youtube.com"] = {
+		{ "Forget it" },
+		{ "10 minutes", 10 },
+		{ "30 minutes", 30 },
+		{ "1 hour", 60 },
+	},
+}
 -- hosts that share one unlock (a youtu.be link shouldn't re-ask mid-session)
 local SITE_ALIAS = { ["youtu.be"] = "youtube.com" }
 
@@ -124,6 +133,20 @@ local function isBlocked(host)
 end
 
 local siteUnlockedUntil = {}  -- blocked host → os.time() it stays open until
+local siteMenu = nil  -- chooser while it's open; one menu at a time
+
+local function askMinutes(site, options, onPick)
+	local choices = {}
+	for i, o in ipairs(options) do choices[i] = { text = o[1], minutes = o[2] } end
+	siteMenu = hs.chooser.new(function(choice)
+		siteMenu = nil
+		if choice and choice.minutes then return onPick(choice.minutes) end
+		hs.alert.show("Good call.", 1)
+	end)
+	siteMenu:placeholderText(site .. "  ·  how long?")
+	siteMenu:choices(choices)
+	siteMenu:show()
+end
 
 local function checkBrowser()
 	local front = hs.application.frontmostApplication()
@@ -143,15 +166,16 @@ local function checkBrowser()
 
 	local dest = pickRedirect()
 	hs.osascript.applescript(target .. "set URL of " .. tab .. ' of front window to "' .. dest .. '"')
-	if countdown then
+	if countdown or siteMenu then
 		hs.alert.show(blocked .. "  →  " .. dest:match("://([^/]+)"), 2)
 		return
 	end
-	startCountdown(blocked, SITE_DELAY, function()
-		local minutes = SITE_UNLOCK_OVERRIDE[blocked] or SITE_UNLOCK_MINUTES
+	local function unlock(minutes)
 		siteUnlockedUntil[blocked] = os.time() + minutes * 60
 		hs.urlevent.openURLWithBundle(url, bid)
-	end)
+	end
+	if SITE_MENU[blocked] then return askMinutes(blocked, SITE_MENU[blocked], unlock) end
+	startCountdown(blocked, SITE_DELAY, function() unlock(SITE_UNLOCK_MINUTES) end)
 end
 
 focusBrowserTimer = hs.timer.doEvery(2, checkBrowser)
