@@ -129,6 +129,8 @@
       show-recents = false;
       wvous-tl-corner = 2; # top-left: Mission Control
       wvous-tr-corner = 12; # top-right: Notification Center
+      wvous-bl-corner = 1; # bottom-left: disabled
+      wvous-br-corner = 1; # bottom-right: disabled
       persistent-apps = [
         "/System/Applications/Apps.app"
         "/System/Applications/Mail.app"
@@ -170,6 +172,8 @@
       "com.apple.dock" = {
         wvous-tl-modifier = 0;
         wvous-tr-modifier = 0;
+        wvous-bl-modifier = 0;
+        wvous-br-modifier = 0;
       };
       "com.apple.HIToolbox".AppleFnUsageType = 1; # fn key changes input language
       NSGlobalDomain.AppleKeyboardUIMode = 2; # Tab moves focus between controls
