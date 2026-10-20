@@ -102,6 +102,11 @@
               "bundleIdentifier" : "com.google.Chrome",
               "iconPath" : "/Applications/Google Chrome.app/Contents/Resources/app.icns",
               "name" : "Google Chrome"
+            },
+            {
+              "bundleIdentifier" : "com.github.wez.wezterm",
+              "iconPath" : "/Applications/WezTerm.app/Contents/Resources/terminal.icns",
+              "name" : "WezTerm"
             }
           ],
           "display" : "S24C36x",
