@@ -49,7 +49,7 @@ config.colors = {
 
 -- transparent background
 -- frosted glass: a bit more opaque + blur keeps text readable over busy windows
-config.window_background_opacity = 0.88
+config.window_background_opacity = 0.7
 config.macos_window_background_blur = 25
 
 -- enable rtl support
@@ -73,10 +73,8 @@ config.keys = {
 -- loaded from a local clone because wezterm 20240203's libgit2 fails on https URLs
 -- ("unsupported URL protocol"). nix/apply.sh clones it; if it's missing, skip it
 -- instead of breaking the whole config.
-local ok, cmdpicker = pcall(
-	wezterm.plugin.require,
-	"file://" .. wezterm.home_dir .. "/.local/share/wezterm-plugins/wezterm-cmdpicker"
-)
+local ok, cmdpicker =
+	pcall(wezterm.plugin.require, "file://" .. wezterm.home_dir .. "/.local/share/wezterm-plugins/wezterm-cmdpicker")
 if ok then
 	cmdpicker.apply_to_config(config, {
 		key = "k",
