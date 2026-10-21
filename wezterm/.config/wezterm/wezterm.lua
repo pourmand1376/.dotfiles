@@ -56,7 +56,7 @@ config.macos_window_background_blur = 25
 config.bidi_enabled = true
 config.bidi_direction = "AutoLeftToRight"
 
-config.front_end = "Software"
+-- config.front_end = "Software"
 -- this is to resolve the problem of hanging after some time
 config.keys = {
 	-- Disable default Ctrl+Tab tab switching
