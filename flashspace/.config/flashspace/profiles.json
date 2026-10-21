@@ -224,6 +224,11 @@
               "bundleIdentifier" : "com.spotify.client",
               "iconPath" : "/Applications/Spotify.app/Contents/Resources/AppIcon.icns",
               "name" : "Spotify"
+            },
+            {
+              "bundleIdentifier" : "com.apple.loginwindow",
+              "iconPath" : "/System/Library/CoreServices/loginwindow.app/Contents/Resources/AppIcon.icns",
+              "name" : "loginwindow"
             }
           ],
           "display" : "Built-in Retina Display",

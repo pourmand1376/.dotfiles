@@ -22,6 +22,7 @@
       allowUnfreePredicate = pkg: builtins.elem (nixpkgs.lib.getName pkg) [
         "keka"
         "mos"
+        "rtk"
       ];
 
       hugoOverlay = final: prev: {
