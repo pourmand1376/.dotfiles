@@ -6,7 +6,6 @@
 #   nixup      update everything
 
 # brew install --cask iterm2
-brew install --cask wezterm
 ## brew installs
 brew install iina # video player # utitlies -> Set as default
 # brew install --cask alfred (replaced with raycast)

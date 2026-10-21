@@ -19,6 +19,7 @@
       keycastr
       macshot
       mos
+      wezterm # binary-cached; keeps clang in its runtime closure (~1.4 GB total, mostly shared)
     ]);
 
   # fonts -> /Library/Fonts/Nix Fonts
@@ -68,7 +69,6 @@
     # GUI apps nixpkgs lacks, ships older, or that install system drivers/helpers
     casks = [
       "codex" # nix build is ~200 MB bigger than the cask
-      "wezterm" # nix build pulls in ~1 GB of compiler toolchain
       "flashspace" # nixpkgs 3.3.39 is older than the 4.x you run
       "hammerspoon" # not in nixpkgs
       "karabiner-elements" # installs a DriverKit system extension
@@ -140,7 +140,7 @@
         "/Applications/Obsidian.app"
         "/Applications/Google Chrome.app"
         "/Applications/Microsoft Edge.app"
-        "/Applications/WezTerm.app"
+        "/Applications/Nix Apps/WezTerm.app"
       ];
       # folders/stacks next to the trash; [] = none. Unset would leave whatever is there.
       persistent-others = [ ];
