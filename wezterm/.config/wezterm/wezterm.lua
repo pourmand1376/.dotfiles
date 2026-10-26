@@ -49,15 +49,19 @@ config.colors = {
 
 -- transparent background
 -- frosted glass: a bit more opaque + blur keeps text readable over busy windows
-config.window_background_opacity = 0.7
+config.window_background_opacity = 0.9
 config.macos_window_background_blur = 25
 
 -- enable rtl support
 config.bidi_enabled = true
 config.bidi_direction = "AutoLeftToRight"
 
+-- this is to resolve the problem of hanging after some time:
+-- a window's OpenGL surface stops presenting frames (process stays healthy,
+-- new windows work), so render through Metal instead of OpenGL
+config.front_end = "WebGpu"
 -- config.front_end = "Software"
--- this is to resolve the problem of hanging after some time
+
 config.keys = {
 	-- Disable default Ctrl+Tab tab switching
 	-- Send Ctrl+Tab as kitty-encoded CSI sequence to Zellij

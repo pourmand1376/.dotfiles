@@ -23,6 +23,12 @@ local SITE_MENU = {
 		{ "30 minutes", 30 },
 		{ "1 hour", 60 },
 	},
+	["instagram.com"] = {
+		{ "Forget it" },
+		{ "5 minutes", 5 },
+		{ "15 minutes", 15 },
+		{ "30 minutes", 30 },
+	},
 }
 -- hosts that share one unlock (a youtu.be link shouldn't re-ask mid-session)
 local SITE_ALIAS = { ["youtu.be"] = "youtube.com" }

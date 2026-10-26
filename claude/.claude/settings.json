@@ -17,9 +17,9 @@
       {
         "hooks": [
           {
+            "type": "command",
             "command": "tuios agent-hook claude-code --integration 3",
-            "timeout": 5,
-            "type": "command"
+            "timeout": 5
           }
         ]
       }
@@ -42,9 +42,9 @@
       {
         "hooks": [
           {
+            "type": "command",
             "command": "tuios agent-hook claude-code --integration 3",
-            "timeout": 5,
-            "type": "command"
+            "timeout": 5
           }
         ]
       }
@@ -61,9 +61,9 @@
       {
         "hooks": [
           {
+            "type": "command",
             "command": "tuios agent-hook claude-code --integration 3",
-            "timeout": 5,
-            "type": "command"
+            "timeout": 5
           }
         ]
       }
@@ -81,9 +81,9 @@
       {
         "hooks": [
           {
+            "type": "command",
             "command": "tuios agent-hook claude-code --integration 3",
-            "timeout": 5,
-            "type": "command"
+            "timeout": 5
           }
         ]
       }
@@ -92,9 +92,9 @@
       {
         "hooks": [
           {
+            "type": "command",
             "command": "tuios agent-hook claude-code --integration 3",
-            "timeout": 5,
-            "type": "command"
+            "timeout": 5
           }
         ]
       }
@@ -103,9 +103,9 @@
       {
         "hooks": [
           {
+            "type": "command",
             "command": "tuios agent-hook claude-code --integration 3",
-            "timeout": 310,
-            "type": "command"
+            "timeout": 310
           }
         ]
       }
@@ -114,9 +114,9 @@
       {
         "hooks": [
           {
+            "type": "command",
             "command": "tuios agent-hook claude-code --integration 3",
-            "timeout": 5,
-            "type": "command"
+            "timeout": 5
           }
         ]
       }
@@ -125,9 +125,9 @@
       {
         "hooks": [
           {
+            "type": "command",
             "command": "tuios agent-hook claude-code --integration 3",
-            "timeout": 5,
-            "type": "command"
+            "timeout": 5
           }
         ]
       }
@@ -136,9 +136,9 @@
       {
         "hooks": [
           {
+            "type": "command",
             "command": "tuios agent-hook claude-code --integration 3",
-            "timeout": 5,
-            "type": "command"
+            "timeout": 5
           }
         ]
       }
@@ -147,9 +147,9 @@
       {
         "hooks": [
           {
+            "type": "command",
             "command": "tuios agent-hook claude-code --integration 3",
-            "timeout": 5,
-            "type": "command"
+            "timeout": 5
           }
         ]
       }
@@ -158,9 +158,9 @@
       {
         "hooks": [
           {
+            "type": "command",
             "command": "tuios agent-hook claude-code --integration 3",
-            "timeout": 5,
-            "type": "command"
+            "timeout": 5
           }
         ]
       }
@@ -169,9 +169,9 @@
       {
         "hooks": [
           {
+            "type": "command",
             "command": "tuios agent-hook claude-code --integration 3",
-            "timeout": 5,
-            "type": "command"
+            "timeout": 5
           }
         ]
       }
@@ -180,9 +180,9 @@
       {
         "hooks": [
           {
+            "type": "command",
             "command": "tuios agent-hook claude-code --integration 3",
-            "timeout": 5,
-            "type": "command"
+            "timeout": 5
           }
         ]
       }
@@ -191,9 +191,9 @@
       {
         "hooks": [
           {
+            "type": "command",
             "command": "tuios agent-hook claude-code --integration 3",
-            "timeout": 5,
-            "type": "command"
+            "timeout": 5
           }
         ]
       }

@@ -150,6 +150,11 @@
               "bundleIdentifier" : "com.apple.iBooksX",
               "iconPath" : "/System/Applications/Books.app/Contents/Resources/AppIcon.icns",
               "name" : "Books"
+            },
+            {
+              "bundleIdentifier" : "com.openai.codex",
+              "iconPath" : "/Applications/ChatGPT.app/Contents/Resources/electron.icns",
+              "name" : "ChatGPT"
             }
           ],
           "display" : "S24C36x",
@@ -224,11 +229,6 @@
               "bundleIdentifier" : "com.spotify.client",
               "iconPath" : "/Applications/Spotify.app/Contents/Resources/AppIcon.icns",
               "name" : "Spotify"
-            },
-            {
-              "bundleIdentifier" : "com.apple.loginwindow",
-              "iconPath" : "/System/Library/CoreServices/loginwindow.app/Contents/Resources/AppIcon.icns",
-              "name" : "loginwindow"
             }
           ],
           "display" : "Built-in Retina Display",
