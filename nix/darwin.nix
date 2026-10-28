@@ -64,6 +64,7 @@
       "mas" # used by brew bundle to install masApps below
       "gemini-cli" # nixpkgs marks it for removal
       "fastfetch" # nix build pulls in ~1 GB of compiler toolchain
+      "rtk" # bottled; nixpkgs build is unfree, uncached, compiled locally
     ];
 
     # GUI apps nixpkgs lacks, ships older, or that install system drivers/helpers
@@ -194,6 +195,19 @@
       safari_write com.apple.Safari.ContentPageGroupIdentifier.WebKit2DeveloperExtrasEnabled; } 2>/dev/null; then
       echo >&2 "warning: Safari Develop menu not set (give your terminal Full Disk Access, then nixapply)"
     fi
+
+    # Input source hotkeys: 60 = previous (ctrl+space), 61 = next (option+space).
+    # Not in CustomUserPreferences: that rewrites the whole AppleSymbolicHotKeys dict and
+    # would wipe every other shortcut; -dict-add only touches these two ids.
+    # parameters = (ascii of space, keycode 49, modifier mask: 262144 ctrl / 524288 option)
+    input_hotkey() {
+      sudo --user=${config.system.primaryUser} -- defaults write com.apple.symbolichotkeys AppleSymbolicHotKeys \
+        -dict-add "$1" "<dict><key>enabled</key><true/><key>value</key><dict><key>parameters</key><array><integer>32</integer><integer>49</integer><integer>$2</integer></array><key>type</key><string>standard</string></dict></dict>"
+    }
+    input_hotkey 60 262144
+    input_hotkey 61 524288
+    # reload shortcuts now instead of at next login
+    sudo --user=${config.system.primaryUser} -- /System/Library/PrivateFrameworks/SystemAdministration.framework/Resources/activateSettings -u
 
     # FlashSpace CLI: the cask doesn't link it; karabiner.json calls /usr/local/bin/flashspace
     flashspace_bin=/Applications/FlashSpace.app/Contents/Resources/flashspace

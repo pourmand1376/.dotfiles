@@ -1452,7 +1452,6 @@
                         "product_id": 8211,
                         "vendor_id": 9390
                     },
-                    "ignore": false,
                     "ignore_vendor_events": true,
                     "simple_modifications": [
                         {
@@ -1467,6 +1466,19 @@
                 },
                 {
                     "identifiers": { "is_keyboard": true },
+                    "simple_modifications": [
+                        {
+                            "from": { "key_code": "right_command" },
+                            "to": [{ "key_code": "right_control" }]
+                        }
+                    ]
+                },
+                {
+                    "identifiers": {
+                        "is_keyboard": true,
+                        "product_id": 641,
+                        "vendor_id": 1452
+                    },
                     "simple_modifications": [
                         {
                             "from": { "key_code": "right_command" },

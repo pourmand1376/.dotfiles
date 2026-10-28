@@ -62,8 +62,12 @@ with pkgs;
   k9s
   lazydocker
   exercism
-  rtk
 ]
 ++ lib.optionals stdenv.hostPlatform.isDarwin [
   terminal-notifier
+]
+# macOS gets rtk from brew: nixpkgs marks it unfree (BUSL), so it is never in the binary
+# cache and every bump downloads ~2 GB of Rust/clang to compile it
+++ lib.optionals stdenv.hostPlatform.isLinux [
+  rtk
 ]

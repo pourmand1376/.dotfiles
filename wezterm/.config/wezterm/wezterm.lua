@@ -49,7 +49,7 @@ config.colors = {
 
 -- transparent background
 -- frosted glass: a bit more opaque + blur keeps text readable over busy windows
-config.window_background_opacity = 0.9
+config.window_background_opacity = 0.95
 config.macos_window_background_blur = 25
 
 -- enable rtl support
