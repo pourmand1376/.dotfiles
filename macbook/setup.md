@@ -41,3 +41,22 @@ My Raycast Shortcuts:
 
 Calendar
 - Alerts -> Five minutes before 
+
+## Apps not managed by nix-darwin (install by hand if needed)
+
+Kept from the old `setup.sh`; everything else there is now in `nix/darwin.nix`.
+
+- Obsidian, Chrome, Edge — own updaters
+- Bruno — API client (Postman alternative)
+- PDF Gear — free PDF editor
+- BetterDisplay — external monitors
+- SoundSource — https://rogueamoeba.com/soundsource/
+- Amphetamine — keep awake
+- Folx — downloads (aria2 covers torrents)
+- OBS + Presenter Overlay — recording
+- superwhisper — dictation
+- Nekoray — https://github.com/abbasnaqdi/nekoray-macos/releases
+- Qi FM (focus sounds) — https://apps.apple.com/us/app/qi-fm-focus-relax-sounds/id1479696191?mt=12
+- Persian dictionaries for Dictionary.app:
+  - https://github.com/ehsania/Persian-Glossaries-for-Apple-Dictionary
+  - https://github.com/wayneclub/Apple-Dictionary

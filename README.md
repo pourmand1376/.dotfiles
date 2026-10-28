@@ -1,57 +1,50 @@
 # dotfiles
 
-I managed my dotfiles using `stow`. [This](https://www.youtube.com/watch?v=FHuwzbpTTo0) youtube video explains it very well. Also [this](https://www.jakewiesler.com/) website is good.
+Dotfiles managed with [GNU stow](https://www.gnu.org/software/stow/), packages and macOS settings with nix (+ nix-darwin on macOS).
 
-## Stow
-
-Installing stow is as simple as
-```bash
-sudo apt install stow
-```
-
-For using config files, use:
+## Setup
 
 ```bash
-stow folder_name
+git clone <this repo> ~/gitfolder/.dotfiles
+~/gitfolder/.dotfiles/nix/apply.sh
 ```
 
-or in mac system
+`nix/apply.sh` installs packages (nix, brew, App Store), applies macOS settings and stows every config folder into `$HOME`. See [nix/README.md](nix/README.md).
+
+After the first run, `~/.profile` defines:
+
+- `nixapply` — apply the config
+- `nixup` — update everything, then clean
+- `nixgc` — clean old generations only
+
+Manual macOS steps that can't be automated are in [macbook/setup.md](macbook/setup.md).
+
+To stow a single folder by hand:
+
+```bash
+stow -d ~/gitfolder/.dotfiles -t ~ folder_name
 ```
 
-```
-```
-stow folder_name -t $HOME
-```
+## Layout
 
-https://www.josean.com/posts/how-to-manage-dotfiles-with-gnu-stow
+- Top-level folders (`zsh`, `git`, `nvim`, …) are stow packages
+- `nix/` — packages, nix-darwin, `apply.sh`
+- `install/` — older per-distro install scripts
+- `mac-server/` — docker-compose stacks for the home server
+- `scripts/` — standalone utilities
+- `archive/` — configs no longer in use
 
-Also take a look at `setup_stow_config.sh` in macbook folder. 
-## Terminal Fonts 
-
-[Nerd-Fonts](https://www.nerdfonts.com/)
-
-### Customizing Stuff (Deprecated)
-
-- [oh-my-bash](https://github.com/ohmybash/oh-my-bash)
-- [oh-my-zsh](https://github.com/ohmyzsh/ohmyzsh)
-- [oh-my-tmux](https://github.com/gpakosz/.tmux)
-- [oh-my-posh](https://ohmyposh.dev/)
-
-I actually use none of above. I have a cleaner setup that uses `tpm` for tmux plugin management and `starship` for theme of bash and zsh.  
-
-### Useful Scripts
+## Install scripts
 
 - [Windows WSL](install/windows_wsl.sh)
 - [Windows Winget](install/windows_install.bat)
 - [Ubuntu Server (Without root)](install/server_install.sh)
 - [Ubuntu](install/ubuntu_install.sh)
 - [Kubuntu](install/kubuntu_install.sh)
-- [Fedora](install_fedora.sh)
+- [Fedora](install/install_fedora.sh)
 - [Arch](install/install_arch.sh)
 - [Flatpak packages](install/flatpak_packages.sh)
 
-## To install 
-- https://www.warp.dev/
-- https://zed.dev/
-- https://arc.net/
-- https://git-fork.com/
+## Fonts
+
+[Nerd Fonts](https://www.nerdfonts.com/) (installed by nix-darwin on macOS).
