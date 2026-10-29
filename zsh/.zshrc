@@ -59,7 +59,11 @@ autoload -Uz _zinit
 # ==============================================================================
 # Completion System Initialization (Required for Tab & fzf-tab to work!)
 # ==============================================================================
-autoload -Uz compinit && compinit
+# Rebuild ~/.zcompdump at most once a day; otherwise trust it (-C) — saves ~300ms per shell
+autoload -Uz compinit
+_stale_dump=(~/.zcompdump(N.mh+24))
+if (( ${#_stale_dump} )) || [[ ! -f ~/.zcompdump ]]; then compinit; else compinit -C; fi
+unset _stale_dump
 zstyle ':completion:*' menu select # Fallback visual menu if fzf-tab isn't loaded
 
 
