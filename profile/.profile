@@ -23,6 +23,7 @@ alias serie="serie --protocol iterm"
 #
 #
 alias c="claude"
+alias t="tuios"
 # eza: better ls
 alias ls='eza --group-directories-first --icons=auto'
 alias ll='eza -lh --git --group-directories-first --icons=auto'
