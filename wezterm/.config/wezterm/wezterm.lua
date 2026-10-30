@@ -62,16 +62,16 @@ config.bidi_direction = "AutoLeftToRight"
 config.front_end = "WebGpu"
 -- config.front_end = "Software"
 
+local act = wezterm.action
 config.keys = {
-	-- Disable default Ctrl+Tab tab switching
-	-- Send Ctrl+Tab as kitty-encoded CSI sequence to Zellij
-	-- CSI 9;5u = Tab(9) with Ctrl modifier(5) in kitty keyboard protocol
-	{
-		key = "Tab",
-		mods = "CTRL",
-		action = wezterm.action.SendString("\x1b[9;5u"),
-	},
+	-- Ctrl+Tab / Ctrl+Shift+Tab cycle tabs
+	{ key = "Tab", mods = "CTRL", action = act.ActivateTabRelative(1) },
+	{ key = "Tab", mods = "CTRL|SHIFT", action = act.ActivateTabRelative(-1) },
 }
+-- Ctrl+1..9 jump to tab N
+for i = 1, 9 do
+	table.insert(config.keys, { key = tostring(i), mods = "CTRL", action = act.ActivateTab(i - 1) })
+end
 -- fuzzy picker over all keybindings: https://github.com/abidibo/wezterm-cmdpicker
 -- must run after config.keys is fully defined.
 -- loaded from a local clone because wezterm 20240203's libgit2 fails on https URLs
