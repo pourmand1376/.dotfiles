@@ -1,33 +1,29 @@
 ---@diagnostic disable: undefined-global
 
 -- Focus guard:
---   1. Telegram opens only after a short countdown (friction, not a lock).
+--   1. Telegram is hidden until you pick how long to open it for.
 --   2. Distracting sites in Chrome / Edge / Safari get redirected to reading,
---      then a countdown starts: wait it out and the site comes back, unlocked
---      for a while. Esc gives up and keeps the reading page.
---      Sites in SITE_MENU skip the countdown and ask how long instead.
+--      then a menu asks how long to unlock them. Esc / "Forget it" keeps
+--      the reading page.
 -- Watchers and timers are globals so they aren't garbage-collected.
 
 -- ── settings ────────────────────────────────────────────────
 local TELEGRAM = "ru.keepcoder.Telegram"
-local TELEGRAM_DELAY = 15   -- seconds of waiting before Telegram shows
-local UNLOCK_MINUTES = 10   -- after waiting once, free access for this long
-local SITE_DELAY = 30       -- seconds of waiting before a blocked site comes back
-local SITE_UNLOCK_MINUTES = 20
--- sites that ask how long instead of counting down: { label, minutes };
--- no minutes = keep the reading page
-local SITE_MENU = {
+-- "how long?" menus: { label, minutes }; no minutes = give up
+local DEFAULT_MENU = {
+	{ "Forget it" },
+	{ "5 minutes", 5 },
+	{ "15 minutes", 15 },
+	{ "30 minutes", 30 },
+	{ "1 hour", 60 },
+}
+-- per-target overrides (anything not listed uses DEFAULT_MENU)
+local MENUS = {
 	["youtube.com"] = {
 		{ "Forget it" },
 		{ "10 minutes", 10 },
 		{ "30 minutes", 30 },
 		{ "1 hour", 60 },
-	},
-	["instagram.com"] = {
-		{ "Forget it" },
-		{ "5 minutes", 5 },
-		{ "15 minutes", 15 },
-		{ "30 minutes", 30 },
 	},
 }
 -- hosts that share one unlock (a youtu.be link shouldn't re-ask mid-session)
@@ -56,37 +52,23 @@ local BROWSERS = {
 
 math.randomseed(os.time())
 
--- ── countdown (shared by Telegram and sites) ────────────────
-local countdown = nil  -- timer while waiting; one countdown at a time
-local escKey = nil
-local alertId = nil
+-- ── "how long?" menu (shared by Telegram and sites) ────────
+local menu = nil  -- chooser while it's open; one menu at a time
 
-local function showAlert(text)
-	if alertId then hs.alert.closeSpecific(alertId) end
-	alertId = hs.alert.show(text, 1.5)
-end
-
-local function stopCountdown()
-	if countdown then countdown:stop(); countdown = nil end
-	if escKey then escKey:delete(); escKey = nil end
-	if alertId then hs.alert.closeSpecific(alertId); alertId = nil end
-end
-
-local function startCountdown(label, delay, onDone, onGiveUp)
-	local left = delay
-	local function tick() showAlert(label .. " in " .. left .. "s  ·  Esc to give up") end
-	tick()
-	escKey = hs.hotkey.bind({}, "escape", function()
-		stopCountdown()
+local function askMinutes(name, onPick, onGiveUp)
+	local choices = {}
+	for i, o in ipairs(MENUS[name] or DEFAULT_MENU) do
+		choices[i] = { text = o[1], minutes = o[2] }
+	end
+	menu = hs.chooser.new(function(choice)
+		menu = nil
+		if choice and choice.minutes then return onPick(choice.minutes) end
 		if onGiveUp then onGiveUp() end
 		hs.alert.show("Good call.", 1)
 	end)
-	countdown = hs.timer.doEvery(1, function()
-		left = left - 1
-		if left > 0 then return tick() end
-		stopCountdown()
-		onDone()
-	end)
+	menu:placeholderText(name .. "  ·  how long?")
+	menu:choices(choices)
+	menu:show()
 end
 
 -- ── Telegram friction ───────────────────────────────────────
@@ -95,13 +77,6 @@ local unlockedUntil = 0
 local function hideTelegram(app)
 	app = app or hs.application.get(TELEGRAM)
 	if app then app:hide() end
-end
-
-local function startTelegramCountdown()
-	startCountdown("Telegram", TELEGRAM_DELAY, function()
-		unlockedUntil = os.time() + UNLOCK_MINUTES * 60
-		hs.application.launchOrFocusByBundleID(TELEGRAM)
-	end, hideTelegram)
 end
 
 focusTelegramWatcher = hs.application.watcher.new(function(_, event, app)
@@ -113,10 +88,13 @@ focusTelegramWatcher = hs.application.watcher.new(function(_, event, app)
 	if os.time() < unlockedUntil then return end
 
 	hideTelegram(app)
-	if not countdown then startTelegramCountdown() end
+	if menu then return end
+	askMinutes("Telegram", function(minutes)
+		unlockedUntil = os.time() + minutes * 60
+		hs.application.launchOrFocusByBundleID(TELEGRAM)
+	end, hideTelegram)
 end)
 focusTelegramWatcher:start()
-
 -- ── site redirect ───────────────────────────────────────────
 local function pickRedirect()
 	local total = 0
@@ -139,20 +117,6 @@ local function isBlocked(host)
 end
 
 local siteUnlockedUntil = {}  -- blocked host → os.time() it stays open until
-local siteMenu = nil  -- chooser while it's open; one menu at a time
-
-local function askMinutes(site, options, onPick)
-	local choices = {}
-	for i, o in ipairs(options) do choices[i] = { text = o[1], minutes = o[2] } end
-	siteMenu = hs.chooser.new(function(choice)
-		siteMenu = nil
-		if choice and choice.minutes then return onPick(choice.minutes) end
-		hs.alert.show("Good call.", 1)
-	end)
-	siteMenu:placeholderText(site .. "  ·  how long?")
-	siteMenu:choices(choices)
-	siteMenu:show()
-end
 
 local function checkBrowser()
 	local front = hs.application.frontmostApplication()
@@ -172,7 +136,7 @@ local function checkBrowser()
 
 	local dest = pickRedirect()
 	hs.osascript.applescript(target .. "set URL of " .. tab .. ' of front window to "' .. dest .. '"')
-	if countdown or siteMenu then
+	if menu then
 		hs.alert.show(blocked .. "  →  " .. dest:match("://([^/]+)"), 2)
 		return
 	end
@@ -180,8 +144,7 @@ local function checkBrowser()
 		siteUnlockedUntil[blocked] = os.time() + minutes * 60
 		hs.urlevent.openURLWithBundle(url, bid)
 	end
-	if SITE_MENU[blocked] then return askMinutes(blocked, SITE_MENU[blocked], unlock) end
-	startCountdown(blocked, SITE_DELAY, function() unlock(SITE_UNLOCK_MINUTES) end)
+	askMinutes(blocked, unlock)
 end
 
 focusBrowserTimer = hs.timer.doEvery(2, checkBrowser)

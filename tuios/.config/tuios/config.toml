@@ -477,6 +477,9 @@ launcher = ['alt+space']
 [keybindings.script]
 script_pause = ['ctrl+p']
 
+[agents.checkpoints]
+enabled = false
+
 [keybindings.sidebar]
 accent = ['c']
 activate = ['enter']
