@@ -164,6 +164,7 @@ pane_background = ''
 desktop_background = ''
 window_chrome_background = ''
 dock_background = ''
+confirm_quit = true
 
 [appearance.scrollbar]
 style = 'track'
@@ -208,6 +209,7 @@ error_duration = 0
 sound_mode = ''
 command = ''
 quiet_hours = ''
+sound = true
 
 [notifications.agent.states]
 [notifications.agent.sounds]
@@ -592,7 +594,7 @@ window_size = 'latest'
 [startup]
 open_default_window = false
 tiled = true
-start_in_terminal_mode = false
+start_in_terminal_mode = true
 layout = 'bsp'
 daemon = true
 
