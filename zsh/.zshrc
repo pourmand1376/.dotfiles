@@ -97,3 +97,17 @@ gemini() {
       /opt/homebrew/bin/gemini "$@"
 }
 export OLLAMA_HOST=http://127.0.0.1:2222
+
+# opencode
+export PATH=$HOME/.opencode/bin:$PATH
+
+# kilo
+export PATH=$HOME/.kilo/bin:$PATH
+
+# bun completions
+[ -s "$HOME/.bun/_bun" ] && source "$HOME/.bun/_bun"
+
+# bun
+export BUN_INSTALL="$HOME/.bun"
+export PATH="$BUN_INSTALL/bin:$PATH"
+
