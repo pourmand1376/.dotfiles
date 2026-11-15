@@ -649,3 +649,6 @@ corner = 'bottom-right'
 
 [workspaces]
 new_window_when_empty = true
+
+[agents]
+enabled = true

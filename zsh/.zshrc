@@ -87,6 +87,14 @@ eval "$(zoxide init zsh --cmd cd)"
 zstyle ':fzf-tab:complete:cd:*' fzf-preview 'ls -1 --color=always $realpath'
 zstyle ':fzf-tab:complete:__zoxide_z:*' fzf-preview 'ls -1 --color=always $realpath'
 
+z() {
+  if (( $# == 0 )); then
+    __zoxide_zi
+  else
+    __zoxide_z "$@"
+  fi
+}
+
 # Gemini CLI via local HTTP proxy
 gemini() {
   env HTTP_PROXY=http://localhost:3456 \
