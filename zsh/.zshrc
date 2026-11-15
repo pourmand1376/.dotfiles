@@ -96,3 +96,4 @@ gemini() {
       GEMINI_MODEL=gemini-3.8-flash \
       /opt/homebrew/bin/gemini "$@"
 }
+export OLLAMA_HOST=http://127.0.0.1:2222
