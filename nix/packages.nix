@@ -30,7 +30,7 @@ with pkgs;
   lazygit
   delta
   gh
-  glab
+  #glab
   git-graph
   serie
   onefetch
