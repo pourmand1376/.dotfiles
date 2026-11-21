@@ -10,6 +10,10 @@
   # Determinate Nix manages the nix daemon and /etc/nix/nix.conf
   nix.enable = false;
 
+  # fish needs this: it does not read /etc/zshrc, so without it the nix PATH
+  # (/run/current-system/sw/bin) is missing. Also adds fish to /etc/shells.
+  programs.fish.enable = true;
+
   # CLI tools -> /run/current-system/sw/bin, GUI apps -> /Applications/Nix Apps
   environment.systemPackages =
     import ./packages.nix pkgs

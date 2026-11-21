@@ -1,6 +1,8 @@
 # Fish config (mirrors zsh/.zshrc + profile/.profile). Functions live in functions/.
 
 # ---- PATH ---------------------------------------------------------------
+# nix: fish does not read /etc/zshrc, so add nix paths ourselves (no-op if present/missing)
+fish_add_path --path /run/current-system/sw/bin /nix/var/nix/profiles/default/bin $HOME/.nix-profile/bin
 fish_add_path --move --path $HOME/.local/share/nix-tools/bin $HOME/.local/bin
 fish_add_path --path $HOME/.cargo/bin $HOME/.opencode/bin $HOME/.kilo/bin $HOME/.bun/bin
 fish_add_path --append --path /opt/homebrew/bin /opt/homebrew/sbin /Applications/Obsidian.app/Contents/MacOS
