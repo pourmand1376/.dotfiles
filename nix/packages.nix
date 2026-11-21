@@ -10,6 +10,7 @@ with pkgs;
   tmux
   tuios # terminal window manager
   fzf
+  fish
   zoxide
   eza
   starship

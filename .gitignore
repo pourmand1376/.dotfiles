@@ -3,3 +3,11 @@ nvim/.config/nvim/plugged/*
 
 .DS_Store
 karabiner-elements/.config/karabiner/automatic_backups/
+
+# fisher-managed plugin files (restored from fish_plugins via `fisher update`)
+fish/.config/fish/functions/fisher.fish
+fish/.config/fish/functions/_fzf_*.fish
+fish/.config/fish/functions/fzf_configure_bindings.fish
+fish/.config/fish/conf.d/fzf.fish
+fish/.config/fish/completions/
+fish/.config/fish/fish_variables

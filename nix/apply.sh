@@ -12,7 +12,7 @@ OUT_LINK="$HOME/.local/share/nix-tools"
 NIX=(nix --extra-experimental-features "nix-command flakes")
 
 # stow packages (top-level folders of the repo) linked into $HOME on every apply
-STOW_COMMON=(profile zsh starship tmux nvim lazygit tuios yazi)
+STOW_COMMON=(profile zsh fish starship tmux nvim lazygit tuios yazi)
 STOW_MAC=(bash bat git claude flashspace hammerspoon karabiner-elements neru vorssaint wezterm zellij)
 # top-level folders that are not stow packages
 STOW_SKIP=(archive install mac-server macbook nix scripts)
@@ -70,6 +70,19 @@ ensure_codex_config() {
   done
 }
 
+ensure_fish_plugins() {
+  # fisher + plugins are third-party code, not tracked in git; fish_plugins lists them
+  local fish_bin
+  fish_bin="$(command -v fish || true)"
+  [ -n "$fish_bin" ] || return 0
+  "$fish_bin" -c '
+    if not functions -q fisher
+      curl -sL https://raw.githubusercontent.com/jorgebucaran/fisher/main/functions/fisher.fish | source
+      fisher install jorgebucaran/fisher
+    end
+    fisher update' >/dev/null && echo "Fish plugins synced"
+}
+
 switch_darwin() {
   ensure_homebrew
 
@@ -100,11 +113,13 @@ switch_darwin() {
   stow_all /run/current-system/sw/bin/stow "${STOW_COMMON[@]}" "${STOW_MAC[@]}"
   ensure_wezterm_plugins
   ensure_codex_config
+  ensure_fish_plugins
 }
 
 switch_linux() {
   "${NIX[@]}" build "$CONFIG_DIR#default" --out-link "$OUT_LINK"
   stow_all "$OUT_LINK/bin/stow" "${STOW_COMMON[@]}"
+  PATH="$OUT_LINK/bin:$PATH" ensure_fish_plugins
   echo "Nix packages applied: $(readlink "$OUT_LINK")"
 }
 
