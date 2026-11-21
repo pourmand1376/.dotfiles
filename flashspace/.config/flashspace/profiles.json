@@ -35,6 +35,11 @@
               "bundleIdentifier" : "org.godotengine.godot",
               "iconPath" : "/Applications/Godot_mono.app/Contents/Resources/GodotLG.icns",
               "name" : "Godot"
+            },
+            {
+              "bundleIdentifier" : "org.deepai.code",
+              "iconPath" : "/Applications/DeepAI Code.app/Contents/Resources/icon.icns",
+              "name" : "DeepAI Code"
             }
           ],
           "display" : "S24C36x",

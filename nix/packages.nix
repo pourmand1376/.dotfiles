@@ -48,6 +48,7 @@ with pkgs;
   uv
 
   # media, docs, images
+  exiftool
   ffmpeg
   imagemagick
   libwebp # cwebp, dwebp
