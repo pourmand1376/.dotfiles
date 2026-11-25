@@ -91,3 +91,6 @@
     unstage = restore --staged
     branches = branch -vv
     recent = log --oneline --decorate -20
+
+[include]
+    path = ~/.gitconfig.local
